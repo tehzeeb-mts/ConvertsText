@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Password & UUID Generator Online | ConvertsText</title>
+  <meta name="description" content="Generate cryptographically secure random passwords and bulk UUID v4 unique identifiers online for free. 100% private, client-side, using Web Crypto API.">
+  <meta name="keywords" content="password generator online, secure password generator, uuid generator v4, bulk uuid generator, random string generator, cryptographic random password">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3WH082XX7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-F3WH082XX7');
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Secure Password & UUID Generator",
+    "url": "https://convertstext.com/random-generator.html",
+    "description": "Cryptographically secure password and UUID generator using Web Crypto API.",
+    "applicationCategory": "SecurityApplication"
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon-box" style="background:linear-gradient(135deg, #10b981, #6366f1);">🎲</div>
+        <span>Converts<span class="brand-accent">Text</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html" class="nav-link">Studio</a></li>
+        <li class="nav-item"><a href="sentence-case.html" class="nav-link">Standard Cases</a></li>
+        <li class="nav-item"><a href="developer-cases.html" class="nav-link">Developer</a></li>
+        <li class="nav-item"><a href="random-generator.html" class="nav-link active">Password & UUID</a></li>
+        <li class="nav-item"><a href="text-analyzer.html" class="nav-link">Text Analyzer</a></li>
+        <li class="nav-item"><a href="lorem-ipsum.html" class="nav-link">Lorem Ipsum</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button type="button" class="search-trigger-btn open-search-btn" title="Search tools (Ctrl+K)">
+          <span>🔍 Search</span>
+          <kbd class="search-kbd">Ctrl K</kbd>
+        </button>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span class="theme-icon">🌙</span></button>
+        <button type="button" class="nav-hamburger" aria-label="Open mobile menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero-section">
+    <div class="container">
+      <div class="hero-pill" style="background:var(--accent-emerald-light); color:var(--accent-emerald);">🔒 Web Crypto API Cryptographic Security</div>
+      <h1 class="hero-title">Secure Password & UUID Generator</h1>
+      <p class="hero-desc">Generate strong random passwords with entropy strength estimation and batch UUID v4 identifiers client-side.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="dual-editor-grid">
+      <!-- 1. Password Generator Column -->
+      <section class="converter-studio">
+        <div class="studio-toolbar">
+          <span style="font-weight: 700; font-size: 0.95rem;">🔑 Secure Password Generator</span>
+          <button type="button" class="tool-btn tool-btn-primary" id="btn-generate-password">
+            <span>🔄 Regenerate</span>
+          </button>
+        </div>
+
+        <div style="padding: 1.5rem;">
+          <!-- Generated Password Display Box -->
+          <div class="password-display-box">
+            <span id="password-output" style="user-select:all;">Generating...</span>
+            <button type="button" class="tool-btn" id="btn-copy-password" title="Copy password">📋 Copy</button>
+          </div>
+
+          <!-- Strength Meter -->
+          <div style="margin-bottom: 1.5rem;">
+            <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight:600;">
+              <span>Password Strength: <strong id="strength-label" style="color:var(--accent-emerald);">Strong</strong></span>
+              <span id="entropy-bits" style="color:var(--text-muted);">~95 bits entropy</span>
+            </div>
+            <div class="strength-bar-wrapper">
+              <div class="strength-segment active-strong"></div>
+              <div class="strength-segment active-strong"></div>
+              <div class="strength-segment active-strong"></div>
+              <div class="strength-segment active-strong"></div>
+            </div>
+          </div>
+
+          <!-- Options -->
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <div>
+              <div style="display:flex; justify-content:space-between; font-size:0.875rem; font-weight:600; margin-bottom:0.25rem;">
+                <span>Password Length:</span>
+                <strong id="length-val">16</strong>
+              </div>
+              <input type="range" id="pass-length" min="6" max="64" value="16" style="width:100%;">
+            </div>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.75rem; font-size:0.875rem;">
+              <label style="display:flex; align-items:center; gap:0.4rem;"><input type="checkbox" id="chk-upper" checked> Uppercase (A-Z)</label>
+              <label style="display:flex; align-items:center; gap:0.4rem;"><input type="checkbox" id="chk-lower" checked> Lowercase (a-z)</label>
+              <label style="display:flex; align-items:center; gap:0.4rem;"><input type="checkbox" id="chk-digits" checked> Numbers (0-9)</label>
+              <label style="display:flex; align-items:center; gap:0.4rem;"><input type="checkbox" id="chk-symbols" checked> Symbols (!@#$)</label>
+              <label style="display:flex; align-items:center; gap:0.4rem; grid-column:span 2;"><input type="checkbox" id="chk-exclude-ambiguous"> Exclude Ambiguous (1, l, I, 0, O)</label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. UUID v4 Generator Column -->
+      <section class="converter-studio">
+        <div class="studio-toolbar">
+          <span style="font-weight: 700; font-size: 0.95rem;">🆔 UUID v4 Generator</span>
+          <button type="button" class="tool-btn tool-btn-primary" id="btn-generate-uuids">
+            <span>🔄 Generate UUIDs</span>
+          </button>
+        </div>
+
+        <div style="padding: 1.5rem;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom: 1rem;">
+            <label style="font-size:0.875rem; font-weight:600;">Quantity:</label>
+            <select id="uuid-count" class="control-select" style="width:120px;">
+              <option value="1">1 UUID</option>
+              <option value="5" selected>5 UUIDs</option>
+              <option value="10">10 UUIDs</option>
+              <option value="25">25 UUIDs</option>
+              <option value="50">50 UUIDs</option>
+            </select>
+          </div>
+
+          <textarea id="uuid-output" class="editor-textarea" style="font-family: var(--font-mono); font-size: 0.875rem; min-height: 220px; border:1px solid var(--border-subtle); border-radius:var(--radius-sm);" readonly></textarea>
+
+          <div style="margin-top: 1rem; display:flex; justify-content:flex-end;">
+            <button type="button" class="tool-btn tool-btn-primary" id="btn-copy-uuids">
+              <span>📋 Copy All UUIDs</span>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" style="margin-top: 4rem;">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 ConvertsText. All rights reserved.</div>
+        <div><a href="index.html">Back to Master Studio</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/converters.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const passOutput = document.getElementById('password-output');
+      const passLength = document.getElementById('pass-length');
+      const lengthVal = document.getElementById('length-val');
+      const chkUpper = document.getElementById('chk-upper');
+      const chkLower = document.getElementById('chk-lower');
+      const chkDigits = document.getElementById('chk-digits');
+      const chkSymbols = document.getElementById('chk-symbols');
+      const chkAmbiguous = document.getElementById('chk-exclude-ambiguous');
+
+      const uuidCount = document.getElementById('uuid-count');
+      const uuidOutput = document.getElementById('uuid-output');
+
+      function generatePass() {
+        const len = parseInt(passLength.value, 10);
+        lengthVal.textContent = len;
+        
+        const pwd = ConvertsEngine.generateSecurePassword(
+          len,
+          chkUpper.checked,
+          chkLower.checked,
+          chkDigits.checked,
+          chkSymbols.checked,
+          chkAmbiguous.checked
+        );
+
+        passOutput.textContent = pwd;
+
+        // Entropy estimate
+        let poolSize = 0;
+        if (chkUpper.checked) poolSize += 26;
+        if (chkLower.checked) poolSize += 26;
+        if (chkDigits.checked) poolSize += 10;
+        if (chkSymbols.checked) poolSize += 30;
+        if (poolSize === 0) poolSize = 36;
+
+        const entropy = Math.round(len * (Math.log2(poolSize)));
+        document.getElementById('entropy-bits').textContent = `~${entropy} bits entropy`;
+      }
+
+      function generateUUIDList() {
+        const count = parseInt(uuidCount.value, 10) || 5;
+        uuidOutput.value = ConvertsEngine.generateUUIDs(count);
+      }
+
+      passLength.addEventListener('input', generatePass);
+      [chkUpper, chkLower, chkDigits, chkSymbols, chkAmbiguous].forEach(el => el.addEventListener('change', generatePass));
+      document.getElementById('btn-generate-password')?.addEventListener('click', generatePass);
+      document.getElementById('btn-copy-password')?.addEventListener('click', () => {
+        window.app.copyText(passOutput.textContent, 'Password copied!');
+      });
+
+      uuidCount.addEventListener('change', generateUUIDList);
+      document.getElementById('btn-generate-uuids')?.addEventListener('click', generateUUIDList);
+      document.getElementById('btn-copy-uuids')?.addEventListener('click', () => {
+        window.app.copyText(uuidOutput.value, 'UUIDs copied to clipboard!');
+      });
+
+      generatePass();
+      generateUUIDList();
+    });
+  </script>
+</body>
+</html>

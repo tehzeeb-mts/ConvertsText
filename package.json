@@ -1,0 +1,27 @@
+{
+  "name": "convertstext",
+  "version": "1.0.0",
+  "description": "Multipage text conversion, readability analysis, and text utility web application.",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "dev:pages": "wrangler pages dev .",
+    "deploy": "wrangler deploy",
+    "deploy:pages": "wrangler pages deploy . --project-name=convertstext",
+    "deploy:prod": "wrangler pages deploy . --project-name=convertstext --branch=main",
+    "preview": "wrangler pages dev ."
+  },
+  "keywords": [
+    "text-converter",
+    "case-converter",
+    "cloudflare-workers",
+    "cloudflare-pages",
+    "readability-analyzer",
+    "word-counter"
+  ],
+  "author": "ConvertsText",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.100.0"
+  }
+}

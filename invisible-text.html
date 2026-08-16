@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invisible Text & Zero-Width Steganography Tool | ConvertsText</title>
+  <meta name="description" content="Hide secret invisible messages inside plain text using Unicode Zero-Width Spaces (steganography) and generate invisible characters for Discord, Instagram, and usernames.">
+  <meta name="keywords" content="invisible text generator, zero width space generator, text steganography online, hide secret message in text, blank space copy paste">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3WH082XX7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-F3WH082XX7');
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Zero-Width Steganography Tool",
+    "url": "https://convertstext.com/invisible-text.html",
+    "description": "Hide and reveal secret invisible messages inside normal text using zero-width characters.",
+    "applicationCategory": "SecurityApplication"
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon-box" style="background:linear-gradient(135deg, #475569, #0284c7);">🕵️</div>
+        <span>Converts<span class="brand-accent">Text</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html" class="nav-link">Studio</a></li>
+        <li class="nav-item"><a href="sentence-case.html" class="nav-link">Standard Cases</a></li>
+        <li class="nav-item"><a href="developer-cases.html" class="nav-link">Developer</a></li>
+        <li class="nav-item"><a href="invisible-text.html" class="nav-link active">Invisible Text</a></li>
+        <li class="nav-item"><a href="random-generator.html" class="nav-link">Password & UUID</a></li>
+        <li class="nav-item"><a href="ciphers-encoders.html" class="nav-link">Ciphers</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button type="button" class="search-trigger-btn open-search-btn" title="Search tools (Ctrl+K)">
+          <span>🔍 Search</span>
+          <kbd class="search-kbd">Ctrl K</kbd>
+        </button>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span class="theme-icon">🌙</span></button>
+        <button type="button" class="nav-hamburger" aria-label="Open mobile menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero-section">
+    <div class="container">
+      <div class="hero-pill" style="background:var(--bg-tertiary); color:var(--text-primary);">🕵️ Zero-Width Unicode Steganography</div>
+      <h1 class="hero-title">Invisible Text & Secret Message Steganography</h1>
+      <p class="hero-desc">Conceal secret messages completely invisible to the naked eye inside normal sentences using zero-width characters.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Mode Tabs -->
+    <div style="display:flex; justify-content:center; gap:0.75rem; margin-bottom: 2rem;">
+      <button type="button" class="category-pill-btn active" id="tab-encode-mode" style="padding:0.6rem 1.5rem; font-size:0.95rem;">
+        <span>🔒 Hide Secret Message (Encode)</span>
+      </button>
+      <button type="button" class="category-pill-btn" id="tab-decode-mode" style="padding:0.6rem 1.5rem; font-size:0.95rem;">
+        <span>🔓 Reveal Hidden Secret (Decode)</span>
+      </button>
+      <button type="button" class="category-pill-btn" id="tab-blank-mode" style="padding:0.6rem 1.5rem; font-size:0.95rem;">
+        <span>👻 Copy Blank Invisible Space</span>
+      </button>
+    </div>
+
+    <!-- 1. ENCODE SECTION -->
+    <section id="section-encode" class="converter-studio">
+      <div class="tool-controls-panel" style="background:var(--bg-card);">
+        <div class="control-item">
+          <label class="control-label">1. Public Visible Cover Text (What everyone sees)</label>
+          <input type="text" id="cover-text-input" class="control-input" placeholder="e.g. Having a great day at work!" value="Just sharing a quick update with the team.">
+        </div>
+        <div class="control-item">
+          <label class="control-label">2. Secret Hidden Message (Invisible payload)</label>
+          <input type="text" id="secret-text-input" class="control-input" placeholder="e.g. Meet at 4 PM in room 302" value="The secret password is: Nebula#2026">
+        </div>
+        <div class="control-item" style="justify-content:flex-end;">
+          <button type="button" class="tool-btn tool-btn-primary" id="btn-encode-stego">
+            <span>🔒 Hide Secret Inside Text</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="editor-wrapper">
+        <textarea id="encode-output" class="editor-textarea" style="min-height: 180px;" placeholder="Encoded output with invisible secret will appear here..." readonly></textarea>
+      </div>
+
+      <div class="studio-bottom-bar">
+        <span class="action-status-hint">The output looks completely normal to humans, but contains hidden binary encoded in zero-width characters.</span>
+        <button type="button" class="tool-btn tool-btn-primary" id="btn-copy-encoded">
+          <span>📋 Copy Encoded Text</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 2. DECODE SECTION -->
+    <section id="section-decode" class="converter-studio" style="display:none;">
+      <div class="editor-wrapper">
+        <textarea id="decode-input" class="editor-textarea" style="min-height: 180px;" placeholder="Paste any text here to scan and uncover hidden invisible messages..."></textarea>
+      </div>
+
+      <div class="conversion-actions-area" style="background:var(--bg-tertiary);">
+        <button type="button" class="tool-btn tool-btn-primary" id="btn-decode-stego">
+          <span>🔍 Scan & Reveal Secret Message</span>
+        </button>
+      </div>
+
+      <div style="padding:1.5rem; background:var(--bg-card); border-top:1px solid var(--border-subtle);">
+        <div style="font-weight:700; font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">REVEALED SECRET PAYLOAD:</div>
+        <div id="decode-result-box" style="padding:1.25rem; background:var(--bg-tertiary); border-radius:var(--radius-md); font-weight:700; color:var(--primary); font-size:1.1rem; border:1px dashed var(--primary);">
+          No text scanned yet. Paste text and click "Scan & Reveal".
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. BLANK INVISIBLE CHARACTERS SECTION -->
+    <section id="section-blank" class="converter-studio" style="display:none;">
+      <div style="padding: 2.5rem; text-align: center;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.75rem;">Copy Blank Invisible Character</h2>
+        <p style="font-size: 0.95rem; color: var(--text-secondary); max-width: 500px; margin: 0 auto 1.5rem;">Use zero-width space characters for blank Discord usernames, invisible WhatsApp messages, or aesthetic spacing.</p>
+        <button type="button" class="tool-btn tool-btn-primary" id="btn-copy-zwsp" style="padding: 0.85rem 2rem; font-size: 1.1rem;">
+          <span>📋 Copy Zero-Width Space (\u200B)</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" style="margin-top: 4rem;">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 ConvertsText. All rights reserved.</div>
+        <div><a href="index.html">Back to Master Studio</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/converters.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tabEncode = document.getElementById('tab-encode-mode');
+      const tabDecode = document.getElementById('tab-decode-mode');
+      const tabBlank = document.getElementById('tab-blank-mode');
+
+      const secEncode = document.getElementById('section-encode');
+      const secDecode = document.getElementById('section-decode');
+      const secBlank = document.getElementById('section-blank');
+
+      tabEncode.addEventListener('click', () => {
+        tabEncode.classList.add('active');
+        tabDecode.classList.remove('active');
+        tabBlank.classList.remove('active');
+        secEncode.style.display = 'block';
+        secDecode.style.display = 'none';
+        secBlank.style.display = 'none';
+      });
+
+      tabDecode.addEventListener('click', () => {
+        tabDecode.classList.add('active');
+        tabEncode.classList.remove('active');
+        tabBlank.classList.remove('active');
+        secDecode.style.display = 'block';
+        secEncode.style.display = 'none';
+        secBlank.style.display = 'none';
+      });
+
+      tabBlank.addEventListener('click', () => {
+        tabBlank.classList.add('active');
+        tabEncode.classList.remove('active');
+        tabDecode.classList.remove('active');
+        secBlank.style.display = 'block';
+        secEncode.style.display = 'none';
+        secDecode.style.display = 'none';
+      });
+
+      // Encode Logic
+      function runEncode() {
+        const cover = document.getElementById('cover-text-input').value;
+        const secret = document.getElementById('secret-text-input').value;
+        if (!secret) return window.app.showToast('Please enter a secret message', 'warning');
+        
+        const encoded = ConvertsEngine.encodeInvisibleMessage(cover, secret);
+        document.getElementById('encode-output').value = encoded;
+        window.app.showToast('Secret message hidden inside text!', 'success');
+      }
+
+      document.getElementById('btn-encode-stego')?.addEventListener('click', runEncode);
+      document.getElementById('btn-copy-encoded')?.addEventListener('click', () => {
+        const val = document.getElementById('encode-output').value;
+        window.app.copyText(val, 'Copied encoded text with hidden secret!');
+      });
+
+      // Decode Logic
+      document.getElementById('btn-decode-stego')?.addEventListener('click', () => {
+        const input = document.getElementById('decode-input').value;
+        if (!input) return window.app.showToast('Please paste text to scan', 'warning');
+        const secret = ConvertsEngine.decodeInvisibleMessage(input);
+        document.getElementById('decode-result-box').textContent = secret;
+        window.app.showToast('Scan complete', 'info');
+      });
+
+      // Copy Zero-Width Space
+      document.getElementById('btn-copy-zwsp')?.addEventListener('click', () => {
+        window.app.copyText('\u200B', 'Copied invisible Zero-Width Space character!');
+      });
+
+      runEncode();
+    });
+  </script>
+</body>
+</html>

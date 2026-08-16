@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fancy Fonts, Small Caps & Stylized Text Generator | ConvertsText</title>
+  <meta name="description" content="Generate cool fancy Unicode fonts: Small Caps, Wide Vaporwave, Zalgo Glitch Text, Cursive, Gothic, Bubble text, Strikethrough, and Upside Down. Copy & paste for Instagram, TikTok, Discord, Twitter.">
+  <meta name="keywords" content="fancy font generator, small caps generator, vaporwave wide text, zalgo glitch text generator, upside down text, cursive text generator, copy and paste fonts">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://convertstext.com/stylized-fancy-text.html">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3WH082XX7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-F3WH082XX7');
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Fancy Text Generator",
+    "url": "https://convertstext.com/stylized-fancy-text.html",
+    "description": "Generate stylish Unicode font styles and glitch text.",
+    "applicationCategory": "UtilitiesApplication"
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon-box" style="background:linear-gradient(135deg, #d97706, #ec4899);">ꜱᴍ</div>
+        <span>Converts<span class="brand-accent">Text</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html" class="nav-link">Studio</a></li>
+        <li class="nav-item"><a href="sentence-case.html" class="nav-link">Standard Cases</a></li>
+        <li class="nav-item"><a href="developer-cases.html" class="nav-link">Developer</a></li>
+        <li class="nav-item"><a href="stylized-fancy-text.html" class="nav-link active">Fancy Fonts</a></li>
+        <li class="nav-item"><a href="ciphers-encoders.html" class="nav-link">Ciphers</a></li>
+        <li class="nav-item"><a href="text-cleaner-sorter.html" class="nav-link">Utilities</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button type="button" class="search-trigger-btn open-search-btn" title="Search tools (Ctrl+K)">
+          <span>🔍 Search</span>
+          <kbd class="search-kbd">Ctrl K</kbd>
+        </button>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span class="theme-icon">🌙</span></button>
+        <button type="button" class="nav-hamburger" aria-label="Open mobile menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero-section">
+    <div class="container">
+      <div class="hero-pill" style="background:var(--badge-fancy); color:var(--badge-fancy-text);">✨ Aesthetic Unicode Generator</div>
+      <h1 class="hero-title">Fancy Fonts & Stylized Text Generator</h1>
+      <p class="hero-desc">Convert plain text into stunning Unicode styles: Small Caps, Vaporwave Wide text, Zalgo Glitch, Cursive, Gothic, and Upside Down.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="converter-studio">
+      <div class="studio-toolbar">
+        <div class="toolbar-group">
+          <label class="tool-btn" for="file-upload-input">
+            <span>📁</span> <span>Upload File</span>
+            <input type="file" id="file-upload-input" accept=".txt,.md,.js,.json,.html,.css,.csv" style="display:none">
+          </label>
+          <button type="button" class="tool-btn" id="btn-sample"><span>📝</span> <span>Sample Text</span></button>
+        </div>
+        <div class="toolbar-group">
+          <button type="button" class="tool-btn" id="btn-undo" disabled><span>↩</span> <span>Undo</span></button>
+          <button type="button" class="tool-btn" id="btn-redo" disabled><span>↪</span> <span>Redo</span></button>
+          <button type="button" class="tool-btn tool-btn-danger" id="btn-clear"><span>🗑️</span> <span>Clear</span></button>
+        </div>
+      </div>
+
+      <!-- Specialized Controls Panel (Zalgo Chaos Level) -->
+      <div class="tool-controls-panel">
+        <div class="control-item">
+          <label class="control-label">Zalgo Glitch Chaos Level</label>
+          <select id="setting-zalgo-level" class="control-select">
+            <option value="mini">Mini Glitch (Subtle)</option>
+            <option value="medium" selected>Medium Chaos (Recommended)</option>
+            <option value="max">Maximum Void Chaos (Extreme)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="editor-wrapper" id="drop-area">
+        <textarea id="main-editor" class="editor-textarea" placeholder="Type text to generate aesthetic Unicode fonts..." spellcheck="false"></textarea>
+      </div>
+
+      <div class="stats-ribbon">
+        <div class="stat-item">Characters: <span class="stat-value" id="stat-characters">0</span></div>
+        <div class="stat-item">Words: <span class="stat-value" id="stat-words">0</span></div>
+      </div>
+
+      <!-- Fancy Buttons Grid -->
+      <div class="conversion-actions-area">
+        <div class="converter-buttons-grid">
+          <button type="button" class="convert-btn" id="btn-small-caps">
+            <div class="btn-title-row">
+              <span class="convert-btn-name">Small Caps</span>
+              <span class="dropdown-badge">Popular</span>
+            </div>
+            <span class="convert-btn-sample" style="color:var(--accent-amber);">ꜱᴍᴀʟʟ ᴄᴀᴘꜱ ᴛᴇxᴛ</span>
+          </button>
+
+          <button type="button" class="convert-btn" id="btn-wide">
+            <div class="btn-title-row">
+              <span class="convert-btn-name">Wide / Vaporwave</span>
+              <span class="dropdown-badge">Aesthetic</span>
+            </div>
+            <span class="convert-btn-sample" style="color:var(--accent-amber);">Ｗｉｄｅ  Ｔｅｘｔ</span>
+          </button>
+
+          <button type="button" class="convert-btn" id="btn-zalgo">
+            <div class="btn-title-row">
+              <span class="convert-btn-name">Zalgo Glitch</span>
+              <span class="dropdown-badge">Glitch</span>
+            </div>
+            <span class="convert-btn-sample" style="color:var(--accent-rose);">Z̵a̵l̵g̵o̵ ̵G̵l̵i̵t̵c̵h̵</span>
+          </button>
+
+          <button type="button" class="convert-btn" id="btn-cursive">
+            <div class="btn-title-row">
+              <span class="convert-btn-name">Cursive / Script</span>
+              <span class="dropdown-badge">Script</span>
+            </div>
+            <span class="convert-btn-sample" style="color:var(--accent-amber);">𝒞𝓊𝓇𝓈𝒾𝓋ℯ 𝒯ℯ𝓍𝓉</span>
+          </button>
+
+          <button type="button" class="convert-btn" id="btn-gothic">
+            <div class="btn-title-row">
+              <span class="convert-btn-name">Gothic / Fraktur</span>
+              <span class="dropdown-badge">Medieval</span>
+            </div>
+            <span class="convert-btn-sample" style="color:var(--accent-amber);">𝔊𝔬𝔱𝔥𝔦𝔠 𝔗𝔢𝔵𝔱</span>
+          </button>
+
+          <button type="button" class="convert-btn" id="btn-bubble">
+            <div class="btn-title-row">
+              <span class="convert-btn-name">Bubble / Circled</span>
+              <span class="dropdown-badge">Circles</span>
+            </div>
+            <span class="convert-btn-sample" style="color:var(--accent-amber);">ⓑⓤⓑⓑⓛⓔ ⓣⓔⓧⓣ</span>
+          </button>
+
+          <button type="button" class="convert-btn" id="btn-superscript">
+            <div class="btn-title-row">
+              <span class="convert-btn-name">Superscript</span>
+              <span class="dropdown-badge">Tiny Up</span>
+            </div>
+            <span class="convert-btn-sample" style="color:var(--accent-amber);">ˢᵘᵖᵉʳˢᶜʳⁱᵖᵗ</span>
+          </button>
+
+          <button type="button" class="convert-btn" id="btn-subscript">
+            <div class="btn-title-row">
+              <span class="convert-btn-name">Subscript</span>
+              <span class="dropdown-badge">Tiny Down</span>
+            </div>
+            <span class="convert-btn-sample" style="color:var(--accent-amber);">ₛᵤᵦₛ꜀ᵣᵢₚₜ</span>
+          </button>
+
+          <button type="button" class="convert-btn" id="btn-upside">
+            <div class="btn-title-row">
+              <span class="convert-btn-name">Upside Down</span>
+              <span class="dropdown-badge">Flip</span>
+            </div>
+            <span class="convert-btn-sample" style="color:var(--accent-amber);">ʇxǝʇ uʍop ǝpᴉsdn</span>
+          </button>
+
+          <button type="button" class="convert-btn" id="btn-reverse">
+            <div class="btn-title-row">
+              <span class="convert-btn-name">Reverse Text</span>
+              <span class="dropdown-badge">Mirror</span>
+            </div>
+            <span class="convert-btn-sample" style="color:var(--accent-amber);">txet desreveR</span>
+          </button>
+
+          <button type="button" class="convert-btn" id="btn-strikethrough">
+            <div class="btn-title-row">
+              <span class="convert-btn-name">Strikethrough</span>
+              <span class="dropdown-badge">Strike</span>
+            </div>
+            <span class="convert-btn-sample" style="color:var(--accent-amber);">s̶t̶r̶i̶k̶e̶t̶h̶r̶o̶u̶g̶h̶</span>
+          </button>
+
+          <button type="button" class="convert-btn" id="btn-underline">
+            <div class="btn-title-row">
+              <span class="convert-btn-name">Underline</span>
+              <span class="dropdown-badge">Line</span>
+            </div>
+            <span class="convert-btn-sample" style="color:var(--accent-amber);">u͟n͟d͟e͟r͟l͟i͟n͟e͟</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="studio-bottom-bar">
+        <span class="action-status-hint">Ready to copy and paste into Instagram bio, Discord, Twitter, TikTok, and gaming tags!</span>
+        <div class="toolbar-group">
+          <button type="button" class="tool-btn tool-btn-primary" id="btn-copy"><span>📋</span> <span>Copy Font</span></button>
+          <button type="button" class="tool-btn" id="btn-download"><span>💾</span> <span>Download .txt</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guide -->
+    <section class="content-guide-section">
+      <h2>How do Fancy Unicode Fonts Work?</h2>
+      <p>Unlike standard computer fonts (like Arial or Times New Roman) which require special software installed on the reader's device, <strong>Unicode font styles</strong> are created by mapping standard ASCII characters to universal mathematical, phonetic, and typographic symbols already built into the global Unicode standard (UTF-8).</p>
+      
+      <p>This means you can copy and paste these stylized characters anywhere: Instagram bios, Discord usernames, Reddit comments, Twitter/X tweets, TikTok captions, and YouTube comments without losing their formatting!</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 ConvertsText. All rights reserved.</div>
+        <div><a href="index.html">Back to Master Studio</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/converters.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const editor = document.getElementById('main-editor');
+      const sampleText = `ConvertsText is the best place to create cool aesthetic text and fonts!`;
+
+      window.app.setupFileDrop(document.getElementById('drop-area'), editor);
+      editor.addEventListener('input', () => window.app.updateStatsRibbon(editor.value));
+
+      function applyFancy(fn, name) {
+        if (!editor.value) return window.app.showToast('Please enter text first', 'warning');
+        editor.value = fn(editor.value);
+        editor.dispatchEvent(new Event('input'));
+        window.app.pushHistory(editor.value, editor);
+        window.app.showToast(`Converted to ${name}`, 'success');
+      }
+
+      document.getElementById('btn-small-caps')?.addEventListener('click', () => applyFancy(ConvertsEngine.toSmallCaps, 'Small Caps'));
+      document.getElementById('btn-wide')?.addEventListener('click', () => applyFancy(ConvertsEngine.toWideText, 'Wide Text'));
+      document.getElementById('btn-zalgo')?.addEventListener('click', () => {
+        const level = document.getElementById('setting-zalgo-level').value;
+        applyFancy(t => ConvertsEngine.toZalgoText(t, level), 'Zalgo Glitch');
+      });
+      document.getElementById('btn-cursive')?.addEventListener('click', () => applyFancy(ConvertsEngine.toCursiveText, 'Cursive'));
+      document.getElementById('btn-gothic')?.addEventListener('click', () => applyFancy(ConvertsEngine.toGothicText, 'Gothic'));
+      document.getElementById('btn-bubble')?.addEventListener('click', () => applyFancy(ConvertsEngine.toBubbleText, 'Bubble Text'));
+      document.getElementById('btn-superscript')?.addEventListener('click', () => applyFancy(ConvertsEngine.toSuperscript, 'Superscript'));
+      document.getElementById('btn-subscript')?.addEventListener('click', () => applyFancy(ConvertsEngine.toSubscript, 'Subscript'));
+      document.getElementById('btn-upside')?.addEventListener('click', () => applyFancy(ConvertsEngine.toUpsideDown, 'Upside Down'));
+      document.getElementById('btn-reverse')?.addEventListener('click', () => applyFancy(ConvertsEngine.toReversedText, 'Reverse Text'));
+      document.getElementById('btn-strikethrough')?.addEventListener('click', () => applyFancy(ConvertsEngine.toStrikethrough, 'Strikethrough'));
+      document.getElementById('btn-underline')?.addEventListener('click', () => applyFancy(ConvertsEngine.toUnderline, 'Underline'));
+
+      document.getElementById('btn-sample')?.addEventListener('click', () => {
+        editor.value = sampleText;
+        editor.dispatchEvent(new Event('input'));
+        window.app.pushHistory(sampleText, editor);
+      });
+      document.getElementById('btn-clear')?.addEventListener('click', () => {
+        editor.value = '';
+        editor.dispatchEvent(new Event('input'));
+        window.app.pushHistory('', editor);
+      });
+      document.getElementById('btn-copy')?.addEventListener('click', () => window.app.copyText(editor.value));
+      document.getElementById('btn-download')?.addEventListener('click', () => window.app.downloadFile(editor.value, 'fancy-text.txt'));
+      document.getElementById('btn-undo')?.addEventListener('click', () => window.app.undo(editor));
+      document.getElementById('btn-redo')?.addEventListener('click', () => window.app.redo(editor));
+
+      editor.value = sampleText;
+      editor.dispatchEvent(new Event('input'));
+      window.app.pushHistory(sampleText, editor);
+    });
+  </script>
+</body>
+</html>

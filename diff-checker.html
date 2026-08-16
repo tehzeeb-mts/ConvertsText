@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Diff Checker Online: Compare Text & Find Differences | ConvertsText</title>
+  <meta name="description" content="Compare two text documents side-by-side or unified inline to spot differences, additions, and deletions instantly. 100% free and private text comparison.">
+  <meta name="keywords" content="diff checker online, compare two texts, text difference finder, side by side diff, git diff visualizer">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://convertstext.com/diff-checker.html">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3WH082XX7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-F3WH082XX7');
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Text Diff Checker",
+    "url": "https://convertstext.com/diff-checker.html",
+    "description": "Visual text difference comparison tool.",
+    "applicationCategory": "DeveloperApplication"
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon-box" style="background:linear-gradient(135deg, #059669, #38bdf8);">⚖️</div>
+        <span>Converts<span class="brand-accent">Text</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html" class="nav-link">Studio</a></li>
+        <li class="nav-item"><a href="sentence-case.html" class="nav-link">Standard Cases</a></li>
+        <li class="nav-item"><a href="developer-cases.html" class="nav-link">Developer</a></li>
+        <li class="nav-item"><a href="stylized-fancy-text.html" class="nav-link">Fancy Fonts</a></li>
+        <li class="nav-item"><a href="ciphers-encoders.html" class="nav-link">Ciphers</a></li>
+        <li class="nav-item"><a href="diff-checker.html" class="nav-link active">Diff Checker</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button type="button" class="search-trigger-btn open-search-btn" title="Search tools (Ctrl+K)">
+          <span>🔍 Search</span>
+          <kbd class="search-kbd">Ctrl K</kbd>
+        </button>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span class="theme-icon">🌙</span></button>
+        <button type="button" class="nav-hamburger" aria-label="Open mobile menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero-section">
+    <div class="container">
+      <div class="hero-pill" style="background:var(--accent-emerald-light); color:var(--accent-emerald);">⚖️ Visual Text Comparison</div>
+      <h1 class="hero-title">Online Text Diff Checker</h1>
+      <p class="hero-desc">Compare original and modified texts to instantly highlight inserted lines, deleted content, and altered phrases.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Dual Input Editors Area -->
+    <div class="dual-editor-grid">
+      <div class="dual-editor-box">
+        <div class="dual-editor-header">
+          <span>📄 Original Text (Before)</span>
+          <button type="button" class="tool-btn" id="btn-sample-diff">Load Sample</button>
+        </div>
+        <textarea id="diff-left-text" class="editor-textarea" style="min-height: 200px; font-family: var(--font-mono); font-size: 0.9rem;" placeholder="Paste original text here..."></textarea>
+      </div>
+
+      <div class="dual-editor-box">
+        <div class="dual-editor-header">
+          <span>📝 Modified Text (After)</span>
+          <button type="button" class="tool-btn tool-btn-danger" id="btn-clear-diff">Clear Both</button>
+        </div>
+        <textarea id="diff-right-text" class="editor-textarea" style="min-height: 200px; font-family: var(--font-mono); font-size: 0.9rem;" placeholder="Paste modified text here..."></textarea>
+      </div>
+    </div>
+
+    <!-- Controls Ribbon -->
+    <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1rem 1.5rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+      <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+        <button type="button" class="tool-btn tool-btn-primary" id="btn-run-diff" style="padding: 0.65rem 1.5rem; font-size: 0.95rem;">
+          <span>🔍</span> <span>Compare Differences</span>
+        </button>
+
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <label style="font-weight: 600; font-size: 0.85rem;">View Mode:</label>
+          <button type="button" class="category-pill-btn active" id="btn-view-split">Side-by-Side</button>
+          <button type="button" class="category-pill-btn" id="btn-view-unified">Unified (Inline)</button>
+        </div>
+      </div>
+
+      <!-- Diff Stats Indicator -->
+      <div style="display: flex; align-items: center; gap: 1rem; font-size: 0.875rem;">
+        <span style="color: var(--accent-emerald); font-weight: 700;">+<span id="diff-stat-additions">0</span> additions</span>
+        <span style="color: var(--accent-rose); font-weight: 700;">-<span id="diff-stat-deletions">0</span> deletions</span>
+        <span style="color: var(--text-muted);"><span id="diff-stat-unchanged">0</span> unchanged lines</span>
+      </div>
+    </div>
+
+    <!-- Diff Results Render Area -->
+    <div class="diff-container" id="diff-output-area">
+      <div style="padding: 3rem; text-align: center; color: var(--text-muted);">
+        Click <strong>"Compare Differences"</strong> above to see highlighted changes.
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" style="margin-top: 4rem;">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 ConvertsText. All rights reserved.</div>
+        <div><a href="index.html">Back to Master Studio</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/diff-engine.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const leftEditor = document.getElementById('diff-left-text');
+      const rightEditor = document.getElementById('diff-right-text');
+      const output = document.getElementById('diff-output-area');
+      const btnSplit = document.getElementById('btn-view-split');
+      const btnUnified = document.getElementById('btn-view-unified');
+
+      let currentViewMode = 'split';
+      let lastDiffResult = null;
+
+      const sampleOriginal = `function calculateTotal(items) {
+  let sum = 0;
+  for (let i = 0; i < items.length; i++) {
+    sum += items[i].price;
+  }
+  return sum;
+}`;
+
+      const sampleModified = `function calculateTotal(items, discountRate = 0) {
+  let sum = 0;
+  for (const item of items) {
+    sum += item.price;
+  }
+  const discount = sum * discountRate;
+  return sum - discount;
+}`;
+
+      function runDiff() {
+        const t1 = leftEditor.value;
+        const t2 = rightEditor.value;
+
+        if (!t1 && !t2) {
+          window.app.showToast('Please enter text to compare', 'warning');
+          return;
+        }
+
+        lastDiffResult = DiffEngine.diffLines(t1, t2);
+
+        document.getElementById('diff-stat-additions').textContent = lastDiffResult.stats.additions;
+        document.getElementById('diff-stat-deletions').textContent = lastDiffResult.stats.deletions;
+        document.getElementById('diff-stat-unchanged').textContent = lastDiffResult.stats.unchanged;
+
+        renderOutput();
+        window.app.showToast('Diff comparison updated', 'success');
+      }
+
+      function renderOutput() {
+        if (!lastDiffResult) return;
+        if (currentViewMode === 'split') {
+          output.innerHTML = DiffEngine.renderSplitHtml(lastDiffResult);
+        } else {
+          output.innerHTML = DiffEngine.renderUnifiedHtml(lastDiffResult);
+        }
+      }
+
+      btnSplit.addEventListener('click', () => {
+        btnSplit.classList.add('active');
+        btnUnified.classList.remove('active');
+        currentViewMode = 'split';
+        renderOutput();
+      });
+
+      btnUnified.addEventListener('click', () => {
+        btnUnified.classList.add('active');
+        btnSplit.classList.remove('active');
+        currentViewMode = 'unified';
+        renderOutput();
+      });
+
+      document.getElementById('btn-run-diff')?.addEventListener('click', runDiff);
+
+      document.getElementById('btn-sample-diff')?.addEventListener('click', () => {
+        leftEditor.value = sampleOriginal;
+        rightEditor.value = sampleModified;
+        runDiff();
+      });
+
+      document.getElementById('btn-clear-diff')?.addEventListener('click', () => {
+        leftEditor.value = '';
+        rightEditor.value = '';
+        output.innerHTML = '<div style="padding:3rem; text-align:center; color:var(--text-muted);">Cleared texts</div>';
+        document.getElementById('diff-stat-additions').textContent = '0';
+        document.getElementById('diff-stat-deletions').textContent = '0';
+        document.getElementById('diff-stat-unchanged').textContent = '0';
+      });
+
+      // Initialize with sample
+      leftEditor.value = sampleOriginal;
+      rightEditor.value = sampleModified;
+      runDiff();
+    });
+  </script>
+</body>
+</html>

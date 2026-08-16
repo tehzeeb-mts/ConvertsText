@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lorem Ipsum & Multi-Theme Dummy Text Generator | ConvertsText</title>
+  <meta name="description" content="Generate custom dummy text across 6 themes: Classic Latin, Tech/Silicon Valley, Corporate Buzzwords, Pirate, Hipster, and Cyberpunk. Export as plain text, HTML, Markdown or JSON.">
+  <meta name="keywords" content="lorem ipsum generator, tech ipsum, corporate buzzword generator, pirate ipsum, hipster ipsum, dummy text generator, placeholder text">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3WH082XX7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-F3WH082XX7');
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Multi-Theme Lorem Ipsum Generator",
+    "url": "https://convertstext.com/lorem-ipsum.html",
+    "description": "Customizable placeholder dummy text generator with 6 unique themes.",
+    "applicationCategory": "UtilitiesApplication"
+  }
+  </script>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon-box" style="background:linear-gradient(135deg, #e11d48, #d97706);">📄</div>
+        <span>Converts<span class="brand-accent">Text</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html" class="nav-link">Studio</a></li>
+        <li class="nav-item"><a href="sentence-case.html" class="nav-link">Standard Cases</a></li>
+        <li class="nav-item"><a href="developer-cases.html" class="nav-link">Developer</a></li>
+        <li class="nav-item"><a href="text-analyzer.html" class="nav-link">Text Analyzer</a></li>
+        <li class="nav-item"><a href="word-counter.html" class="nav-link">Word Counter</a></li>
+        <li class="nav-item"><a href="lorem-ipsum.html" class="nav-link active">Lorem Ipsum</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button type="button" class="search-trigger-btn open-search-btn" title="Search tools (Ctrl+K)">
+          <span>🔍 Search</span>
+          <kbd class="search-kbd">Ctrl K</kbd>
+        </button>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span class="theme-icon">🌙</span></button>
+        <button type="button" class="nav-hamburger" aria-label="Open mobile menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero-section">
+    <div class="container">
+      <div class="hero-pill" style="background:var(--accent-rose-light); color:var(--accent-rose);">📄 6 Unique Placeholder Themes</div>
+      <h1 class="hero-title">Multi-Theme Lorem Ipsum Generator</h1>
+      <p class="hero-desc">Generate dummy text in Classic Latin, Tech/DevOps, Corporate Buzzwords, Pirate, Hipster, or Cyberpunk styles.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="converter-studio">
+      <!-- Theme Selector Ribbon -->
+      <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; padding: 1rem 1.5rem; background: var(--bg-card); border-bottom: 1px solid var(--border-subtle);">
+        <span style="font-weight: 700; font-size: 0.85rem; color: var(--text-muted); margin-right: 0.5rem;">SELECT THEME:</span>
+        <button type="button" class="category-pill-btn active" data-theme-val="classic">🏛️ Classic Latin</button>
+        <button type="button" class="category-pill-btn" data-theme-val="tech">⚡ Tech & DevOps</button>
+        <button type="button" class="category-pill-btn" data-theme-val="corporate">💼 Corporate Buzzwords</button>
+        <button type="button" class="category-pill-btn" data-theme-val="pirate">🏴‍☠️ Pirate & Nautical</button>
+        <button type="button" class="category-pill-btn" data-theme-val="hipster">☕ Hipster Artisanal</button>
+        <button type="button" class="category-pill-btn" data-theme-val="cyberpunk">🤖 Cyberpunk Sci-Fi</button>
+      </div>
+
+      <!-- Controls Panel -->
+      <div class="tool-controls-panel">
+        <div class="control-item">
+          <label class="control-label">Generate By</label>
+          <select id="lorem-type" class="control-select">
+            <option value="paragraphs" selected>Paragraphs</option>
+            <option value="sentences">Sentences</option>
+            <option value="words">Words</option>
+            <option value="list">Bullet List (&lt;ul&gt;)</option>
+          </select>
+        </div>
+
+        <div class="control-item">
+          <label class="control-label">Quantity Count</label>
+          <input type="number" id="lorem-count" class="control-input" min="1" max="100" value="4">
+        </div>
+
+        <div class="control-item">
+          <label class="control-label">Formatting Options</label>
+          <div style="display:flex; gap:1rem; align-items:center; height:100%; flex-wrap:wrap;">
+            <label style="font-size:0.85rem; display:flex; align-items:center; gap:0.35rem;"><input type="checkbox" id="lorem-start-standard" checked> Start with standard opening</label>
+            <label style="font-size:0.85rem; display:flex; align-items:center; gap:0.35rem;"><input type="checkbox" id="lorem-wrap-html"> Wrap in HTML tags (&lt;p&gt;)</label>
+          </div>
+        </div>
+
+        <div class="control-item" style="justify-content:flex-end;">
+          <button type="button" class="tool-btn tool-btn-primary" id="btn-generate-lorem" style="padding: 0.65rem 1.5rem;">
+            <span>✨ Generate Text</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="editor-wrapper">
+        <textarea id="main-editor" class="editor-textarea" style="min-height: 280px;" placeholder="Generated dummy placeholder text will appear here..." spellcheck="false"></textarea>
+      </div>
+
+      <div class="stats-ribbon">
+        <div class="stat-item">Words: <span class="stat-value" id="stat-words">0</span></div>
+        <div class="stat-item">Characters: <span class="stat-value" id="stat-characters">0</span></div>
+        <div class="stat-item">Paragraphs: <span class="stat-value" id="stat-paragraphs">0</span></div>
+        <div class="stat-item">Active Theme: <span class="stat-value" id="stat-theme-name">Classic Latin</span></div>
+      </div>
+
+      <div class="studio-bottom-bar">
+        <span class="action-status-hint">Ready to copy and paste into mockups, wireframes, or test databases.</span>
+        <div class="toolbar-group">
+          <button type="button" class="tool-btn tool-btn-primary" id="btn-copy"><span>📋</span> <span>Copy Dummy Text</span></button>
+          <button type="button" class="tool-btn" id="btn-download"><span>💾</span> <span>Download .txt</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Theme Samples Guide -->
+    <section class="content-guide-section">
+      <h2>Explore the 6 Placeholder Themes</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+        <div style="padding: 1rem; background: var(--bg-tertiary); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <strong>⚡ Tech & DevOps</strong>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.35rem;"><em>"Kubernetes cloud-native microservices serverless docker graphql machine-learning distributed latency..."</em></p>
+        </div>
+        <div style="padding: 1rem; background: var(--bg-tertiary); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <strong>💼 Corporate Buzzwords</strong>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.35rem;"><em>"Synergy deliverables leverage pivot bandwidth actionable-insights paradigm-shift scalable ROI..."</em></p>
+        </div>
+        <div style="padding: 1rem; background: var(--bg-tertiary); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+          <strong>🏴‍☠️ Pirate & Nautical</strong>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.35rem;"><em>"Ahoy matey shiver-me-timbers plunder booty grog scallywag buccaneer walk-the-plank..."</em></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 ConvertsText. All rights reserved.</div>
+        <div><a href="index.html">Back to Master Studio</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/converters.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const editor = document.getElementById('main-editor');
+      const typeSelect = document.getElementById('lorem-type');
+      const countInput = document.getElementById('lorem-count');
+      const startCheck = document.getElementById('lorem-start-standard');
+      const wrapCheck = document.getElementById('lorem-wrap-html');
+      let currentTheme = 'classic';
+
+      function generate() {
+        const type = typeSelect.value;
+        const count = parseInt(countInput.value, 10) || 4;
+        const startStd = startCheck.checked;
+        const wrapHtml = wrapCheck.checked;
+
+        const text = ConvertsEngine.generateLoremIpsum(currentTheme, type, count, startStd, wrapHtml);
+        editor.value = text;
+        editor.dispatchEvent(new Event('input'));
+        window.app.pushHistory(text, editor);
+        window.app.showToast(`Generated ${count} ${type} in ${currentTheme} theme`, 'success');
+      }
+
+      // Theme Tabs
+      document.querySelectorAll('[data-theme-val]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-theme-val]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentTheme = btn.getAttribute('data-theme-val');
+          document.getElementById('stat-theme-name').textContent = btn.textContent.trim();
+          generate();
+        });
+      });
+
+      editor.addEventListener('input', () => window.app.updateStatsRibbon(editor.value));
+      document.getElementById('btn-generate-lorem')?.addEventListener('click', generate);
+      document.getElementById('btn-copy')?.addEventListener('click', () => window.app.copyText(editor.value));
+      document.getElementById('btn-download')?.addEventListener('click', () => window.app.downloadFile(editor.value, `${currentTheme}-lorem-ipsum.txt`));
+
+      generate();
+    });
+  </script>
+</body>
+</html>

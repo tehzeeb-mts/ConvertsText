@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title Case & Capitalized Case Converter | ConvertsText</title>
+  <meta name="description" content="Convert text to Title Case and Capitalized Case online. Smart rules for AP Style, Chicago Manual of Style, APA, and custom minor word exclusions.">
+  <meta name="keywords" content="title case converter, capitalized case, headline capitalization, ap style title case, chicago manual of style title case">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="canonical" href="https://convertstext.com/title-case.html">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3WH082XX7"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-F3WH082XX7');
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Title Case Converter",
+    "url": "https://convertstext.com/title-case.html",
+    "description": "Smart title case and headline capitalization converter.",
+    "applicationCategory": "UtilitiesApplication"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="site-nav">
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon-box">Aa</div>
+        <span>Converts<span class="brand-accent">Text</span></span>
+      </a>
+
+      <ul class="nav-links">
+        <li class="nav-item"><a href="index.html" class="nav-link">Studio</a></li>
+        <li class="nav-item"><a href="title-case.html" class="nav-link active">Standard Cases ▾</a>
+          <ul class="nav-dropdown">
+            <li><a href="sentence-case.html" class="dropdown-link"><span class="dropdown-badge">Aa</span> Sentence Case</a></li>
+            <li><a href="title-case.html" class="dropdown-link"><span class="dropdown-badge">Abc</span> Title & Capitalized</a></li>
+            <li><a href="upper-lower-case.html" class="dropdown-link"><span class="dropdown-badge">AA</span> Upper & Lower Case</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="developer-cases.html" class="nav-link">Developer ▾</a>
+          <ul class="nav-dropdown">
+            <li><a href="developer-cases.html#camel" class="dropdown-link"><span class="dropdown-badge">dC</span> camelCase</a></li>
+            <li><a href="developer-cases.html#snake" class="dropdown-link"><span class="dropdown-badge">s_c</span> snake_case</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a href="stylized-fancy-text.html" class="nav-link">Fancy Fonts</a></li>
+        <li class="nav-item"><a href="ciphers-encoders.html" class="nav-link">Ciphers</a></li>
+        <li class="nav-item"><a href="text-cleaner-sorter.html" class="nav-link">Utilities</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button type="button" class="search-trigger-btn open-search-btn" title="Search tools (Ctrl+K)">
+          <span>🔍 Search</span>
+          <kbd class="search-kbd">Ctrl K</kbd>
+        </button>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span class="theme-icon">🌙</span></button>
+        <button type="button" class="nav-hamburger" aria-label="Open mobile menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <header class="hero-section">
+    <div class="container">
+      <div class="hero-pill">📰 Headline & Editorial Tool</div>
+      <h1 class="hero-title">Title Case & Capitalized Case Converter</h1>
+      <p class="hero-desc">Format article headlines, book titles, and subheadings with smart rules for minor word exclusions (AP Style, Chicago, APA).</p>
+    </div>
+  </header>
+
+  <!-- Main Converter Workspace -->
+  <main class="container">
+    <section class="converter-studio">
+      <!-- Toolbar -->
+      <div class="studio-toolbar">
+        <div class="toolbar-group">
+          <label class="tool-btn" for="file-upload-input">
+            <span>📁</span> <span>Upload File</span>
+            <input type="file" id="file-upload-input" accept=".txt,.md,.js,.json,.html,.css,.csv" style="display:none">
+          </label>
+          <button type="button" class="tool-btn" id="btn-sample"><span>📝</span> <span>Sample Text</span></button>
+          <button type="button" class="tool-btn" id="btn-read-aloud"><span>🔊</span> <span class="btn-label">Read Aloud</span></button>
+        </div>
+        <div class="toolbar-group">
+          <button type="button" class="tool-btn" id="btn-undo" disabled><span>↩</span> <span>Undo</span></button>
+          <button type="button" class="tool-btn" id="btn-redo" disabled><span>↪</span> <span>Redo</span></button>
+          <button type="button" class="tool-btn tool-btn-danger" id="btn-clear"><span>🗑️</span> <span>Clear</span></button>
+        </div>
+      </div>
+
+      <!-- Controls Panel -->
+      <div class="tool-controls-panel">
+        <div class="control-item">
+          <label class="control-label">Headline Style Standard</label>
+          <select id="setting-style-preset" class="control-select">
+            <option value="ap" selected>AP Style (Associated Press)</option>
+            <option value="chicago">Chicago Manual of Style</option>
+            <option value="apa">APA Style (American Psychological Assoc)</option>
+            <option value="all-capitalized">Capitalize Every Word (No Exceptions)</option>
+          </select>
+        </div>
+        <div class="control-item">
+          <label class="control-label">Custom Ignore Words (comma-separated)</label>
+          <input type="text" id="setting-custom-ignore" class="control-input" placeholder="a, an, the, and, but, or, for, in, of, on, to" value="a, an, the, and, but, or, for, in, of, on, to, with, by">
+        </div>
+      </div>
+
+      <!-- Editor Textarea Area -->
+      <div class="editor-wrapper" id="drop-area">
+        <textarea id="main-editor" class="editor-textarea" placeholder="Paste your article titles or text to format into Title Case..." spellcheck="false"></textarea>
+      </div>
+
+      <!-- Live Stats Ribbon -->
+      <div class="stats-ribbon">
+        <div class="stat-item">Characters: <span class="stat-value" id="stat-characters">0</span></div>
+        <div class="stat-item">Words: <span class="stat-value" id="stat-words">0</span></div>
+        <div class="stat-item">Sentences: <span class="stat-value" id="stat-sentences">0</span></div>
+        <div class="stat-item">Reading Time: <span class="stat-value" id="stat-reading-time">0s</span></div>
+      </div>
+
+      <!-- Convert Action Area -->
+      <div class="conversion-actions-area">
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button type="button" class="tool-btn tool-btn-primary" id="btn-convert-title" style="padding: 0.75rem 1.5rem; font-size: 1rem;">
+            <span>✨</span> <span>Convert to Title Case</span>
+          </button>
+          <button type="button" class="tool-btn" id="btn-convert-capitalized" style="padding: 0.75rem 1.25rem;">
+            <span>Abc</span> <span>Capitalize Every Single Word</span>
+          </button>
+          <button type="button" class="tool-btn" id="btn-convert-lower" style="padding: 0.75rem 1.25rem;">
+            <span>aa</span> <span>lower case</span>
+          </button>
+          <button type="button" class="tool-btn" id="btn-convert-upper" style="padding: 0.75rem 1.25rem;">
+            <span>AA</span> <span>UPPER CASE</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="studio-bottom-bar">
+        <span class="action-status-hint">Fast, clean, and accurate headline casing.</span>
+        <div class="toolbar-group">
+          <button type="button" class="tool-btn tool-btn-primary" id="btn-copy"><span>📋</span> <span>Copy Result</span></button>
+          <button type="button" class="tool-btn" id="btn-download"><span>💾</span> <span>Download .txt</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Educational Guide Section -->
+    <section class="content-guide-section">
+      <h2>Title Case vs Capitalized Case: What's the Difference?</h2>
+      <p>While both styles involve capital letters, they serve distinct editorial purposes:</p>
+      <ul>
+        <li><strong>Title Case:</strong> Follows professional publication standards (AP, Chicago, APA). The first and last words are always capitalized, as are all major nouns, verbs, pronouns, and adjectives. Minor words like articles (<em>a, an, the</em>), short prepositions (<em>in, on, of, to</em>), and conjunctions (<em>and, but, for</em>) are kept lowercase unless they begin or end the title.</li>
+        <li><strong>Capitalized Case:</strong> Blindly capitalizes the very first letter of every single word regardless of parts of speech (e.g. <em>"The Lord Of The Rings"</em>).</li>
+      </ul>
+
+      <h3>Common Headline Examples</h3>
+      <table class="frequency-table" style="margin-top: 1rem;">
+        <thead>
+          <tr>
+            <th>Raw Input</th>
+            <th>Title Case (AP Style)</th>
+            <th>Capitalized Case</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>the quick brown fox jumps over the lazy dog</code></td>
+            <td><code>The Quick Brown Fox Jumps over the Lazy Dog</code></td>
+            <td><code>The Quick Brown Fox Jumps Over The Lazy Dog</code></td>
+          </tr>
+          <tr>
+            <td><code>a guide to modern web design and development</code></td>
+            <td><code>A Guide to Modern Web Design and Development</code></td>
+            <td><code>A Guide To Modern Web Design And Development</code></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-title">Converts<span class="brand-accent">Text</span></div>
+          <p class="footer-brand-desc">The modern, private, and ultra-fast text conversion studio.</p>
+          <div class="privacy-badge">🔒 100% Client-Side Privacy</div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Standard Cases</h4>
+          <ul class="footer-links">
+            <li><a href="sentence-case.html" class="footer-link">Sentence Case</a></li>
+            <li><a href="title-case.html" class="footer-link">Title Case</a></li>
+            <li><a href="upper-lower-case.html" class="footer-link">UPPER CASE</a></li>
+            <li><a href="upper-lower-case.html" class="footer-link">lower case</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Developer & Fancy</h4>
+          <ul class="footer-links">
+            <li><a href="developer-cases.html" class="footer-link">camelCase & snake_case</a></li>
+            <li><a href="stylized-fancy-text.html" class="footer-link">Small Caps</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Tools</h4>
+          <ul class="footer-links">
+            <li><a href="diff-checker.html" class="footer-link">Text Diff Checker</a></li>
+            <li><a href="word-counter.html" class="footer-link">Word Counter</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 ConvertsText. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/converters.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const editor = document.getElementById('main-editor');
+      const dropArea = document.getElementById('drop-area');
+      const sampleText = `a comprehensive guide to building responsive websites with html and css
+the catcher in the rye: an analysis of the themes and characters
+how to convert upper case to lower case online in seconds`;
+
+      window.app.setupFileDrop(dropArea, editor);
+      editor.addEventListener('input', () => window.app.updateStatsRibbon(editor.value));
+
+      function convertTitle() {
+        const text = editor.value;
+        if (!text) return window.app.showToast('Please enter text first', 'warning');
+        
+        const preset = document.getElementById('setting-style-preset').value;
+        if (preset === 'all-capitalized') {
+          editor.value = ConvertsEngine.toCapitalizedCase(text);
+        } else {
+          const customWords = document.getElementById('setting-custom-ignore').value.split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
+          editor.value = ConvertsEngine.toTitleCase(text, customWords);
+        }
+        editor.dispatchEvent(new Event('input'));
+        window.app.pushHistory(editor.value, editor);
+        window.app.showToast('Converted to Title Case', 'success');
+      }
+
+      document.getElementById('btn-convert-title')?.addEventListener('click', convertTitle);
+      document.getElementById('btn-convert-capitalized')?.addEventListener('click', () => {
+        editor.value = ConvertsEngine.toCapitalizedCase(editor.value);
+        editor.dispatchEvent(new Event('input'));
+        window.app.pushHistory(editor.value, editor);
+        window.app.showToast('Capitalized every word', 'success');
+      });
+      document.getElementById('btn-convert-lower')?.addEventListener('click', () => {
+        editor.value = ConvertsEngine.toLowerCase(editor.value);
+        editor.dispatchEvent(new Event('input'));
+        window.app.pushHistory(editor.value, editor);
+      });
+      document.getElementById('btn-convert-upper')?.addEventListener('click', () => {
+        editor.value = ConvertsEngine.toUpperCase(editor.value);
+        editor.dispatchEvent(new Event('input'));
+        window.app.pushHistory(editor.value, editor);
+      });
+
+      document.getElementById('btn-sample')?.addEventListener('click', () => {
+        editor.value = sampleText;
+        editor.dispatchEvent(new Event('input'));
+        window.app.pushHistory(sampleText, editor);
+      });
+      document.getElementById('btn-clear')?.addEventListener('click', () => {
+        editor.value = '';
+        editor.dispatchEvent(new Event('input'));
+        window.app.pushHistory('', editor);
+      });
+      const readBtn = document.getElementById('btn-read-aloud');
+      readBtn?.addEventListener('click', () => window.app.speakText(editor.value, readBtn));
+      document.getElementById('btn-copy')?.addEventListener('click', () => window.app.copyText(editor.value));
+      document.getElementById('btn-download')?.addEventListener('click', () => window.app.downloadFile(editor.value, 'title-case.txt'));
+      document.getElementById('btn-undo')?.addEventListener('click', () => window.app.undo(editor));
+      document.getElementById('btn-redo')?.addEventListener('click', () => window.app.redo(editor));
+
+      editor.value = sampleText;
+      editor.dispatchEvent(new Event('input'));
+      window.app.pushHistory(sampleText, editor);
+    });
+  </script>
+</body>
+</html>
