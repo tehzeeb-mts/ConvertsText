@@ -175,6 +175,91 @@ const GrammarEngine = (() => {
     },
 
     /**
+     * Deep Cloud-Powered Grammar & Spell Checking (LanguageTool API / Free Grammarly alternative)
+     * Calls our serverless Cloudflare Edge Function /api/check with instant local fallback.
+     */
+    async checkWithCloud(text, language = 'en-US') {
+      if (!text || !text.trim()) {
+        return { issues: [], count: 0, score: 100, source: 'local' };
+      }
+
+      // First run local check as immediate baseline
+      const localResult = this.check(text);
+
+      try {
+        const response = await fetch('/api/check', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text, language })
+        });
+
+        if (!response.ok) {
+          return { ...localResult, source: 'local_fallback' };
+        }
+
+        const data = await response.json();
+        if (data.fallback || data.error || !data.matches) {
+          return { ...localResult, source: 'local_fallback' };
+        }
+
+        const cloudIssues = [];
+        data.matches.forEach(m => {
+          const original = text.substring(m.offset, m.offset + m.length);
+          const replacement = m.replacements && m.replacements.length > 0 ? m.replacements[0].value : '';
+          
+          let cat = 'Grammar';
+          const ruleCat = (m.rule?.category?.name || m.rule?.category?.id || '').toUpperCase();
+          if (ruleCat.includes('TYPO') || ruleCat.includes('SPELL') || m.shortMessage?.toLowerCase().includes('spell')) {
+            cat = 'Spelling';
+          } else if (ruleCat.includes('PUNCT')) {
+            cat = 'Punctuation';
+          } else if (ruleCat.includes('STYLE') || ruleCat.includes('REDUNDAN')) {
+            cat = 'Conciseness';
+          } else if (ruleCat.includes('CASING') || ruleCat.includes('CAPITAL')) {
+            cat = 'Capitalization';
+          }
+
+          cloudIssues.push({
+            type: 'cloud_rule',
+            category: cat,
+            original: original,
+            replacement: replacement,
+            index: m.offset,
+            length: m.length,
+            reason: m.message || m.shortMessage || 'Grammar or spelling issue detected.'
+          });
+        });
+
+        // Merge with any unique local issues not caught by cloud
+        const combined = [...cloudIssues];
+        localResult.issues.forEach(loc => {
+          const overlap = combined.some(c => 
+            (loc.index >= c.index && loc.index < c.index + c.length) ||
+            (c.index >= loc.index && c.index < loc.index + loc.length)
+          );
+          if (!overlap) {
+            combined.push(loc);
+          }
+        });
+
+        combined.sort((a, b) => a.index - b.index);
+
+        const wordCount = (text.match(/\b\w+\b/g) || []).length;
+        const penalty = combined.length * 6;
+        const score = Math.max(10, Math.min(100, 100 - Math.round((penalty / Math.max(wordCount, 15)) * 30)));
+
+        return {
+          issues: combined,
+          count: combined.length,
+          score: score,
+          source: 'cloud_ai'
+        };
+      } catch (err) {
+        return { ...localResult, source: 'local_fallback' };
+      }
+    },
+
+    /**
      * Automatically apply all safe fixes to text
      */
     applyAllFixes(text, issues) {

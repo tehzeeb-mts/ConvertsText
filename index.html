@@ -257,15 +257,25 @@
           </div>
         </div>
 
-        <!-- In-Editor Grammar & Spelling Drawer -->
+        <!-- In-Editor Grammar & Spelling Drawer (Free Grammarly / Deep AI Linter) -->
         <div class="grammar-drawer" id="grammar-drawer" style="display:none;">
           <div class="grammar-drawer-header">
             <div class="grammar-drawer-title">
-              <span>✨ [BUFFER_LINTER] Real-time Syntax &amp; Style Inspector</span>
+              <span>✨ [BUFFER_LINTER] Deep Syntax &amp; Style Inspector</span>
               <span class="grammar-score-pill" id="grammar-score-pill">Score: 100/100</span>
+              <span class="hud-badge" id="grammar-source-badge" style="font-size:0.65rem; background:var(--accent-cyan-light); color:var(--accent-cyan); border-color:var(--accent-cyan);">FREE_GRAMMARLY_AI</span>
             </div>
-            <div class="toolbar-group">
-              <button type="button" class="tool-btn tool-btn-primary" id="btn-grammar-fix-all"><span>⚡</span> <span>Fix All Issues</span></button>
+            <div class="toolbar-group" style="align-items:center; gap:0.4rem;">
+              <select id="grammar-lang-select" class="tool-select" style="padding:0.25rem 0.5rem; font-size:0.75rem; font-family:var(--font-mono); height:auto;" aria-label="Grammar Language">
+                <option value="en-US">English (US)</option>
+                <option value="en-GB">English (UK)</option>
+                <option value="en-CA">English (CA)</option>
+                <option value="en-AU">English (AU)</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+              </select>
+              <button type="button" class="tool-btn tool-btn-primary" id="btn-grammar-fix-all"><span>⚡</span> <span>Fix All</span></button>
               <button type="button" class="tool-btn" id="btn-grammar-close" title="Close grammar drawer">&times;</button>
             </div>
           </div>
@@ -1120,32 +1130,59 @@ Type or paste anywhere to see parallel conversions stream live in real time.`;
         });
       });
 
-      // Grammar Checker Controller
+      // Grammar Checker Controller (Free Grammarly / Deep AI Linter)
       const grammarDrawer = document.getElementById('grammar-drawer');
       const grammarBadge = document.getElementById('grammar-issues-badge');
       const grammarScorePill = document.getElementById('grammar-score-pill');
+      const grammarSourceBadge = document.getElementById('grammar-source-badge');
+      const grammarLangSelect = document.getElementById('grammar-lang-select');
       const grammarList = document.getElementById('grammar-issues-list');
       let currentGrammarResult = { issues: [] };
+      let grammarDebounceTimer = null;
 
-      const runGrammarCheck = (autoOpen = false) => {
+      const runGrammarCheck = async (autoOpen = false, deepCheck = false) => {
         const text = editor.value;
+        const selectedLang = grammarLangSelect?.value || 'en-US';
+
+        // 1. Instant local linting pass
         currentGrammarResult = GrammarEngine.check(text);
-        
-        if (currentGrammarResult.count > 0) {
-          grammarBadge.textContent = currentGrammarResult.count;
+        updateGrammarBadges(currentGrammarResult);
+
+        if (autoOpen || grammarDrawer.style.display === 'block') {
+          renderGrammarDrawer();
+        }
+
+        // 2. Deep Cloud-powered AI grammar check (LanguageTool / Free Grammarly)
+        if (deepCheck || autoOpen || grammarDrawer.style.display === 'block') {
+          if (grammarSourceBadge) grammarSourceBadge.textContent = 'ANALYZING_AI...';
+          try {
+            const cloudResult = await GrammarEngine.checkWithCloud(text, selectedLang);
+            currentGrammarResult = cloudResult;
+            updateGrammarBadges(cloudResult);
+            if (autoOpen || grammarDrawer.style.display === 'block') {
+              renderGrammarDrawer();
+            }
+          } catch (e) {
+            // keep local result
+          }
+        }
+      };
+
+      const updateGrammarBadges = (res) => {
+        if (grammarSourceBadge) {
+          grammarSourceBadge.textContent = res.source === 'cloud_ai' ? 'FREE_GRAMMARLY_AI' : 'LOCAL_ENGINE';
+        }
+        if (res.count > 0) {
+          grammarBadge.textContent = res.count;
           grammarBadge.style.display = 'inline-block';
-          grammarScorePill.textContent = `Clarity Score: ${currentGrammarResult.score}/100`;
-          grammarScorePill.style.background = currentGrammarResult.score > 80 ? 'var(--accent-lime-light)' : 'var(--accent-amber-light)';
-          grammarScorePill.style.color = currentGrammarResult.score > 80 ? 'var(--accent-lime)' : 'var(--accent-amber)';
+          grammarScorePill.textContent = `Clarity Score: ${res.score}/100`;
+          grammarScorePill.style.background = res.score > 80 ? 'var(--accent-lime-light)' : 'var(--accent-amber-light)';
+          grammarScorePill.style.color = res.score > 80 ? 'var(--accent-lime)' : 'var(--accent-amber)';
         } else {
           grammarBadge.style.display = 'none';
           grammarScorePill.textContent = 'Clarity Score: 100/100 (Clean)';
           grammarScorePill.style.background = 'var(--accent-lime-light)';
           grammarScorePill.style.color = 'var(--accent-lime)';
-        }
-
-        if (autoOpen || grammarDrawer.style.display === 'block') {
-          renderGrammarDrawer();
         }
       };
 
@@ -1166,7 +1203,7 @@ Type or paste anywhere to see parallel conversions stream live in real time.`;
             <div class="grammar-issue-left">
               <span class="grammar-cat-tag grammar-cat-${iss.category}">${iss.category}</span>
               <div class="grammar-issue-text">
-                <div><span class="grammar-diff-original">${window.app.escapeHtml(iss.original)}</span> ➔ <span class="grammar-diff-replacement">${window.app.escapeHtml(iss.replacement)}</span></div>
+                <div><span class="grammar-diff-original">${window.app.escapeHtml(iss.original)}</span> ➔ <span class="grammar-diff-replacement">${window.app.escapeHtml(iss.replacement || 'Remove')}</span></div>
                 <div style="font-size:0.775rem; color:var(--text-muted); margin-top:2px;">${window.app.escapeHtml(iss.reason)}</div>
               </div>
             </div>
@@ -1180,9 +1217,12 @@ Type or paste anywhere to see parallel conversions stream live in real time.`;
             const iss = currentGrammarResult.issues[idx];
             if (iss) {
               const text = editor.value;
-              editor.value = text.substring(0, iss.index) + iss.replacement + text.substring(iss.index + iss.length);
-              editor.dispatchEvent(new Event('input'));
-              runGrammarCheck(true);
+              editor.value = text.substring(0, iss.index) + (iss.replacement || '') + text.substring(iss.index + iss.length);
+              lastSourceBuffer = editor.value;
+              updateGutter();
+              updateLiveInspector(editor.value);
+              window.app.updateStatsRibbon(editor.value);
+              runGrammarCheck(true, true);
               window.app.pushHistory(editor.value, editor);
               window.app.showToast('Applied fix', 'success', 1500);
             }
@@ -1194,8 +1234,12 @@ Type or paste anywhere to see parallel conversions stream live in real time.`;
         if (grammarDrawer.style.display === 'block') {
           grammarDrawer.style.display = 'none';
         } else {
-          runGrammarCheck(true);
+          runGrammarCheck(true, true);
         }
+      });
+
+      grammarLangSelect?.addEventListener('change', () => {
+        runGrammarCheck(true, true);
       });
 
       document.getElementById('btn-grammar-close')?.addEventListener('click', () => {
@@ -1210,8 +1254,11 @@ Type or paste anywhere to see parallel conversions stream live in real time.`;
         const text = editor.value;
         const fixed = GrammarEngine.applyAllFixes(text, currentGrammarResult.issues);
         editor.value = fixed;
-        editor.dispatchEvent(new Event('input'));
-        runGrammarCheck(true);
+        lastSourceBuffer = fixed;
+        updateGutter();
+        updateLiveInspector(fixed);
+        window.app.updateStatsRibbon(fixed);
+        runGrammarCheck(true, true);
         window.app.pushHistory(fixed, editor);
         window.app.showToast(`Applied ${currentGrammarResult.issues.length} fixes automatically!`, 'success');
       });
@@ -1225,7 +1272,17 @@ Type or paste anywhere to see parallel conversions stream live in real time.`;
         updateGutter();
         updateLiveInspector(text);
         window.app.updateStatsRibbon(text);
-        runGrammarCheck(false);
+        
+        // Fast local check
+        runGrammarCheck(false, false);
+
+        // Debounced deep AI grammar check
+        clearTimeout(grammarDebounceTimer);
+        grammarDebounceTimer = setTimeout(() => {
+          if (grammarDrawer.style.display === 'block') {
+            runGrammarCheck(false, true);
+          }
+        }, 600);
       };
       editor.addEventListener('input', handleInput);
 
