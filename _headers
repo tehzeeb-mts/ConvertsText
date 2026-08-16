@@ -2,6 +2,7 @@
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+  Impact-Site-Verification: cec04ad9-ef00-463f-bd36-0df8a51842fe
 
 /*.html
   Cache-Control: public, max-age=0, must-revalidate
