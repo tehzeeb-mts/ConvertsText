@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frequently Asked Questions (FAQ) | ConvertsText - All-In-One Text Utility Suite</title>
-  <meta name="description" content="Find answers to all frequently asked questions about text case conversion, developer naming formats (camelCase, snake_case), in-browser grammar checking, readability formulas, ciphers, and client-side privacy on ConvertsText.">
+  <title>Frequently Asked Questions (FAQ) & Technical Reference | ConvertsText</title>
+  <meta name="description" content="Comprehensive knowledge base and FAQs for text casing algorithms, developer conventions (camelCase, snake_case), in-browser grammar linting, readability metrics, and client-side privacy on ConvertsText.">
   <meta name="keywords" content="case converter faq, how to change text case, camelcase vs pascalcase, snake case vs kebab case, online grammar checker free, flesch reading ease formula, binary text converter faq, convertstext help">
   <link rel="canonical" href="https://convertstext.com/faq.html">
 
@@ -30,7 +30,7 @@
   <meta property="og:description" content="Comprehensive knowledge base for text transformations, developer casing standards, grammar engine, and client-side cryptography.">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Schema.org FAQPage & WebPage Structured Data for Google Rich Snippets -->
+  <!-- Schema.org FAQPage Structured Data for Google Rich Snippets -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -38,10 +38,10 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is a case converter and how does it work?",
+        "name": "What is an online case converter and how does it work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A case converter is an online text utility that automatically transforms the letter capitalization of your text into different typographic styles (such as Sentence case, UPPERCASE, lowercase, Title Case, and Capitalized Case) without requiring manual retyping."
+          "text": "An online case converter is a web utility that algorithmically transforms the letter capitalization of your text into different typographic styles (such as Sentence case, UPPERCASE, lowercase, Title Case, and Capitalized Case) without manual retyping."
         }
       },
       {
@@ -49,7 +49,7 @@
         "name": "What is the difference between camelCase, PascalCase, snake_case, and kebab-case?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "camelCase joins words without spaces starting with a lowercase letter (e.g., userAccountId). PascalCase capitalizes every word including the first (e.g., UserAccountId). snake_case separates lowercase words with underscores (e.g., user_account_id), and kebab-case separates words with hyphens (e.g., user-account-id), commonly used in URL slugs and CSS classes."
+          "text": "camelCase joins words without spaces starting with a lowercase letter (e.g. userAccountId). PascalCase capitalizes every word including the first (e.g. UserAccountId). snake_case separates lowercase words with underscores (e.g. user_account_id), and kebab-case separates words with hyphens (e.g. user-account-id)."
         }
       },
       {
@@ -57,7 +57,7 @@
         "name": "Is ConvertsText free and is my text private?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, ConvertsText is 100% free with no registration or subscriptions required. All text casing, analysis, and formatting operations execute locally in your web browser with 0% server egress, ensuring complete confidentiality for your documents and source code."
+          "text": "Yes, ConvertsText is 100% free with no registration required. All text transformations, analysis, and formatting operations execute locally in your web browser with 0% server egress."
         }
       },
       {
@@ -65,7 +65,7 @@
         "name": "How does the in-browser grammar and spelling checker work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "ConvertsText features a dual-layer grammar linter. It executes instantaneous client-side heuristic linting for typos and homophones, paired with an edge-powered deep linguistic check (LanguageTool API integration) supporting multilingual grammar analysis in English, Spanish, French, and German."
+          "text": "ConvertsText features a dual-layer grammar linter. It executes instantaneous client-side heuristic linting for typos and homophones, paired with an edge-powered deep linguistic check (LanguageTool API integration) supporting multilingual grammar analysis."
         }
       },
       {
@@ -73,15 +73,7 @@
         "name": "How is the Flesch Reading Ease score calculated?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The Flesch Reading Ease score evaluates readability using the formula: 206.835 - 1.015 * (Total Words / Total Sentences) - 84.6 * (Total Syllables / Total Words). Scores between 60 and 70 represent standard plain English accessible to 8th–9th grade readers."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I convert text into binary code or Morse code with audio?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. ConvertsText provides UTF-8 binary encoding/decoding, Base64 conversion, Hexadecimal translation, and International Morse Code translation with an interactive real-time Web Audio synthesizer that beeps Morse code."
+          "text": "The Flesch Reading Ease score evaluates readability using the formula: 206.835 - 1.015 * (Total Words / Total Sentences) - 84.6 * (Total Syllables / Total Words)."
         }
       }
     ]
@@ -89,45 +81,63 @@
   </script>
 </head>
 <body>
-  <!-- Header / Navigation -->
+  <!-- Navigation Bar (Standardized) -->
   <nav class="site-nav">
-    <div class="nav-container">
-      <a href="index.html" class="nav-brand" aria-label="ConvertsText Home">
-        <span class="nav-brand-icon">&gt;_</span>
-        <span class="nav-brand-text">Converts<span class="nav-brand-accent">Text</span></span>
+    <div class="container nav-container">
+      <a href="index.html" class="nav-brand">
+        <div class="brand-icon-box">&gt;_</div>
+        <span>Converts<span class="brand-accent">Text</span></span>
       </a>
 
       <ul class="nav-links">
-        <li><a href="index.html" class="nav-link">Studio</a></li>
-        <li class="nav-item-dropdown">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link">Studio</a>
+        </li>
+        <li class="nav-item">
           <a href="sentence-case.html" class="nav-link">Standard Cases ▾</a>
-          <div class="dropdown-menu">
-            <a href="sentence-case.html" class="dropdown-item"><span class="dropdown-item-icon">Aa</span> Sentence Case</a>
-            <a href="title-case.html" class="dropdown-item"><span class="dropdown-item-icon">Abc</span> Title &amp; Capitalized</a>
-            <a href="upper-lower-case.html" class="dropdown-item"><span class="dropdown-item-icon">AA</span> Upper &amp; Lower Case</a>
-            <a href="upper-lower-case.html#alternating" class="dropdown-item"><span class="dropdown-item-icon">aL</span> aLtErNaTiNg Case</a>
-          </div>
+          <ul class="nav-dropdown">
+            <li><a href="sentence-case.html" class="dropdown-link"><span class="dropdown-badge">Aa</span> Sentence Case</a></li>
+            <li><a href="title-case.html" class="dropdown-link"><span class="dropdown-badge">Abc</span> Title &amp; Capitalized</a></li>
+            <li><a href="upper-lower-case.html" class="dropdown-link"><span class="dropdown-badge">AA</span> Upper &amp; Lower Case</a></li>
+            <li><a href="upper-lower-case.html#alternating" class="dropdown-link"><span class="dropdown-badge">aL</span> aLtErNaTiNg Case</a></li>
+          </ul>
         </li>
-        <li class="nav-item-dropdown">
+        <li class="nav-item">
           <a href="developer-cases.html" class="nav-link">Developer ▾</a>
-          <div class="dropdown-menu">
-            <a href="developer-cases.html#camel" class="dropdown-item"><span class="dropdown-item-icon">dC</span> camelCase</a>
-            <a href="developer-cases.html#pascal" class="dropdown-item"><span class="dropdown-item-icon">Pc</span> PascalCase</a>
-            <a href="developer-cases.html#snake" class="dropdown-item"><span class="dropdown-item-icon">s_c</span> snake_case</a>
-            <a href="developer-cases.html#kebab" class="dropdown-item"><span class="dropdown-item-icon">k-c</span> kebab-case (slug)</a>
-            <a href="developer-cases.html#constant" class="dropdown-item"><span class="dropdown-item-icon">C_C</span> CONSTANT_CASE</a>
-          </div>
+          <ul class="nav-dropdown">
+            <li><a href="developer-cases.html#camel" class="dropdown-link"><span class="dropdown-badge">dC</span> camelCase</a></li>
+            <li><a href="developer-cases.html#pascal" class="dropdown-link"><span class="dropdown-badge">Pc</span> PascalCase</a></li>
+            <li><a href="developer-cases.html#snake" class="dropdown-link"><span class="dropdown-badge">s_c</span> snake_case</a></li>
+            <li><a href="developer-cases.html#kebab" class="dropdown-link"><span class="dropdown-badge">k-c</span> kebab-case (slug)</a></li>
+            <li><a href="developer-cases.html#constant" class="dropdown-link"><span class="dropdown-badge">C_C</span> CONSTANT_CASE</a></li>
+          </ul>
         </li>
-        <li class="nav-item-dropdown">
+        <li class="nav-item">
           <a href="text-analyzer.html" class="nav-link">Analysis ▾</a>
-          <div class="dropdown-menu">
-            <a href="text-analyzer.html" class="dropdown-item"><span class="dropdown-item-icon">🧠</span> Readability Analyzer</a>
-            <a href="word-counter.html" class="dropdown-item"><span class="dropdown-item-icon">📊</span> Word &amp; Character Counter</a>
-            <a href="diff-checker.html" class="dropdown-item"><span class="dropdown-item-icon">⚖️</span> Text Diff Checker</a>
-          </div>
+          <ul class="nav-dropdown">
+            <li><a href="text-analyzer.html" class="dropdown-link"><span class="dropdown-badge">🧠</span> Readability Analyzer</a></li>
+            <li><a href="word-counter.html" class="dropdown-link"><span class="dropdown-badge">📊</span> Word &amp; Character Counter</a></li>
+            <li><a href="diff-checker.html" class="dropdown-link"><span class="dropdown-badge">⚖️</span> Text Diff Checker</a></li>
+          </ul>
         </li>
-        <li><a href="faq.html" class="nav-link active">FAQ</a></li>
-        <li><a href="blog.html" class="nav-link">Blog &amp; Guides</a></li>
+        <li class="nav-item">
+          <a href="lorem-ipsum.html" class="nav-link">Generators ▾</a>
+          <ul class="nav-dropdown">
+            <li><a href="lorem-ipsum.html" class="dropdown-link"><span class="dropdown-badge">📄</span> Lorem Ipsum (6 Themes)</a></li>
+            <li><a href="markdown-html.html" class="dropdown-link"><span class="dropdown-badge">📑</span> Markdown ➔ HTML Live</a></li>
+            <li><a href="invisible-text.html" class="dropdown-link"><span class="dropdown-badge">🕵️</span> Zero-Width Invisible</a></li>
+            <li><a href="random-generator.html" class="dropdown-link"><span class="dropdown-badge">🎲</span> Password &amp; UUID</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="faq.html" class="nav-link active">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a href="blog.html" class="nav-link">Blog &amp; Guides</a>
+        </li>
+        <li class="nav-item">
+          <a href="about.html" class="nav-link">About Us</a>
+        </li>
       </ul>
 
       <div class="nav-actions">
@@ -135,9 +145,11 @@
           <span>🔍 Search</span>
           <kbd class="search-kbd">Ctrl K</kbd>
         </button>
+
         <button type="button" class="theme-toggle-btn" aria-label="Toggle theme">
           <span class="theme-icon">🌙</span>
         </button>
+
         <button type="button" class="nav-hamburger" aria-label="Open mobile menu">
           <span></span><span></span><span></span>
         </button>
@@ -149,21 +161,21 @@
   <div class="tech-hud-bar">
     <div class="tech-hud-container">
       <div class="tech-hud-group">
-        <span class="tech-hud-item"><span class="hud-pulse-dot"></span> <strong>KNOWLEDGE_BASE</strong>: VERIFIED</span>
-        <span class="tech-hud-item">INDEXED_SECTIONS: <strong>6 MODULES</strong></span>
+        <span class="tech-hud-item"><span class="hud-pulse-dot"></span> <strong>KNOWLEDGE_MATRIX</strong>: ACTIVE</span>
+        <span class="tech-hud-item">INDEXED_ENTRIES: <strong id="hud-faq-count">18 ENTRIES</strong></span>
         <span class="tech-hud-item">SCHEMA: <strong>FAQPAGE (JSON-LD)</strong></span>
       </div>
       <div class="tech-hud-group">
         <span class="hud-badge">DOCS_v2.4</span>
-        <span class="tech-hud-item">SEARCH: <strong>[CTRL+K] DIRECT_LOOKUP</strong></span>
+        <span class="tech-hud-item">GLOBAL_SEARCH: <strong>[CTRL+K]</strong></span>
       </div>
     </div>
   </div>
 
-  <!-- Main Hero Section -->
+  <!-- Editorial Hero Section -->
   <header class="editorial-header">
     <div class="container">
-      <div class="editorial-badge">// KNOWLEDGE_BASE &amp; FREQUENTLY_ASKED_QUESTIONS</div>
+      <div class="editorial-badge">// SYSTEM_KNOWLEDGE_BASE &amp; SPECIFICATIONS</div>
       <h1 class="editorial-title">Frequently Asked Questions &amp; Technical Reference</h1>
       <p class="editorial-subtitle">
         Everything you need to know about text casing algorithms, developer identifier standards, readability formulas, grammar linting, and browser-side cryptography.
@@ -171,44 +183,55 @@
     </div>
   </header>
 
-  <!-- FAQ Matrix Container -->
+  <!-- FAQ Master Container -->
   <main class="container" style="padding-bottom: 5rem;">
-    <!-- Live Search / Filter Input -->
-    <div class="matrix-header-strip" style="margin-bottom: 1.5rem; background: var(--bg-card); border: 1px solid var(--border-grid); padding: 0.75rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
-      <div style="display: flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700;">
-        <span>🔍 FILTER_FAQS:</span>
-        <input type="text" id="faq-search-input" placeholder="Type keywords (e.g. camelCase, privacy, readability, binary)..." style="background: var(--bg-primary); border: 1px solid var(--border-grid); color: var(--text-primary); font-family: var(--font-mono); font-size: 0.8rem; padding: 0.35rem 0.75rem; width: 320px; max-width: 100%;">
+    <!-- Interactive Search & Category Filter HUD Strip -->
+    <div class="faq-filter-strip">
+      <div class="faq-search-box">
+        <span class="faq-search-prompt">&gt;_ FILTER:</span>
+        <input type="text" id="faq-search-input" class="faq-search-input" placeholder="Search keywords (e.g. camelCase, privacy, readability, binary, grammar)..." aria-label="Filter FAQ entries">
       </div>
-      <div class="category-pills" style="margin-bottom: 0;">
-        <button type="button" class="category-pill-btn active" data-faq-cat="all">ALL [24]</button>
+      <div class="category-pills">
+        <button type="button" class="category-pill-btn active" data-faq-cat="all">ALL [<span id="cat-count-all">18</span>]</button>
         <button type="button" class="category-pill-btn" data-faq-cat="casing">CASING</button>
         <button type="button" class="category-pill-btn" data-faq-cat="dev">DEVELOPER</button>
         <button type="button" class="category-pill-btn" data-faq-cat="grammar">GRAMMAR_AI</button>
         <button type="button" class="category-pill-btn" data-faq-cat="readability">READABILITY</button>
-        <button type="button" class="category-pill-btn" data-faq-cat="privacy">PRIVACY</button>
+        <button type="button" class="category-pill-btn" data-faq-cat="security">SECURITY</button>
       </div>
     </div>
 
-    <!-- Section 1: Standard Text Casing -->
-    <div class="faq-group-section" data-group="casing" style="margin-bottom: 2.5rem;">
-      <div class="section-tag" style="margin-bottom: 0.75rem;">// 01_STANDARD_CASING_TRANSFORMATIONS</div>
-      <h2 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Standard Case Conversions &amp; Text Formatting</h2>
+    <!-- Group 1: Standard Text Casing -->
+    <section class="faq-group-section" data-group="casing">
+      <div class="faq-section-header">
+        <div class="faq-section-title-wrap">
+          <span class="faq-section-tag">// 01_STANDARD_CASING_TRANSFORMATIONS</span>
+          <h2 class="faq-section-title">Standard Case Conversions &amp; Text Formatting</h2>
+        </div>
+        <span class="faq-section-count">4 ENTRIES</span>
+      </div>
 
       <div class="faq-accordion-list">
         <details class="faq-item" open>
           <summary class="faq-question">
-            <span>What is an online case converter tool and how does it work?</span>
-            <span class="faq-chevron">▾</span>
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">CASING</span>
+              <span>What is an online case converter tool and how does it work?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
           </summary>
           <div class="faq-answer">
-            <p>An online case converter is a web-based text utility that algorithmically alters the capitalization of letters in your text. Instead of manually retyping sentences or code identifiers, you can convert text instantly between formats like Sentence case, UPPERCASE, lowercase, Title Case, Capitalized Case, and aLtErNaTiNg cAsE with a single click.</p>
+            <p>An online case converter is a web-based text utility that algorithmically alters the capitalization of letters in your text. Instead of manually retyping sentences or code identifiers, you can convert text instantly between formats like <strong>Sentence case</strong>, <strong>UPPERCASE</strong>, <strong>lowercase</strong>, <strong>Title Case</strong>, <strong>Capitalized Case</strong>, and <strong>aLtErNaTiNg cAsE</strong> with a single click.</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary class="faq-question">
-            <span>How do I fix text accidentally typed in ALL CAPS with Caps Lock on?</span>
-            <span class="faq-chevron">▾</span>
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">CASING</span>
+              <span>How do I fix text accidentally typed in ALL CAPS with Caps Lock on?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
           </summary>
           <div class="faq-answer">
             <p>Paste your text into the ConvertsText editor and click the <strong>Sentence case</strong> button. The algorithm automatically lowers all unnecessary capitals and capitalizes only the first letter of each sentence, as well as standalone personal pronouns like "I". You can also use <strong>lower case</strong> to make every character lowercase.</p>
@@ -217,8 +240,11 @@
 
         <details class="faq-item">
           <summary class="faq-question">
-            <span>What is the difference between Title Case and Capitalized Case?</span>
-            <span class="faq-chevron">▾</span>
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">STYLE</span>
+              <span>What is the difference between Title Case and Capitalized Case?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
           </summary>
           <div class="faq-answer">
             <p><strong>Capitalized Case</strong> blindly capitalizes the first letter of every single word (e.g., <em>"The Old Man And The Sea"</em>). In contrast, <strong>Title Case</strong> follows editorial style rules (such as Chicago, APA, and MLA style) by keeping short grammatical minor words lowercase (e.g., <em>"a", "an", "the", "and", "but", "for", "in", "of", "to"</em>) unless they are the first or last word of the title (e.g., <em>"The Old Man and the Sea"</em>).</p>
@@ -227,64 +253,102 @@
 
         <details class="faq-item">
           <summary class="faq-question">
-            <span>What is alternating case (mOcKiNg cAsE) and where is it used?</span>
-            <span class="faq-chevron">▾</span>
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">INTERNET</span>
+              <span>What is alternating case (mOcKiNg cAsE) and where is it used?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
           </summary>
           <div class="faq-answer">
             <p>Alternating case toggles between uppercase and lowercase characters (e.g., <em>"yOu CaNnOt Do ThAt"</em>). It became widely popularized on social media and internet culture through the SpongeBob Mocking meme to convey sarcasm, satire, or irony in digital communication.</p>
           </div>
         </details>
       </div>
-    </div>
+    </section>
 
-    <!-- Section 2: Developer Casing Standards -->
-    <div class="faq-group-section" data-group="dev" style="margin-bottom: 2.5rem;">
-      <div class="section-tag" style="margin-bottom: 0.75rem;">// 02_DEVELOPER_IDENTIFIERS_&amp;_NAMING_CONVENTIONS</div>
-      <h2 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Developer Identifier Conventions (camelCase, snake_case, kebab-case)</h2>
+    <!-- Group 2: Developer Casing Standards -->
+    <section class="faq-group-section" data-group="dev">
+      <div class="faq-section-header">
+        <div class="faq-section-title-wrap">
+          <span class="faq-section-tag">// 02_DEVELOPER_IDENTIFIERS_&amp;_NAMING_CONVENTIONS</span>
+          <h2 class="faq-section-title">Developer Identifier Conventions (camelCase, snake_case, kebab-case)</h2>
+        </div>
+        <span class="faq-section-count">4 ENTRIES</span>
+      </div>
 
       <div class="faq-accordion-list">
-        <details class="faq-item">
+        <details class="faq-item" open>
           <summary class="faq-question">
-            <span>What is the difference between camelCase and PascalCase?</span>
-            <span class="faq-chevron">▾</span>
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">DEV_SPEC</span>
+              <span>What is the difference between camelCase and PascalCase?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
           </summary>
           <div class="faq-answer">
-            <p>Both join words without spaces, capitalizing the first letter of each subsequent word. However, <strong>camelCase</strong> begins with a lowercase letter (e.g., <code>calculateTaxRate</code>), standard for variables and functions in JavaScript, Java, and TypeScript. <strong>PascalCase</strong> begins with a capital letter (e.g., <code>CalculateTaxRate</code>), standard for classes, components (React), and types.</p>
+            <p>Both join words without spaces, capitalizing the first letter of each subsequent word. However, <code>camelCase</code> begins with a lowercase letter (e.g., <code>calculateTaxRate</code>), standard for variables and functions in JavaScript, Java, and TypeScript. <code>PascalCase</code> begins with a capital letter (e.g., <code>CalculateTaxRate</code>), standard for classes, components (React), and types.</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary class="faq-question">
-            <span>When should I use snake_case vs kebab-case vs CONSTANT_CASE?</span>
-            <span class="faq-chevron">▾</span>
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">DEV_SPEC</span>
+              <span>When should I use snake_case vs kebab-case vs CONSTANT_CASE?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
           </summary>
           <div class="faq-answer">
-            <p><strong>snake_case</strong> (<code>user_profile_id</code>) is standard in Python, Ruby, PostgreSQL, and SQL column naming. <strong>kebab-case</strong> (<code>user-profile-id</code>) is standard for SEO URL slugs, HTML attributes, and CSS class names because search engines treat hyphens as word delimiters. <strong>CONSTANT_CASE</strong> (<code>MAX_UPLOAD_SIZE</code>) is used across all languages for immutable global constants and environment variables.</p>
+            <p><code>snake_case</code> (e.g. <code>user_profile_id</code>) is standard in Python, Ruby, PostgreSQL, and SQL column naming. <code>kebab-case</code> (e.g. <code>user-profile-id</code>) is standard for SEO URL slugs, HTML attributes, and CSS class names because search engines treat hyphens as word delimiters. <code>CONSTANT_CASE</code> (e.g. <code>MAX_UPLOAD_SIZE</code>) is used across all languages for immutable global constants and environment variables.</p>
           </div>
         </details>
 
         <details class="faq-item">
           <summary class="faq-question">
-            <span>Can ConvertsText decompose camelCase back into readable words with spaces?</span>
-            <span class="faq-chevron">▾</span>
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">DEV_SPEC</span>
+              <span>What are dot.case and path/case used for?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
+          </summary>
+          <div class="faq-answer">
+            <p><code>dot.case</code> (e.g. <code>app.config.max.connections</code>) is standard for configuration files, properties, and microservice keys. <code>path/case</code> (e.g. <code>src/components/user/profile</code>) is used for file system paths and modular imports.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">PARSER</span>
+              <span>Can ConvertsText decompose camelCase back into readable words with spaces?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
           </summary>
           <div class="faq-answer">
             <p>Yes. ConvertsText uses a smart lossless tokenization engine. If you paste an identifier like <code>calculateMonthlyAmortizationPayment</code> or <code>USER_ACCOUNT_ID</code>, converting it to <strong>Title Case</strong> or <strong>Sentence case</strong> automatically unpacks the words into <em>"Calculate Monthly Amortization Payment"</em> with proper spacing.</p>
           </div>
         </details>
       </div>
-    </div>
+    </section>
 
-    <!-- Section 3: Grammar & AI Linter -->
-    <div class="faq-group-section" data-group="grammar" style="margin-bottom: 2.5rem;">
-      <div class="section-tag" style="margin-bottom: 0.75rem;">// 03_GRAMMAR_CHECKER_&amp;_AI_LINTER</div>
-      <h2 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Grammar, Spelling &amp; Style Linter (Free Grammarly Alternative)</h2>
+    <!-- Group 3: Grammar & AI Linter -->
+    <section class="faq-group-section" data-group="grammar">
+      <div class="faq-section-header">
+        <div class="faq-section-title-wrap">
+          <span class="faq-section-tag">// 03_GRAMMAR_CHECKER_&amp;_AI_LINTER</span>
+          <h2 class="faq-section-title">Grammar, Spelling &amp; Style Linter (Free Grammarly Alternative)</h2>
+        </div>
+        <span class="faq-section-count">3 ENTRIES</span>
+      </div>
 
       <div class="faq-accordion-list">
         <details class="faq-item">
           <summary class="faq-question">
-            <span>Is the grammar checker completely free to use?</span>
-            <span class="faq-chevron">▾</span>
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">AI_LINTER</span>
+              <span>Is the grammar checker completely free to use?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
           </summary>
           <div class="faq-answer">
             <p>Yes. ConvertsText provides a 100% free grammar, spelling, conciseness, and style linter directly inside the web studio. There are no paywalls, subscriptions, or credit card requirements.</p>
@@ -293,8 +357,11 @@
 
         <details class="faq-item">
           <summary class="faq-question">
-            <span>Which languages are supported by the grammar inspector?</span>
-            <span class="faq-chevron">▾</span>
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">AI_LINTER</span>
+              <span>Which languages are supported by the grammar inspector?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
           </summary>
           <div class="faq-answer">
             <p>ConvertsText supports multilingual grammar analysis for English (US, UK, Canada, Australia), Spanish, French, and German. You can switch target languages anytime using the dropdown selector in the buffer linter drawer.</p>
@@ -303,30 +370,41 @@
 
         <details class="faq-item">
           <summary class="faq-question">
-            <span>How does the 1-Click "Fix All Issues" button work?</span>
-            <span class="faq-chevron">▾</span>
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">AI_LINTER</span>
+              <span>How does the 1-Click "Fix All Issues" button work?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
           </summary>
           <div class="faq-answer">
             <p>When you click <strong>⚡ Fix All Issues</strong>, the engine traverses all identified spelling mistakes, duplicate words, homophone errors, and wordiness flags from back to front, applying the highest-confidence grammatical replacement to your buffer instantaneously while maintaining exact line breaks and paragraph structure.</p>
           </div>
         </details>
       </div>
-    </div>
+    </section>
 
-    <!-- Section 4: Readability & Text Analysis -->
-    <div class="faq-group-section" data-group="readability" style="margin-bottom: 2.5rem;">
-      <div class="section-tag" style="margin-bottom: 0.75rem;">// 04_READABILITY_FORMULAS_&amp;_METRICS</div>
-      <h2 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Readability Scores, Syllable Counts &amp; Word Metrics</h2>
+    <!-- Group 4: Readability & Text Analysis -->
+    <section class="faq-group-section" data-group="readability">
+      <div class="faq-section-header">
+        <div class="faq-section-title-wrap">
+          <span class="faq-section-tag">// 04_READABILITY_FORMULAS_&amp;_METRICS</span>
+          <h2 class="faq-section-title">Readability Scores, Syllable Counts &amp; Word Metrics</h2>
+        </div>
+        <span class="faq-section-count">3 ENTRIES</span>
+      </div>
 
       <div class="faq-accordion-list">
         <details class="faq-item">
           <summary class="faq-question">
-            <span>How is the Flesch Reading Ease score calculated and what does it mean?</span>
-            <span class="faq-chevron">▾</span>
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">METRIC</span>
+              <span>How is the Flesch Reading Ease score calculated and what does it mean?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
           </summary>
           <div class="faq-answer">
             <p>The Flesch Reading Ease score ranges from 0 to 100:</p>
-            <ul style="margin-top: 0.5rem; padding-left: 1.5rem; line-height: 1.6;">
+            <ul>
               <li><strong>90–100:</strong> Very Easy (5th-grade level, easily understood by an 11-year-old).</li>
               <li><strong>60–70:</strong> Standard / Plain English (8th–9th grade level, ideal for web copy, blogs, and marketing).</li>
               <li><strong>0–30:</strong> Very Difficult (College graduate level, academic journals, and legal documents).</li>
@@ -336,26 +414,50 @@
 
         <details class="faq-item">
           <summary class="faq-question">
-            <span>How are Reading Time and Speaking Time estimated?</span>
-            <span class="faq-chevron">▾</span>
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">METRIC</span>
+              <span>What is the Flesch-Kincaid Grade Level formula?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
+          </summary>
+          <div class="faq-answer">
+            <p>The Flesch-Kincaid Grade Level translates reading difficulty directly into US school grade levels using the formula: <code>0.39 * (Total Words / Total Sentences) + 11.8 * (Total Syllables / Total Words) - 15.59</code>. A score of 8.0 indicates an 8th-grade reading standard.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">SPEED</span>
+              <span>How are Reading Time and Speaking Time estimated?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
           </summary>
           <div class="faq-answer">
             <p>Reading time is calculated using the global standard adult silent reading rate of <strong>225 words per minute (WPM)</strong>. Speaking time is calculated based on the average conversational presentation pace of <strong>130 words per minute (WPM)</strong>.</p>
           </div>
         </details>
       </div>
-    </div>
+    </section>
 
-    <!-- Section 5: Security & Zero Server Egress -->
-    <div class="faq-group-section" data-group="privacy" style="margin-bottom: 2.5rem;">
-      <div class="section-tag" style="margin-bottom: 0.75rem;">// 05_CLIENT_SIDE_PRIVACY_&amp;_SECURITY</div>
-      <h2 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Data Privacy, Security &amp; Zero Server Egress</h2>
+    <!-- Group 5: Security & Zero Server Egress -->
+    <section class="faq-group-section" data-group="security">
+      <div class="faq-section-header">
+        <div class="faq-section-title-wrap">
+          <span class="faq-section-tag">// 05_CLIENT_SIDE_PRIVACY_&amp;_SECURITY</span>
+          <h2 class="faq-section-title">Data Privacy, Security &amp; Zero Server Egress</h2>
+        </div>
+        <span class="faq-section-count">4 ENTRIES</span>
+      </div>
 
       <div class="faq-accordion-list">
         <details class="faq-item">
           <summary class="faq-question">
-            <span>Does ConvertsText store or log the text I paste?</span>
-            <span class="faq-chevron">▾</span>
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">PRIVACY</span>
+              <span>Does ConvertsText store or log the text I paste?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
           </summary>
           <div class="faq-answer">
             <p><strong>No. Never.</strong> All case conversions, ciphers, cleanups, Diff calculations, and word counts execute 100% locally inside your client browser memory using pure JavaScript (V8 / WebKit engine). Your text is never stored in databases, never transmitted to external analytics, and never used for model training.</p>
@@ -364,18 +466,47 @@
 
         <details class="faq-item">
           <summary class="faq-question">
-            <span>Is ConvertsText compliant with GDPR, CCPA, and enterprise confidentiality policies?</span>
-            <span class="faq-chevron">▾</span>
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">COMPLIANCE</span>
+              <span>Is ConvertsText compliant with GDPR, CCPA, and enterprise confidentiality policies?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
           </summary>
           <div class="faq-answer">
             <p>Yes. Because ConvertsText does not collect, store, or process Personally Identifiable Information (PII) on remote servers, developers, lawyers, healthcare professionals, and technical writers can safely sanitize confidential code, patient records, and contracts without violating data residency compliance.</p>
           </div>
         </details>
-      </div>
-    </div>
 
-    <!-- Quick Navigation Call to Action -->
-    <div class="feature-box" style="margin-top: 3rem; text-align: center; padding: 2.5rem 1.5rem; background: var(--bg-card); border: 1px solid var(--border-grid);">
+        <details class="faq-item">
+          <summary class="faq-question">
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">CRYPTO</span>
+              <span>How are secure passwords and UUIDs generated?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
+          </summary>
+          <div class="faq-answer">
+            <p>ConvertsText uses the native browser <code>window.crypto.getRandomValues()</code> Cryptographically Secure Pseudo-Random Number Generator (CSPRNG) for generating entropy-secure passwords and UUID v4 identifiers, making them safe for API tokens and production databases.</p>
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary class="faq-question">
+            <div class="faq-q-left">
+              <span class="faq-cat-badge">OFFLINE</span>
+              <span>Can ConvertsText work completely offline?</span>
+            </div>
+            <span class="faq-toggle-icon">▾</span>
+          </summary>
+          <div class="faq-answer">
+            <p>Yes. Once the page assets are cached by your browser, all 40+ case conversions, ciphers, cleanups, Diff checker, and local grammar rules function with zero internet connection.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- Quick Navigation Call to Action Box -->
+    <div class="feature-box" style="margin-top: 3.5rem; text-align: center; padding: 2.5rem 1.5rem; background: var(--bg-card); border: 1px solid var(--border-grid);">
       <h3 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">Ready to Transform Your Text?</h3>
       <p style="color: var(--text-secondary); max-width: 550px; margin: 0 auto 1.5rem; font-size: 0.9rem;">
         Experience lightning-fast parallel conversions, live IDE inspector streams, and grammar checking in our master studio.
@@ -445,15 +576,20 @@
   <script src="js/app.js?v=2.4.0"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // Live FAQ Search / Filter
       const searchInput = document.getElementById('faq-search-input');
       const faqItems = document.querySelectorAll('.faq-item');
       const faqGroups = document.querySelectorAll('.faq-group-section');
       const categoryPills = document.querySelectorAll('[data-faq-cat]');
+      const hudCount = document.getElementById('hud-faq-count');
+      const catCountAll = document.getElementById('cat-count-all');
+
+      let totalVisible = faqItems.length;
 
       const filterFaqs = () => {
         const query = searchInput.value.toLowerCase().trim();
         const activeCat = document.querySelector('[data-faq-cat].active')?.getAttribute('data-faq-cat') || 'all';
+
+        let count = 0;
 
         faqGroups.forEach(group => {
           const groupCat = group.getAttribute('data-group');
@@ -468,6 +604,7 @@
             if (matchesQuery && matchesCat) {
               item.style.display = 'block';
               hasVisibleInGroup = true;
+              count++;
               if (query) item.setAttribute('open', 'true');
             } else {
               item.style.display = 'none';
@@ -476,6 +613,9 @@
 
           group.style.display = hasVisibleInGroup ? 'block' : 'none';
         });
+
+        if (hudCount) hudCount.textContent = `${count} ENTRIES`;
+        if (catCountAll && activeCat === 'all' && !query) catCountAll.textContent = count;
       };
 
       searchInput?.addEventListener('input', filterFaqs);
