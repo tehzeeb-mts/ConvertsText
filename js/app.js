@@ -65,6 +65,7 @@ const ALL_TOOLS_REGISTRY = [
   { id: 'find-replace', name: 'Find & Replace', category: 'Text Utilities', icon: '🔍', page: 'text-cleaner-sorter.html', desc: 'Fast text replacement with Regex support' },
 
   // Resources, Writing Affiliates & Company
+  { id: 'faq-help', name: 'FAQ & Knowledge Base', category: 'Resources', icon: '❓', page: 'faq.html', desc: 'Frequently asked questions, developer naming guides, and privacy reference' },
   { id: 'recommended-tools', name: 'Best AI Writing Tools & Assistants', category: 'Resources', icon: '🚀', page: 'recommended-tools.html', desc: 'Grammarly, QuillBot, Jasper AI free trials and discounts' },
   { id: 'blog', name: 'Blog & Writing Guides', category: 'Resources', icon: '📚', page: 'blog.html', desc: 'Tutorials on readability formulas and developer casing' },
   { id: 'about-us', name: 'About ConvertsText', category: 'Company', icon: '💡', page: 'about.html', desc: 'Our mission, technology, and privacy standards' },
