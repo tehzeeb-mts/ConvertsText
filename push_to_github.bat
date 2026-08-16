@@ -7,7 +7,7 @@ echo =======================================================
 echo.
 
 :: Add Git common installation paths to PATH
-set "PATH=C:\Program Files\Git\cmd;C:\Program Files (x86)\Git\cmd;%LOCALAPPDATA%\Programs\Git\cmd;%PATH%"
+set "PATH=C:\Program Files\Git\cmd;C:\Program Files\Git\bin;C:\Program Files (x86)\Git\cmd;C:\Program Files (x86)\Git\bin;%LOCALAPPDATA%\Programs\Git\cmd;%LOCALAPPDATA%\Programs\Git\bin;%PATH%"
 
 :: Check if git is installed
 where git >nul 2>&1

@@ -181,456 +181,580 @@
     </div>
   </nav>
 
-  <!-- Hero Header -->
-  <header class="hero-section">
-    <div class="container">
-      <div class="hero-pill">✨ 40+ Free Instant Text Converters, Readability & Utilities</div>
-      <h1 class="hero-title">Convert Text Case & Format Online</h1>
-      <p class="hero-desc">Paste your text below to transform it into Sentence case, lower case, UPPER CASE, Title Case, camelCase, snake_case, Small Caps, Binary, and measure readability scores in real time.</p>
-    </div>
-  </header>
-
-  <!-- Ad Slot (Header Leaderboard Placeholder) -->
-  <div class="container">
-    <div class="ad-slot-container">
-      <span class="ad-label">Advertisement</span>
-      <div class="ad-box-leaderboard">
-        <span>Responsive Ad Placement (728x90 / Auto)</span>
+  <!-- Technical Telemetry & HUD Bar -->
+  <div class="tech-hud-bar">
+    <div class="tech-hud-container">
+      <div class="tech-hud-group">
+        <span class="tech-hud-item"><span class="hud-pulse-dot"></span> <strong>CLIENT_ENGINE</strong>: ACTIVE</span>
+        <span class="tech-hud-item">LATENCY: <strong id="hud-latency">0.02ms</strong></span>
+        <span class="tech-hud-item">ENCODING: <strong>UTF-8 / LF</strong></span>
+        <span class="tech-hud-item">STORAGE: <strong>0% EGRESS (LOCAL)</strong></span>
+      </div>
+      <div class="tech-hud-group">
+        <span class="hud-badge">v2.4.0-PRO</span>
+        <span class="tech-hud-item">HOTKEYS: <strong>[⌘K / CTRL+K] PALETTE</strong></span>
       </div>
     </div>
   </div>
 
-  <!-- Master Converter Studio -->
+  <!-- Technical Editorial Header -->
+  <header class="hero-section">
+    <div class="container">
+      <div class="hero-pill">⚡ 40+ HIGH-DENSITY TEXT OPERATORS // ZERO SERVER CALLS</div>
+      <h1 class="hero-title">CONVERTSTEXT // CASING &amp; TEXT UTILITY IDE</h1>
+      <p class="hero-desc">High-precision text transformation matrix, developer casing conventions, ciphers, and real-time lexical inspection for technical writers and engineers.</p>
+    </div>
+  </header>
+
+  <!-- Master Asymmetric Converter Studio -->
   <main class="container">
-    <section class="converter-studio" id="studio">
-      <!-- Top Action Toolbar -->
-      <div class="studio-toolbar">
-        <div class="toolbar-group">
-          <label class="tool-btn" for="file-upload-input" title="Upload a plain text file">
-            <span>📁</span> <span>Upload File</span>
-            <input type="file" id="file-upload-input" accept=".txt,.md,.js,.json,.html,.css,.csv" style="display:none">
-          </label>
-          <button type="button" class="tool-btn" id="btn-sample" title="Load sample demonstration text">
-            <span>📝</span> <span>Sample Text</span>
-          </button>
-          <button type="button" class="tool-btn" id="btn-read-aloud" title="Read text aloud with voice speech">
-            <span>🔊</span> <span class="btn-label">Read Aloud</span>
-          </button>
-          <button type="button" class="tool-btn" id="btn-dictate" title="Speech to text dictation">
-            <span>🎙️</span> <span class="btn-label">Dictate</span>
-          </button>
-          <button type="button" class="tool-btn" id="btn-check-grammar" title="Check grammar, spelling and conciseness">
-            <span>✨</span> <span>Check Grammar</span>
-            <span class="grammar-badge-count" id="grammar-issues-badge" style="display:none;">0</span>
-          </button>
-        </div>
-
-        <div class="toolbar-group">
-          <button type="button" class="tool-btn" id="btn-undo" title="Undo change (Ctrl+Z)" disabled>
-            <span>↩</span> <span>Undo</span>
-          </button>
-          <button type="button" class="tool-btn" id="btn-redo" title="Redo change (Ctrl+Y)" disabled>
-            <span>↪</span> <span>Redo</span>
-          </button>
-          <button type="button" class="tool-btn tool-btn-danger" id="btn-clear" title="Clear all text">
-            <span>🗑️</span> <span>Clear</span>
-          </button>
-        </div>
-      </div>
-
-      <!-- Editor Textarea Area -->
-      <div class="editor-wrapper" id="drop-area">
-        <textarea id="main-editor" class="editor-textarea" placeholder="Type or paste your text here to convert..." spellcheck="false" autofocus></textarea>
-        <div class="editor-drop-overlay">
-          <div class="drop-message">📥 Drop your text file here to load</div>
-        </div>
-      </div>
-
-      <!-- In-Editor Grammar & Spelling Drawer -->
-      <div class="grammar-drawer" id="grammar-drawer" style="display:none;">
-        <div class="grammar-drawer-header">
-          <div class="grammar-drawer-title">
-            <span>✨ In-Browser Grammar & Style Linter</span>
-            <span class="grammar-score-pill" id="grammar-score-pill">Score: 100/100</span>
-          </div>
+    <div class="studio-workbench-grid" id="studio">
+      <!-- Left Main Stage (70% Workbench) -->
+      <section class="workbench-main-stage">
+        <!-- Top Action Toolbar -->
+        <div class="studio-toolbar">
           <div class="toolbar-group">
-            <button type="button" class="tool-btn tool-btn-primary" id="btn-grammar-fix-all"><span>⚡</span> <span>Fix All Issues</span></button>
-            <button type="button" class="tool-btn" id="btn-grammar-close" title="Close grammar drawer">&times;</button>
+            <label class="tool-btn" for="file-upload-input" title="Upload a plain text file">
+              <span>[FILE]</span> <span>Upload</span>
+              <input type="file" id="file-upload-input" accept=".txt,.md,.js,.json,.html,.css,.csv" style="display:none">
+            </label>
+            <button type="button" class="tool-btn" id="btn-sample" title="Load sample demonstration text">
+              <span>[SAMPLE]</span> <span>Demo</span>
+            </button>
+            <button type="button" class="tool-btn" id="btn-read-aloud" title="Read text aloud with voice speech">
+              <span>[VOICE]</span> <span class="btn-label">Speak</span>
+            </button>
+            <button type="button" class="tool-btn" id="btn-dictate" title="Speech to text dictation">
+              <span>[MIC]</span> <span class="btn-label">Dictate</span>
+            </button>
+            <button type="button" class="tool-btn" id="btn-check-grammar" title="Check grammar, spelling and conciseness">
+              <span>[LINT]</span> <span>Grammar</span>
+              <span class="grammar-badge-count" id="grammar-issues-badge" style="display:none;">0</span>
+            </button>
+          </div>
+
+          <div class="toolbar-group">
+            <button type="button" class="tool-btn" id="btn-undo" title="Undo change (Ctrl+Z)" disabled>
+              <span>[UNDO]</span>
+            </button>
+            <button type="button" class="tool-btn" id="btn-redo" title="Redo change (Ctrl+Y)" disabled>
+              <span>[REDO]</span>
+            </button>
+            <button type="button" class="tool-btn tool-btn-danger" id="btn-clear" title="Clear all text">
+              <span>[CLEAR]</span>
+            </button>
           </div>
         </div>
-        <div class="grammar-issues-list" id="grammar-issues-list">
-          <!-- Populated dynamically -->
-        </div>
-      </div>
 
-      <!-- Live Stats & Readability Ribbon -->
-      <div class="stats-ribbon">
-        <div class="stat-item">Characters: <span class="stat-value" id="stat-characters">0</span></div>
-        <div class="stat-item">Without Spaces: <span class="stat-value" id="stat-characters-no-spaces">0</span></div>
-        <div class="stat-item">Words: <span class="stat-value" id="stat-words">0</span></div>
-        <div class="stat-item">Sentences: <span class="stat-value" id="stat-sentences">0</span></div>
-        <div class="stat-item">Reading Time: <span class="stat-value" id="stat-reading-time">0s</span></div>
-        <div class="stat-item">Speaking Time: <span class="stat-value" id="stat-speaking-time">0s</span></div>
-        <div class="stat-item" style="margin-left:auto;">
-          Readability Ease: <span id="stat-flesch-pill" class="readability-pill badge-standard">N/A</span>
-        </div>
-      </div>
-
-      <!-- Contextual Affiliate Writing Booster -->
-      <div class="affiliate-booster-ribbon">
-        <div class="booster-content">
-          <span class="booster-badge">✨ POLISH WRITING</span>
-          <span class="booster-text">Want to fix grammar, punctuation, and tone automatically? Try <strong>Grammarly AI</strong> for free.</span>
-        </div>
-        <a href="https://www.grammarly.com/" target="_blank" rel="noopener sponsored" class="booster-btn">Check Grammar Free →</a>
-      </div>
-
-      <!-- Conversion Buttons Grid Area -->
-      <div class="conversion-actions-area">
-        <!-- Category Filter Tabs -->
-        <div class="category-filter-nav">
-          <button type="button" class="category-pill-btn active" data-filter="all">All Converters (40)</button>
-          <button type="button" class="category-pill-btn" data-filter="standard">Standard Cases</button>
-          <button type="button" class="category-pill-btn" data-filter="developer">Developer Cases</button>
-          <button type="button" class="category-pill-btn" data-filter="fancy">Fancy & Stylized</button>
-          <button type="button" class="category-pill-btn" data-filter="cipher">Encoders & Ciphers</button>
-          <button type="button" class="category-pill-btn" data-filter="cleaner">Cleaners & Sorters</button>
+        <!-- Editor with Gutter Line Numbers -->
+        <div class="editor-container" id="drop-area">
+          <div class="editor-gutter" id="editor-gutter">1</div>
+          <div class="editor-wrapper">
+            <textarea id="main-editor" class="editor-textarea" placeholder="Type, paste, or drop text to convert in real time..." spellcheck="false" autofocus></textarea>
+            <div class="editor-drop-overlay">
+              <div class="drop-message">📥 [DROP_FILE_TO_LOAD_BUFFER]</div>
+            </div>
+          </div>
         </div>
 
-        <!-- Buttons Grid -->
-        <div class="converter-buttons-grid" id="converter-grid">
-          <!-- Standard Cases -->
-          <button type="button" class="convert-btn" data-cat="standard" data-action="sentence-case">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Sentence case</span>
-              <span class="convert-btn-category">Standard</span>
+        <!-- In-Editor Grammar & Spelling Drawer -->
+        <div class="grammar-drawer" id="grammar-drawer" style="display:none;">
+          <div class="grammar-drawer-header">
+            <div class="grammar-drawer-title">
+              <span>✨ [BUFFER_LINTER] Real-time Syntax &amp; Style Inspector</span>
+              <span class="grammar-score-pill" id="grammar-score-pill">Score: 100/100</span>
             </div>
-            <span class="convert-btn-sample">Sentence case text.</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="standard" data-action="lower-case">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">lower case</span>
-              <span class="convert-btn-category">Standard</span>
+            <div class="toolbar-group">
+              <button type="button" class="tool-btn tool-btn-primary" id="btn-grammar-fix-all"><span>⚡</span> <span>Fix All Issues</span></button>
+              <button type="button" class="tool-btn" id="btn-grammar-close" title="Close grammar drawer">&times;</button>
             </div>
-            <span class="convert-btn-sample">lower case text</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="standard" data-action="upper-case">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">UPPER CASE</span>
-              <span class="convert-btn-category">Standard</span>
-            </div>
-            <span class="convert-btn-sample">UPPER CASE TEXT</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="standard" data-action="capitalized-case">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Capitalized Case</span>
-              <span class="convert-btn-category">Standard</span>
-            </div>
-            <span class="convert-btn-sample">Capitalized Case Text</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="standard" data-action="title-case">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Title Case</span>
-              <span class="convert-btn-category">Standard</span>
-            </div>
-            <span class="convert-btn-sample">Smart Title of the Text</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="standard" data-action="alternating-case">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">aLtErNaTiNg</span>
-              <span class="convert-btn-category">Standard</span>
-            </div>
-            <span class="convert-btn-sample">aLtErNaTiNg cAsE</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="standard" data-action="inverse-case">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">InVeRsE CaSe</span>
-              <span class="convert-btn-category">Standard</span>
-            </div>
-            <span class="convert-btn-sample">iNvErSe cAsE</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="standard" data-action="mocking-case">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">mOcKiNg cAsE</span>
-              <span class="convert-btn-category">Standard</span>
-            </div>
-            <span class="convert-btn-sample">mOcKiNg tExT 🤪</span>
-          </button>
-
-          <!-- Developer Cases -->
-          <button type="button" class="convert-btn" data-cat="developer" data-action="camel-case">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">camelCase</span>
-              <span class="convert-btn-category">Dev</span>
-            </div>
-            <span class="convert-btn-sample">camelCaseVariable</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="developer" data-action="pascal-case">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">PascalCase</span>
-              <span class="convert-btn-category">Dev</span>
-            </div>
-            <span class="convert-btn-sample">PascalCaseClass</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="developer" data-action="snake-case">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">snake_case</span>
-              <span class="convert-btn-category">Dev</span>
-            </div>
-            <span class="convert-btn-sample">snake_case_text</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="developer" data-action="kebab-case">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">kebab-case</span>
-              <span class="convert-btn-category">Dev</span>
-            </div>
-            <span class="convert-btn-sample">kebab-case-slug</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="developer" data-action="constant-case">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">CONSTANT_CASE</span>
-              <span class="convert-btn-category">Dev</span>
-            </div>
-            <span class="convert-btn-sample">CONSTANT_CASE_VAL</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="developer" data-action="dot-case">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">dot.case</span>
-              <span class="convert-btn-category">Dev</span>
-            </div>
-            <span class="convert-btn-sample">dot.case.string</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="developer" data-action="path-case">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">path/case</span>
-              <span class="convert-btn-category">Dev</span>
-            </div>
-            <span class="convert-btn-sample">path/case/dir</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="developer" data-action="header-case">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Header-Case</span>
-              <span class="convert-btn-category">Dev</span>
-            </div>
-            <span class="convert-btn-sample">Content-Type-Header</span>
-          </button>
-
-          <!-- Fancy / Stylized -->
-          <button type="button" class="convert-btn" data-cat="fancy" data-action="small-caps">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Small Caps</span>
-              <span class="convert-btn-category">Fancy</span>
-            </div>
-            <span class="convert-btn-sample">ꜱᴍᴀʟʟ ᴄᴀᴘꜱ ᴛᴇxᴛ</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="fancy" data-action="wide-text">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Wide / Vapor</span>
-              <span class="convert-btn-category">Fancy</span>
-            </div>
-            <span class="convert-btn-sample">Ｗｉｄｅ  Ｔｅｘｔ</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="fancy" data-action="superscript">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Superscript</span>
-              <span class="convert-btn-category">Fancy</span>
-            </div>
-            <span class="convert-btn-sample">ˢᵘᵖᵉʳˢᶜʳⁱᵖᵗ</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="fancy" data-action="subscript">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Subscript</span>
-              <span class="convert-btn-category">Fancy</span>
-            </div>
-            <span class="convert-btn-sample">ₛᵤᵦₛ꜀ᵣᵢₚₜ</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="fancy" data-action="bubble-text">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Bubble / Circled</span>
-              <span class="convert-btn-category">Fancy</span>
-            </div>
-            <span class="convert-btn-sample">ⓑⓤⓑⓑⓛⓔ ⓣⓔⓧⓣ</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="fancy" data-action="cursive-text">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Cursive / Script</span>
-              <span class="convert-btn-category">Fancy</span>
-            </div>
-            <span class="convert-btn-sample">𝒞𝓊𝓇𝓈𝒾𝓋ℯ 𝒯ℯ𝓍𝓉</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="fancy" data-action="gothic-text">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Gothic / Fraktur</span>
-              <span class="convert-btn-category">Fancy</span>
-            </div>
-            <span class="convert-btn-sample">𝔊𝔬𝔱𝔥𝔦𝔠 𝔗𝔢𝔵𝔱</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="fancy" data-action="upside-down">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Upside Down</span>
-              <span class="convert-btn-category">Fancy</span>
-            </div>
-            <span class="convert-btn-sample">ʇxǝʇ uʍop ǝpᴉsdn</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="fancy" data-action="reverse-text">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Reverse Text</span>
-              <span class="convert-btn-category">Fancy</span>
-            </div>
-            <span class="convert-btn-sample">txet desreveR</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="fancy" data-action="strikethrough">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Strikethrough</span>
-              <span class="convert-btn-category">Fancy</span>
-            </div>
-            <span class="convert-btn-sample">s̶t̶r̶i̶k̶e̶t̶h̶r̶o̶u̶g̶h̶</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="fancy" data-action="underline">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Underline</span>
-              <span class="convert-btn-category">Fancy</span>
-            </div>
-            <span class="convert-btn-sample">u͟n͟d͟e͟r͟l͟i͟n͟e͟</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="fancy" data-action="zalgo-text">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Zalgo Glitch</span>
-              <span class="convert-btn-category">Fancy</span>
-            </div>
-            <span class="convert-btn-sample">Z̵a̵l̵g̵o̵ ̵G̵l̵i̵t̵c̵h̵</span>
-          </button>
-
-          <!-- Encoders & Ciphers -->
-          <button type="button" class="convert-btn" data-cat="cipher" data-action="binary-code">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Binary (0101)</span>
-              <span class="convert-btn-category">Cipher</span>
-            </div>
-            <span class="convert-btn-sample">01001000 01101001</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="cipher" data-action="hex-code">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Hexadecimal</span>
-              <span class="convert-btn-category">Cipher</span>
-            </div>
-            <span class="convert-btn-sample">48 65 6C 6C 6F</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="cipher" data-action="base64-encode">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Base64 Encode</span>
-              <span class="convert-btn-category">Cipher</span>
-            </div>
-            <span class="convert-btn-sample">SGVsbG8gV29ybGQ=</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="cipher" data-action="url-encode">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">URL Percent</span>
-              <span class="convert-btn-category">Cipher</span>
-            </div>
-            <span class="convert-btn-sample">Hello%20World%21</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="cipher" data-action="morse-code">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Morse Code</span>
-              <span class="convert-btn-category">Cipher</span>
-            </div>
-            <span class="convert-btn-sample">.... . .-.. .-.. ---</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="cipher" data-action="nato-phonetic">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">NATO Phonetic</span>
-              <span class="convert-btn-category">Cipher</span>
-            </div>
-            <span class="convert-btn-sample">Hotel Echo Lima Lima</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="cipher" data-action="rot13">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">ROT13 Cipher</span>
-              <span class="convert-btn-category">Cipher</span>
-            </div>
-            <span class="convert-btn-sample">Uryyb Jbeyq</span>
-          </button>
-
-          <!-- Cleaners & Sorters -->
-          <button type="button" class="convert-btn" data-cat="cleaner" data-action="remove-extra-spaces">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Clean Spaces</span>
-              <span class="convert-btn-category">Cleaner</span>
-            </div>
-            <span class="convert-btn-sample">Collapse extra whitespace</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="cleaner" data-action="remove-line-breaks">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Remove Breaks</span>
-              <span class="convert-btn-category">Cleaner</span>
-            </div>
-            <span class="convert-btn-sample">Join multi-lines into one</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="cleaner" data-action="remove-duplicate-lines">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Deduplicate</span>
-              <span class="convert-btn-category">Cleaner</span>
-            </div>
-            <span class="convert-btn-sample">Delete duplicate lines</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="cleaner" data-action="sort-lines-az">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Sort Lines A-Z</span>
-              <span class="convert-btn-category">Cleaner</span>
-            </div>
-            <span class="convert-btn-sample">Alphabetize lines ascending</span>
-          </button>
-
-          <button type="button" class="convert-btn" data-cat="cleaner" data-action="strip-html">
-            <div class="btn-title-row">
-              <span class="convert-btn-name">Strip HTML</span>
-              <span class="convert-btn-category">Cleaner</span>
-            </div>
-            <span class="convert-btn-sample">Remove &lt;tags&gt; cleanly</span>
-          </button>
+          </div>
+          <div class="grammar-issues-list" id="grammar-issues-list">
+            <!-- Populated dynamically -->
+          </div>
         </div>
-      </div>
 
-      <!-- Studio Bottom Bar -->
-      <div class="studio-bottom-bar">
-        <span class="action-status-hint">⚡ Instant client-side conversion. Nothing is sent to servers.</span>
-        <div class="toolbar-group">
-          <button type="button" class="tool-btn tool-btn-primary" id="btn-copy-main">
+        <!-- Live Stats Status Bar -->
+        <div class="stats-ribbon">
+          <div class="stat-item">CHARS: <span class="stat-value" id="stat-characters">0</span></div>
+          <div class="stat-item">NO_SPACES: <span class="stat-value" id="stat-characters-no-spaces">0</span></div>
+          <div class="stat-item">WORDS: <span class="stat-value" id="stat-words">0</span></div>
+          <div class="stat-item">LINES: <span class="stat-value" id="stat-lines">1</span></div>
+          <div class="stat-item">READING: <span class="stat-value" id="stat-reading-time">0s</span></div>
+          <div class="stat-item" style="margin-left:auto;">
+            FLESCH: <span id="stat-flesch-pill" class="readability-pill badge-standard">N/A</span>
+          </div>
+        </div>
+
+        <!-- Categorized 1px Action Matrix -->
+        <div class="action-matrix-section">
+          <!-- Filter Tabs -->
+          <div class="category-filter-nav">
+            <button type="button" class="category-pill-btn active" data-filter="all">ALL_OPERATORS (40)</button>
+            <button type="button" class="category-pill-btn" data-filter="standard">STANDARD</button>
+            <button type="button" class="category-pill-btn" data-filter="developer">DEV_IDENTIFIERS</button>
+            <button type="button" class="category-pill-btn" data-filter="cipher">CIPHERS_ENCODERS</button>
+            <button type="button" class="category-pill-btn" data-filter="fancy">STYLIZED_UNICODE</button>
+            <button type="button" class="category-pill-btn" data-filter="cleaner">SANITIZERS</button>
+          </div>
+
+          <!-- Buttons Grid -->
+          <div class="converter-buttons-grid" id="converter-grid">
+            <!-- Standard Cases -->
+            <button type="button" class="convert-btn" data-cat="standard" data-action="sentence-case">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Sentence case</span>
+                <span class="convert-btn-category">Aa</span>
+              </div>
+              <span class="convert-btn-sample">Sentence case text.</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="standard" data-action="lower-case">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">lower case</span>
+                <span class="convert-btn-category">aa</span>
+              </div>
+              <span class="convert-btn-sample">lower case text</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="standard" data-action="upper-case">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">UPPER CASE</span>
+                <span class="convert-btn-category">AA</span>
+              </div>
+              <span class="convert-btn-sample">UPPER CASE TEXT</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="standard" data-action="capitalized-case">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Capitalized Case</span>
+                <span class="convert-btn-category">Abc</span>
+              </div>
+              <span class="convert-btn-sample">Capitalized Case Text</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="standard" data-action="title-case">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Title Case</span>
+                <span class="convert-btn-category">AP</span>
+              </div>
+              <span class="convert-btn-sample">Smart Title of the Text</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="standard" data-action="alternating-case">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">aLtErNaTiNg</span>
+                <span class="convert-btn-category">aL</span>
+              </div>
+              <span class="convert-btn-sample">aLtErNaTiNg cAsE</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="standard" data-action="inverse-case">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">InVeRsE CaSe</span>
+                <span class="convert-btn-category">iNv</span>
+              </div>
+              <span class="convert-btn-sample">iNvErSe cAsE</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="standard" data-action="mocking-case">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">mOcKiNg cAsE</span>
+                <span class="convert-btn-category">Meme</span>
+              </div>
+              <span class="convert-btn-sample">mOcKiNg tExT</span>
+            </button>
+
+            <!-- Developer Cases -->
+            <button type="button" class="convert-btn" data-cat="developer" data-action="camel-case">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">camelCase</span>
+                <span class="convert-btn-category">JS</span>
+              </div>
+              <span class="convert-btn-sample">camelCaseVariable</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="developer" data-action="pascal-case">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">PascalCase</span>
+                <span class="convert-btn-category">TS</span>
+              </div>
+              <span class="convert-btn-sample">PascalCaseClass</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="developer" data-action="snake-case">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">snake_case</span>
+                <span class="convert-btn-category">Py</span>
+              </div>
+              <span class="convert-btn-sample">snake_case_text</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="developer" data-action="kebab-case">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">kebab-case</span>
+                <span class="convert-btn-category">URL</span>
+              </div>
+              <span class="convert-btn-sample">kebab-case-slug</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="developer" data-action="constant-case">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">CONSTANT_CASE</span>
+                <span class="convert-btn-category">ENV</span>
+              </div>
+              <span class="convert-btn-sample">CONSTANT_CASE_VAL</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="developer" data-action="dot-case">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">dot.case</span>
+                <span class="convert-btn-category">cfg</span>
+              </div>
+              <span class="convert-btn-sample">dot.case.string</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="developer" data-action="path-case">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">path/case</span>
+                <span class="convert-btn-category">dir</span>
+              </div>
+              <span class="convert-btn-sample">path/case/dir</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="developer" data-action="header-case">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Header-Case</span>
+                <span class="convert-btn-category">HTTP</span>
+              </div>
+              <span class="convert-btn-sample">Content-Type-Header</span>
+            </button>
+
+            <!-- Fancy / Stylized -->
+            <button type="button" class="convert-btn" data-cat="fancy" data-action="small-caps">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Small Caps</span>
+                <span class="convert-btn-category">ꜱᴍᴄ</span>
+              </div>
+              <span class="convert-btn-sample">ꜱᴍᴀʟʟ ᴄᴀᴘꜱ ᴛᴇxᴛ</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="fancy" data-action="wide-text">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Wide / Vapor</span>
+                <span class="convert-btn-category">Ｆｕ</span>
+              </div>
+              <span class="convert-btn-sample">Ｗｉｄｅ  Ｔｅｘｔ</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="fancy" data-action="superscript">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Superscript</span>
+                <span class="convert-btn-category">x²</span>
+              </div>
+              <span class="convert-btn-sample">ˢᵘᵖᵉʳˢᶜʳᶦᵖᵗ</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="fancy" data-action="subscript">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Subscript</span>
+                <span class="convert-btn-category">x₂</span>
+              </div>
+              <span class="convert-btn-sample">ₛᵤᵦₛ𝒸ᵣᵢₚₜ</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="fancy" data-action="bubble-text">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Bubble / Circle</span>
+                <span class="convert-btn-category">ⓑ</span>
+              </div>
+              <span class="convert-btn-sample">ⓑⓤⓑⓑⓛⓔ ⓣⓔⓧⓣ</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="fancy" data-action="cursive-text">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Cursive / Script</span>
+                <span class="convert-btn-category">𝒞𝓊</span>
+              </div>
+              <span class="convert-btn-sample">𝒞𝓊𝓇𝓈𝒾𝓋ℯ 𝒯ℯ𝓍𝓉</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="fancy" data-action="gothic-text">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Gothic / Fraktur</span>
+                <span class="convert-btn-category">𝔊𝔬</span>
+              </div>
+              <span class="convert-btn-sample">𝔊𝔬𝔱𝔥𝔦𝔠 𝔗𝔢𝔵𝔱</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="fancy" data-action="upside-down">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Upside Down</span>
+                <span class="convert-btn-category">ʇxǝ</span>
+              </div>
+              <span class="convert-btn-sample">ʇxǝʇ uʍop ǝpᴉsd∩</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="fancy" data-action="reverse-text">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Reverse Text</span>
+                <span class="convert-btn-category">⇄</span>
+              </div>
+              <span class="convert-btn-sample">txet desreveR</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="fancy" data-action="strikethrough">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Strikethrough</span>
+                <span class="convert-btn-category">s̶t̶</span>
+              </div>
+              <span class="convert-btn-sample">s̶t̶r̶i̶k̶e̶t̶h̶r̶o̶u̶g̶h̶</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="fancy" data-action="underline">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Underline</span>
+                <span class="convert-btn-category">u͟n͟</span>
+              </div>
+              <span class="convert-btn-sample">u͟n͟d͟e͟r͟l͟i͟n͟e͟</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="fancy" data-action="zalgo-text">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Zalgo Glitch</span>
+                <span class="convert-btn-category">Z̵a̵</span>
+              </div>
+              <span class="convert-btn-sample">Z̵a̵l̵g̵o̵ ̵G̵l̵i̵t̵c̵h̵</span>
+            </button>
+
+            <!-- Encoders & Ciphers -->
+            <button type="button" class="convert-btn" data-cat="cipher" data-action="binary-code">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Binary (0101)</span>
+                <span class="convert-btn-category">01</span>
+              </div>
+              <span class="convert-btn-sample">01001000 01101001</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="cipher" data-action="hex-code">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Hexadecimal</span>
+                <span class="convert-btn-category">0x</span>
+              </div>
+              <span class="convert-btn-sample">48 65 6C 6C 6F</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="cipher" data-action="base64-encode">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Base64 Encode</span>
+                <span class="convert-btn-category">B64</span>
+              </div>
+              <span class="convert-btn-sample">SGVsbG8gV29ybGQ=</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="cipher" data-action="url-encode">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">URL Percent</span>
+                <span class="convert-btn-category">%20</span>
+              </div>
+              <span class="convert-btn-sample">Hello%20World%21</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="cipher" data-action="morse-code">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Morse Code</span>
+                <span class="convert-btn-category">.-</span>
+              </div>
+              <span class="convert-btn-sample">.... . .-.. .-.. ---</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="cipher" data-action="nato-phonetic">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">NATO Phonetic</span>
+                <span class="convert-btn-category">NATO</span>
+              </div>
+              <span class="convert-btn-sample">Hotel Echo Lima</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="cipher" data-action="rot13">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">ROT13 Cipher</span>
+                <span class="convert-btn-category">13</span>
+              </div>
+              <span class="convert-btn-sample">Uryyb Jbeyq</span>
+            </button>
+
+            <!-- Cleaners & Sorters -->
+            <button type="button" class="convert-btn" data-cat="cleaner" data-action="remove-extra-spaces">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Clean Spaces</span>
+                <span class="convert-btn-category">Trim</span>
+              </div>
+              <span class="convert-btn-sample">Collapse extra whitespace</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="cleaner" data-action="remove-line-breaks">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Remove Breaks</span>
+                <span class="convert-btn-category">Join</span>
+              </div>
+              <span class="convert-btn-sample">Join multi-lines into one</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="cleaner" data-action="remove-duplicate-lines">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Deduplicate</span>
+                <span class="convert-btn-category">Uniq</span>
+              </div>
+              <span class="convert-btn-sample">Delete duplicate lines</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="cleaner" data-action="sort-lines-az">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Sort Lines A-Z</span>
+                <span class="convert-btn-category">Sort</span>
+              </div>
+              <span class="convert-btn-sample">Alphabetize lines ascending</span>
+            </button>
+
+            <button type="button" class="convert-btn" data-cat="cleaner" data-action="strip-html">
+              <div class="btn-title-row">
+                <span class="convert-btn-name">Strip HTML</span>
+                <span class="convert-btn-category">Clean</span>
+              </div>
+              <span class="convert-btn-sample">Remove &lt;tags&gt; cleanly</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Studio Bottom Bar -->
+        <div class="studio-bottom-bar">
+          <span class="action-status-hint">⚡ 100% IN-MEMORY CLIENT EXECUTION // BUFFER SECURE</span>
+          <div class="toolbar-group">
+            <button type="button" class="tool-btn tool-btn-primary" id="btn-copy-main">
+              <span>[COPY]</span> <span>Buffer Result</span>
+            </button>
+            <button type="button" class="tool-btn" id="btn-download-main">
+              <span>[EXPORT]</span> <span>.txt File</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Right Side Inspector Stage (30% Live Stream & Telemetry) -->
+      <aside class="workbench-side-inspector">
+        <!-- Live Real-Time Multi-Case Stream -->
+        <div class="inspector-card">
+          <div class="inspector-header">
+            <span>LIVE MULTI-CASE STREAM</span>
+            <span class="inspector-live-indicator"><span class="hud-pulse-dot"></span> LIVE</span>
+          </div>
+          <div class="live-cases-stream" id="live-cases-stream">
+            <!-- Row: UPPERCASE -->
+            <div class="live-case-row">
+              <div class="live-case-meta">
+                <span class="live-case-label">UPPER</span>
+              </div>
+              <div class="live-case-output" id="live-out-upper">-</div>
+              <button type="button" class="btn-mini-copy" data-target="live-out-upper" title="Copy UPPERCASE">COPY</button>
+            </div>
+
+            <!-- Row: lowercase -->
+            <div class="live-case-row">
+              <div class="live-case-meta">
+                <span class="live-case-label">lower</span>
+              </div>
+              <div class="live-case-output" id="live-out-lower">-</div>
+              <button type="button" class="btn-mini-copy" data-target="live-out-lower" title="Copy lowercase">COPY</button>
+            </div>
+
+            <!-- Row: camelCase -->
+            <div class="live-case-row">
+              <div class="live-case-meta">
+                <span class="live-case-label">camelCase</span>
+              </div>
+              <div class="live-case-output" id="live-out-camel">-</div>
+              <button type="button" class="btn-mini-copy" data-target="live-out-camel" title="Copy camelCase">COPY</button>
+            </div>
+
+            <!-- Row: snake_case -->
+            <div class="live-case-row">
+              <div class="live-case-meta">
+                <span class="live-case-label">snake_case</span>
+              </div>
+              <div class="live-case-output" id="live-out-snake">-</div>
+              <button type="button" class="btn-mini-copy" data-target="live-out-snake" title="Copy snake_case">COPY</button>
+            </div>
+
+            <!-- Row: CONSTANT_CASE -->
+            <div class="live-case-row">
+              <div class="live-case-meta">
+                <span class="live-case-label">CONSTANT</span>
+              </div>
+              <div class="live-case-output" id="live-out-constant">-</div>
+              <button type="button" class="btn-mini-copy" data-target="live-out-constant" title="Copy CONSTANT_CASE">COPY</button>
+            </div>
+
+            <!-- Row: kebab-case -->
+            <div class="live-case-row">
+              <div class="live-case-meta">
+                <span class="live-case-label">kebab-slug</span>
+              </div>
+              <div class="live-case-output" id="live-out-kebab">-</div>
+              <button type="button" class="btn-mini-copy" data-target="live-out-kebab" title="Copy kebab-case">COPY</button>
+            </div>
+
+            <!-- Row: Title Case -->
+            <div class="live-case-row">
+              <div class="live-case-meta">
+                <span class="live-case-label">Title Case</span>
+              </div>
+              <div class="live-case-output" id="live-out-title">-</div>
+              <button type="button" class="btn-mini-copy" data-target="live-out-title" title="Copy Title Case">COPY</button>
+            </div>
+
+            <!-- Row: dot.case -->
+            <div class="live-case-row">
+              <div class="live-case-meta">
+                <span class="live-case-label">dot.case</span>
+              </div>
+              <div class="live-case-output" id="live-out-dot">-</div>
+              <button type="button" class="btn-mini-copy" data-target="live-out-dot" title="Copy dot.case">COPY</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Telemetry & Hash Inspector -->
+        <div class="inspector-card">
+          <div class="inspector-header">
+            <span>BUFFER TELEMETRY &amp; HASH</span>
+            <span style="color: var(--accent-amber); font-size: 0.7rem;">STATUS: OK</span>
+          </div>
+          <div class="telemetry-grid">
+            <div class="telemetry-cell">
+              <span class="telemetry-cell-label">RAW BYTES</span>
+              <span class="telemetry-cell-value" id="tel-bytes">0 B</span>
+            </div>
+            <div class="telemetry-cell">
+              <span class="telemetry-cell-label">RUNES (CHARS)</span>
+              <span class="telemetry-cell-value" id="tel-runes">0</span>
+            </div>
+            <div class="telemetry-cell">
+              <span class="telemetry-cell-label">DENSITY (W/S)</span>
+              <span class="telemetry-cell-value" id="tel-density">0.0</span>
+            </div>
+            <div class="telemetry-cell">
+              <span class="telemetry-cell-label">EST. SYLLABLES</span>
+              <span class="telemetry-cell-value" id="tel-syllables">0</span>
+            </div>
+          </div>
+          <div class="telemetry-hash-box">
+            <span class="telemetry-cell-label" style="display:block; margin-bottom:2px;">HASH PREVIEW (LOCAL):</span>
+            <code id="tel-hash" style="color:var(--accent-amber); font-family:var(--font-mono);">00000000000000000000000000000000</code>
+          </div>
+        </div>
+      </aside>
+    </div> id="btn-copy-main">
             <span>📋</span> <span>Copy Result</span>
           </button>
           <button type="button" class="tool-btn" id="btn-download-main">
@@ -884,13 +1008,117 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const editor = document.getElementById('main-editor');
+      const gutter = document.getElementById('editor-gutter');
       const dropArea = document.getElementById('drop-area');
-      const sampleText = `welcome to ConvertsText! This is a state-of-the-art text conversion studio.
-You can transform ANY text into 40+ cases, developer formats (like camelCase and snake_case), fancy unicode fonts, and morse code.
-Try clicking different buttons below to see how it works!`;
+      const sampleText = `welcome to ConvertsText! This is an elite developer IDE and technical text utility suite.
+You can transform ANY text into 40+ cases, developer formats (like camelCase and snake_case), ciphers, and unicode glyphs.
+Type or paste anywhere to see parallel conversions stream live in real time.`;
 
       // Setup file drag and drop
       window.app.setupFileDrop(dropArea, editor);
+
+      // Line Number Gutter Synchronization
+      const updateGutter = () => {
+        if (!gutter) return;
+        const lineCount = (editor.value.match(/\n/g) || []).length + 1;
+        let linesHtml = '';
+        for (let i = 1; i <= lineCount; i++) {
+          linesHtml += i + '<br>';
+        }
+        gutter.innerHTML = linesHtml;
+      };
+
+      editor.addEventListener('scroll', () => {
+        if (gutter) gutter.scrollTop = editor.scrollTop;
+      });
+
+      // Live Multi-Case Stream & Telemetry Processor
+      const updateLiveInspector = (text) => {
+        const setVal = (id, val) => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = val || '-';
+        };
+
+        if (!text) {
+          ['upper', 'lower', 'camel', 'snake', 'constant', 'kebab', 'title', 'dot'].forEach(k => {
+            setVal(`live-out-${k}`, '-');
+          });
+          setVal('tel-bytes', '0 B');
+          setVal('tel-runes', '0');
+          setVal('tel-density', '0.0');
+          setVal('tel-syllables', '0');
+          setVal('tel-hash', '00000000000000000000000000000000');
+          return;
+        }
+
+        const tStart = performance.now();
+
+        // 8 Parallel Core Casing Streams
+        setVal('live-out-upper', ConvertsEngine.toUpperCase(text));
+        setVal('live-out-lower', ConvertsEngine.toLowerCase(text));
+        setVal('live-out-camel', ConvertsEngine.toCamelCase(text));
+        setVal('live-out-snake', ConvertsEngine.toSnakeCase(text));
+        setVal('live-out-constant', ConvertsEngine.toConstantCase(text));
+        setVal('live-out-kebab', ConvertsEngine.toKebabCase(text));
+        setVal('live-out-title', ConvertsEngine.toTitleCase(text));
+        setVal('live-out-dot', ConvertsEngine.toDotCase(text));
+
+        // Telemetry
+        const bytes = new Blob([text]).size;
+        const runes = Array.from(text).length;
+        const words = (text.match(/\b\w+\b/g) || []).length;
+        const sentences = (text.match(/[.!?]+(?:\s+|$)/g) || []).length || 1;
+        const density = (words / sentences).toFixed(1);
+        
+        let syllables = 0;
+        if (typeof ReadabilityEngine !== 'undefined') {
+          const wordsArr = text.toLowerCase().match(/\b[a-z']+\b/g) || [];
+          syllables = wordsArr.reduce((acc, w) => acc + ReadabilityEngine.countSyllables(w), 0);
+        }
+
+        setVal('tel-bytes', bytes > 1024 ? `${(bytes / 1024).toFixed(1)} KB` : `${bytes} B`);
+        setVal('tel-runes', runes.toLocaleString());
+        setVal('tel-density', `${density} w/s`);
+        setVal('tel-syllables', syllables.toLocaleString());
+
+        // Fast In-Memory Hash
+        let hash = 0;
+        for (let i = 0; i < text.length; i++) {
+          hash = ((hash << 5) - hash) + text.charCodeAt(i);
+          hash |= 0;
+        }
+        const hexHash = Math.abs(hash).toString(16).padStart(8, '0').repeat(4);
+        setVal('tel-hash', hexHash);
+
+        const tEnd = performance.now();
+        const latencyEl = document.getElementById('hud-latency');
+        if (latencyEl) {
+          latencyEl.textContent = `${Math.max(0.01, (tEnd - tStart)).toFixed(2)}ms`;
+        }
+      };
+
+      // Mini-Copy Buttons Click Handler
+      document.querySelectorAll('.btn-mini-copy').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const targetId = btn.getAttribute('data-target');
+          const targetEl = document.getElementById(targetId);
+          if (targetEl && targetEl.textContent && targetEl.textContent !== '-') {
+            window.app.copyText(targetEl.textContent, 'Copied conversion!');
+            const orig = btn.textContent;
+            btn.textContent = 'COPIED!';
+            btn.style.background = 'var(--accent-amber)';
+            btn.style.color = '#000';
+            setTimeout(() => {
+              btn.textContent = orig;
+              btn.style.background = '';
+              btn.style.color = '';
+            }, 1200);
+          } else {
+            window.app.showToast('Nothing to copy', 'warning');
+          }
+        });
+      });
 
       // Grammar Checker Controller
       const grammarDrawer = document.getElementById('grammar-drawer');
@@ -907,13 +1135,13 @@ Try clicking different buttons below to see how it works!`;
           grammarBadge.textContent = currentGrammarResult.count;
           grammarBadge.style.display = 'inline-block';
           grammarScorePill.textContent = `Clarity Score: ${currentGrammarResult.score}/100`;
-          grammarScorePill.style.background = currentGrammarResult.score > 80 ? 'var(--accent-emerald-light)' : 'var(--accent-amber-light)';
-          grammarScorePill.style.color = currentGrammarResult.score > 80 ? 'var(--accent-emerald)' : 'var(--accent-amber)';
+          grammarScorePill.style.background = currentGrammarResult.score > 80 ? 'var(--accent-lime-light)' : 'var(--accent-amber-light)';
+          grammarScorePill.style.color = currentGrammarResult.score > 80 ? 'var(--accent-lime)' : 'var(--accent-amber)';
         } else {
           grammarBadge.style.display = 'none';
           grammarScorePill.textContent = 'Clarity Score: 100/100 (Clean)';
-          grammarScorePill.style.background = 'var(--accent-emerald-light)';
-          grammarScorePill.style.color = 'var(--accent-emerald)';
+          grammarScorePill.style.background = 'var(--accent-lime-light)';
+          grammarScorePill.style.color = 'var(--accent-lime)';
         }
 
         if (autoOpen || grammarDrawer.style.display === 'block') {
@@ -927,7 +1155,7 @@ Try clicking different buttons below to see how it works!`;
           grammarList.innerHTML = `
             <div style="text-align:center; padding:1.5rem; color:var(--text-muted); font-size:0.9rem;">
               <span style="font-size:1.5rem; display:block; margin-bottom:0.25rem;">🎉</span>
-              No grammar, spelling, or conciseness issues detected! Your writing looks great.
+              No grammar, spelling, or conciseness issues detected! Buffer is clean.
             </div>
           `;
           return;
@@ -991,6 +1219,8 @@ Try clicking different buttons below to see how it works!`;
       // Setup live stats & readability
       const handleInput = () => {
         const text = editor.value;
+        updateGutter();
+        updateLiveInspector(text);
         window.app.updateStatsRibbon(text);
         runGrammarCheck(false);
       };
@@ -1001,7 +1231,7 @@ Try clicking different buttons below to see how it works!`;
         editor.value = sampleText;
         editor.dispatchEvent(new Event('input'));
         window.app.pushHistory(sampleText, editor);
-        window.app.showToast('Sample text loaded', 'info');
+        window.app.showToast('Sample buffer loaded', 'info');
       });
 
       // Clear button
@@ -1009,7 +1239,7 @@ Try clicking different buttons below to see how it works!`;
         editor.value = '';
         editor.dispatchEvent(new Event('input'));
         window.app.pushHistory('', editor);
-        window.app.showToast('Cleared editor', 'info');
+        window.app.showToast('Cleared buffer', 'info');
       });
 
       // Read aloud
@@ -1035,7 +1265,7 @@ Try clicking different buttons below to see how it works!`;
 
       // Download Main
       document.getElementById('btn-download-main')?.addEventListener('click', () => {
-        window.app.downloadFile(editor.value, 'converted-text.txt');
+        window.app.downloadFile(editor.value, 'buffer-output.txt');
       });
 
       // Conversion Buttons Click Event Delegation
