@@ -1216,9 +1216,12 @@ Type or paste anywhere to see parallel conversions stream live in real time.`;
         window.app.showToast(`Applied ${currentGrammarResult.issues.length} fixes automatically!`, 'success');
       });
 
-      // Setup live stats & readability
+      // Source Buffer Tracking for Lossless Multi-Case Switching
+      let lastSourceBuffer = sampleText;
+
       const handleInput = () => {
         const text = editor.value;
+        lastSourceBuffer = text;
         updateGutter();
         updateLiveInspector(text);
         window.app.updateStatsRibbon(text);
@@ -1229,7 +1232,11 @@ Type or paste anywhere to see parallel conversions stream live in real time.`;
       // Sample button
       document.getElementById('btn-sample')?.addEventListener('click', () => {
         editor.value = sampleText;
-        editor.dispatchEvent(new Event('input'));
+        lastSourceBuffer = sampleText;
+        updateGutter();
+        updateLiveInspector(sampleText);
+        window.app.updateStatsRibbon(sampleText);
+        runGrammarCheck(false);
         window.app.pushHistory(sampleText, editor);
         window.app.showToast('Sample buffer loaded', 'info');
       });
@@ -1237,7 +1244,11 @@ Type or paste anywhere to see parallel conversions stream live in real time.`;
       // Clear button
       document.getElementById('btn-clear')?.addEventListener('click', () => {
         editor.value = '';
-        editor.dispatchEvent(new Event('input'));
+        lastSourceBuffer = '';
+        updateGutter();
+        updateLiveInspector('');
+        window.app.updateStatsRibbon('');
+        runGrammarCheck(false);
         window.app.pushHistory('', editor);
         window.app.showToast('Cleared buffer', 'info');
       });
@@ -1268,69 +1279,71 @@ Type or paste anywhere to see parallel conversions stream live in real time.`;
         window.app.downloadFile(editor.value, 'buffer-output.txt');
       });
 
-      // Conversion Buttons Click Event Delegation
+      // Conversion Buttons Click Event Delegation (Lossless Multi-Case Switching)
       const grid = document.getElementById('converter-grid');
       grid?.addEventListener('click', (e) => {
         const btn = e.target.closest('.convert-btn');
         if (!btn) return;
 
         const action = btn.getAttribute('data-action');
-        const text = editor.value;
-        if (!text) {
+        const baseText = lastSourceBuffer || editor.value;
+        if (!baseText) {
           window.app.showToast('Please enter some text first', 'warning');
           return;
         }
 
-        let result = text;
+        let result = baseText;
         switch (action) {
-          case 'sentence-case': result = ConvertsEngine.toSentenceCase(text); break;
-          case 'lower-case': result = ConvertsEngine.toLowerCase(text); break;
-          case 'upper-case': result = ConvertsEngine.toUpperCase(text); break;
-          case 'capitalized-case': result = ConvertsEngine.toCapitalizedCase(text); break;
-          case 'title-case': result = ConvertsEngine.toTitleCase(text); break;
-          case 'alternating-case': result = ConvertsEngine.toAlternatingCase(text); break;
-          case 'inverse-case': result = ConvertsEngine.toInverseCase(text); break;
-          case 'mocking-case': result = ConvertsEngine.toMockingCase(text); break;
+          case 'sentence-case': result = ConvertsEngine.toSentenceCase(baseText); break;
+          case 'lower-case': result = ConvertsEngine.toLowerCase(baseText); break;
+          case 'upper-case': result = ConvertsEngine.toUpperCase(baseText); break;
+          case 'capitalized-case': result = ConvertsEngine.toCapitalizedCase(baseText); break;
+          case 'title-case': result = ConvertsEngine.toTitleCase(baseText); break;
+          case 'alternating-case': result = ConvertsEngine.toAlternatingCase(baseText); break;
+          case 'inverse-case': result = ConvertsEngine.toInverseCase(baseText); break;
+          case 'mocking-case': result = ConvertsEngine.toMockingCase(baseText); break;
 
-          case 'camel-case': result = ConvertsEngine.toCamelCase(text); break;
-          case 'pascal-case': result = ConvertsEngine.toPascalCase(text); break;
-          case 'snake-case': result = ConvertsEngine.toSnakeCase(text); break;
-          case 'kebab-case': result = ConvertsEngine.toKebabCase(text); break;
-          case 'constant-case': result = ConvertsEngine.toConstantCase(text); break;
-          case 'dot-case': result = ConvertsEngine.toDotCase(text); break;
-          case 'path-case': result = ConvertsEngine.toPathCase(text); break;
-          case 'header-case': result = ConvertsEngine.toHeaderCase(text); break;
+          case 'camel-case': result = ConvertsEngine.toCamelCase(baseText); break;
+          case 'pascal-case': result = ConvertsEngine.toPascalCase(baseText); break;
+          case 'snake-case': result = ConvertsEngine.toSnakeCase(baseText); break;
+          case 'kebab-case': result = ConvertsEngine.toKebabCase(baseText); break;
+          case 'constant-case': result = ConvertsEngine.toConstantCase(baseText); break;
+          case 'dot-case': result = ConvertsEngine.toDotCase(baseText); break;
+          case 'path-case': result = ConvertsEngine.toPathCase(baseText); break;
+          case 'header-case': result = ConvertsEngine.toHeaderCase(baseText); break;
 
-          case 'small-caps': result = ConvertsEngine.toSmallCaps(text); break;
-          case 'wide-text': result = ConvertsEngine.toWideText(text); break;
-          case 'superscript': result = ConvertsEngine.toSuperscript(text); break;
-          case 'subscript': result = ConvertsEngine.toSubscript(text); break;
-          case 'bubble-text': result = ConvertsEngine.toBubbleText(text); break;
-          case 'cursive-text': result = ConvertsEngine.toCursiveText(text); break;
-          case 'gothic-text': result = ConvertsEngine.toGothicText(text); break;
-          case 'upside-down': result = ConvertsEngine.toUpsideDown(text); break;
-          case 'reverse-text': result = ConvertsEngine.toReversedText(text); break;
-          case 'strikethrough': result = ConvertsEngine.toStrikethrough(text); break;
-          case 'underline': result = ConvertsEngine.toUnderline(text); break;
-          case 'zalgo-text': result = ConvertsEngine.toZalgoText(text, 'medium'); break;
+          case 'small-caps': result = ConvertsEngine.toSmallCaps(baseText); break;
+          case 'wide-text': result = ConvertsEngine.toWideText(baseText); break;
+          case 'superscript': result = ConvertsEngine.toSuperscript(baseText); break;
+          case 'subscript': result = ConvertsEngine.toSubscript(baseText); break;
+          case 'bubble-text': result = ConvertsEngine.toBubbleText(baseText); break;
+          case 'cursive-text': result = ConvertsEngine.toCursiveText(baseText); break;
+          case 'gothic-text': result = ConvertsEngine.toGothicText(baseText); break;
+          case 'upside-down': result = ConvertsEngine.toUpsideDown(baseText); break;
+          case 'reverse-text': result = ConvertsEngine.toReversedText(baseText); break;
+          case 'strikethrough': result = ConvertsEngine.toStrikethrough(baseText); break;
+          case 'underline': result = ConvertsEngine.toUnderline(baseText); break;
+          case 'zalgo-text': result = ConvertsEngine.toZalgoText(baseText, 'medium'); break;
 
-          case 'binary-code': result = ConvertsEngine.toBinary(text); break;
-          case 'hex-code': result = ConvertsEngine.toHex(text); break;
-          case 'base64-encode': result = ConvertsEngine.toBase64(text); break;
-          case 'url-encode': result = ConvertsEngine.toUrlEncode(text); break;
-          case 'morse-code': result = ConvertsEngine.toMorseCode(text); break;
-          case 'nato-phonetic': result = ConvertsEngine.toNatoPhonetic(text); break;
-          case 'rot13': result = ConvertsEngine.toRot13(text); break;
+          case 'binary-code': result = ConvertsEngine.toBinary(baseText); break;
+          case 'hex-code': result = ConvertsEngine.toHex(baseText); break;
+          case 'base64-encode': result = ConvertsEngine.toBase64(baseText); break;
+          case 'url-encode': result = ConvertsEngine.toUrlEncode(baseText); break;
+          case 'morse-code': result = ConvertsEngine.toMorseCode(baseText); break;
+          case 'nato-phonetic': result = ConvertsEngine.toNatoPhonetic(baseText); break;
+          case 'rot13': result = ConvertsEngine.toRot13(baseText); break;
 
-          case 'remove-extra-spaces': result = ConvertsEngine.removeExtraSpaces(text); break;
-          case 'remove-line-breaks': result = ConvertsEngine.removeLineBreaks(text, ' '); break;
-          case 'remove-duplicate-lines': result = ConvertsEngine.removeDuplicateLines(text); break;
-          case 'sort-lines-az': result = ConvertsEngine.sortLines(text, 'az'); break;
-          case 'strip-html': result = ConvertsEngine.stripHtmlTags(text); break;
+          case 'remove-extra-spaces': result = ConvertsEngine.removeExtraSpaces(baseText); lastSourceBuffer = result; break;
+          case 'remove-line-breaks': result = ConvertsEngine.removeLineBreaks(baseText, ' '); lastSourceBuffer = result; break;
+          case 'remove-duplicate-lines': result = ConvertsEngine.removeDuplicateLines(baseText); lastSourceBuffer = result; break;
+          case 'sort-lines-az': result = ConvertsEngine.sortLines(baseText, 'az'); lastSourceBuffer = result; break;
+          case 'strip-html': result = ConvertsEngine.stripHtmlTags(baseText); lastSourceBuffer = result; break;
         }
 
         editor.value = result;
-        editor.dispatchEvent(new Event('input'));
+        updateGutter();
+        updateLiveInspector(result);
+        window.app.updateStatsRibbon(result);
         window.app.pushHistory(result, editor);
         window.app.showToast(`Converted to ${btn.querySelector('.convert-btn-name')?.textContent || action}`, 'success');
       });
@@ -1355,7 +1368,10 @@ Type or paste anywhere to see parallel conversions stream live in real time.`;
 
       // Initialize with sample on first load if empty
       editor.value = sampleText;
-      handleInput();
+      lastSourceBuffer = sampleText;
+      updateGutter();
+      updateLiveInspector(sampleText);
+      window.app.updateStatsRibbon(sampleText);
       window.app.pushHistory(sampleText, editor);
     });
   </script>

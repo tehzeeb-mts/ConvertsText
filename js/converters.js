@@ -137,31 +137,98 @@ const ConvertsEngine = (() => {
     ]
   };
 
-  // Helper: split text into developer word tokens
+  // Reverse unicode mappings helper for lossless switching (only map non-ASCII glyphs to ASCII)
+  const REVERSE_UNICODE_MAP = {};
+  [
+    SMALL_CAPS_MAP, SUPERSCRIPT_MAP, SUBSCRIPT_MAP, 
+    BUBBLE_MAP, CURSIVE_MAP, GOTHIC_MAP, UPSIDE_DOWN_MAP
+  ].forEach(map => {
+    Object.entries(map).forEach(([k, v]) => {
+      if (v && v.charCodeAt(0) > 127) {
+        REVERSE_UNICODE_MAP[v] = k;
+      }
+    });
+  });
+
+  function normalizeToPlainText(text) {
+    if (!text) return '';
+    let result = '';
+    // Strip combining characters like strikethrough (\u0336), underline (\u035F), and zalgo marks (\u0300-\u036f)
+    const stripped = text.replace(/[\u0300-\u036f]/g, '');
+    for (const char of stripped) {
+      const code = char.charCodeAt(0);
+      // Fullwidth / Wide text (0xFF01 to 0xFF5E)
+      if (code >= 65281 && code <= 65374) {
+        result += String.fromCharCode(code - 65248);
+      } else if (char === '　') { // Fullwidth space
+        result += ' ';
+      } else if (REVERSE_UNICODE_MAP[char]) {
+        result += REVERSE_UNICODE_MAP[char];
+      } else {
+        result += char;
+      }
+    }
+    return result;
+  }
+
+  // Helper: split text into developer word tokens cleanly
   function extractWords(text) {
     if (!text) return [];
-    return text
+    let plain = normalizeToPlainText(text);
+    // If binary, decode first
+    if (/^[01]{8}(?:\s+[01]{8})+$/.test(plain.trim())) {
+      try {
+        const decoded = ConvertsEngine.fromBinary(plain);
+        if (decoded && !decoded.startsWith('Error:')) plain = decoded;
+      } catch (e) {}
+    }
+    return plain
       .replace(/([a-z\d])([A-Z])/g, '$1 $2')
       .replace(/([A-Z]+)([A-Z][a-z\d]+)/g, '$1 $2')
-      .replace(/[^a-zA-Z0-9]+/g, ' ')
+      .replace(/[^a-zA-Z0-9\u00C0-\u024F]+/g, ' ')
       .trim()
       .split(/\s+/)
       .filter(Boolean);
   }
 
-  // Helper: unpack camelCase, PascalCase, snake_case, kebab-case if no natural spaces exist
+  // Helper: unpack camelCase, PascalCase, snake_case, kebab-case, dot.case, CONSTANT_CASE, binary into natural spaced words
   function unpackDeveloperSlugs(text) {
     if (!text) return '';
-    // If text is multi-sentence with spaces, only expand explicit slug words
-    if (text.includes(' ') && !/^[a-zA-Z0-9_-]+$/.test(text.trim())) {
-      return text;
+    let plain = normalizeToPlainText(text);
+
+    // If input is purely binary (8-bit bytes), decode it back to text
+    if (/^[01]{8}(?:\s+[01]{8})+$/.test(plain.trim())) {
+      try {
+        const decoded = ConvertsEngine.fromBinary(plain);
+        if (decoded && !decoded.startsWith('Error:')) plain = decoded;
+      } catch (e) {}
     }
-    let unpacked = text.replace(/([a-z\d])([A-Z])/g, '$1 $2')
-      .replace(/([A-Z]+)([A-Z][a-z\d]+)/g, '$1 $2')
-      .replace(/[_\-./]+/g, ' ')
-      .replace(/\s+/g, ' ')
-      .trim();
-    return unpacked || text;
+
+    return plain.split('\n').map(line => {
+      // If line has natural spaces and is standard prose with punctuation, preserve it
+      if (line.includes(' ') && !/^[a-zA-Z0-9_\-./\\]+$/.test(line.trim())) {
+        // Expand isolated camelCase words inside sentences without losing commas/periods
+        return line.replace(/\b[a-zA-Z0-9_\-./\\]+\b/g, token => {
+          if (/[_\-./\\]/.test(token) && !/^https?:\/\//i.test(token) && !/^\d+\.\d+$/.test(token)) {
+            return token.replace(/[_\-./\\]+/g, ' ');
+          }
+          if (/([a-z\d])([A-Z])/.test(token)) {
+            return token.replace(/([a-z\d])([A-Z])/g, '$1 $2')
+                        .replace(/([A-Z]+)([A-Z][a-z\d]+)/g, '$1 $2');
+          }
+          return token;
+        });
+      }
+
+      // Otherwise, unpack the slug line
+      let unp = line
+        .replace(/([a-z\d])([A-Z])/g, '$1 $2')
+        .replace(/([A-Z]+)([A-Z][a-z\d]+)/g, '$1 $2')
+        .replace(/[_\-./\\]+/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+      return unp || line;
+    }).join('\n');
   }
 
   return {
@@ -172,23 +239,27 @@ const ConvertsEngine = (() => {
       if (!text) return '';
       const normalized = unpackDeveloperSlugs(text);
       let result = normalized.toLowerCase();
-      result = result.replace(/(^\s*|[.!?\n]\s+)([a-z\u00E0-\u00FC])/g, (m, p1, p2) => p1 + p2.toUpperCase());
+      result = result.replace(/(^\s*|[.!?\n]\s*)([a-z\u00E0-\u00FC])/g, (m, p1, p2) => p1 + p2.toUpperCase());
       result = result.replace(/\b(i)\b/g, 'I');
       return result;
     },
 
     toLowerCase(text) {
-      return (text || '').toLowerCase();
+      if (!text) return '';
+      const plain = normalizeToPlainText(text);
+      return plain.toLowerCase();
     },
 
     toUpperCase(text) {
-      return (text || '').toUpperCase();
+      if (!text) return '';
+      const plain = normalizeToPlainText(text);
+      return plain.toUpperCase();
     },
 
     toCapitalizedCase(text) {
       if (!text) return '';
       const normalized = unpackDeveloperSlugs(text);
-      return normalized.toLowerCase().replace(/\b(\w)/g, m => m.toUpperCase());
+      return normalized.toLowerCase().replace(/\b([a-z\u00C0-\u024F])/gi, m => m.toUpperCase());
     },
 
     toTitleCase(text, customIgnoreWords) {
@@ -210,9 +281,10 @@ const ConvertsEngine = (() => {
 
     toAlternatingCase(text) {
       if (!text) return '';
+      const plain = normalizeToPlainText(text);
       let isUpper = false;
-      return text.split('').map(char => {
-        if (/[a-zA-Z]/.test(char)) {
+      return plain.split('').map(char => {
+        if (/[a-zA-Z\u00C0-\u024F]/.test(char)) {
           const res = isUpper ? char.toUpperCase() : char.toLowerCase();
           isUpper = !isUpper;
           return res;
@@ -223,7 +295,8 @@ const ConvertsEngine = (() => {
 
     toInverseCase(text) {
       if (!text) return '';
-      return text.split('').map(char => {
+      const plain = normalizeToPlainText(text);
+      return plain.split('').map(char => {
         if (char === char.toUpperCase()) return char.toLowerCase();
         return char.toUpperCase();
       }).join('');
@@ -231,9 +304,10 @@ const ConvertsEngine = (() => {
 
     toMockingCase(text) {
       if (!text) return '';
+      const plain = normalizeToPlainText(text);
       let isUpper = true;
-      return text.split('').map(char => {
-        if (/[a-zA-Z]/.test(char)) {
+      return plain.split('').map(char => {
+        if (/[a-zA-Z\u00C0-\u024F]/.test(char)) {
           const rand = Math.random() > 0.85 ? !isUpper : isUpper;
           const res = rand ? char.toUpperCase() : char.toLowerCase();
           isUpper = !isUpper;

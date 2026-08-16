@@ -258,15 +258,20 @@ first name and last name
 max retry attempt count
 api authorization header`;
 
+      let lastSourceText = sampleText;
+
       window.app.setupFileDrop(document.getElementById('drop-area'), editor);
-      editor.addEventListener('input', () => window.app.updateStatsRibbon(editor.value));
+      editor.addEventListener('input', () => {
+        lastSourceText = editor.value;
+        window.app.updateStatsRibbon(editor.value);
+      });
 
       function convertDev(fn, name) {
-        const text = editor.value;
+        const text = lastSourceText || editor.value;
         if (!text) return window.app.showToast('Please enter text first', 'warning');
         
-        const mode = document.getElementById('setting-batch-mode').value;
-        const prefix = document.getElementById('setting-prefix').value.trim();
+        const mode = document.getElementById('setting-batch-mode')?.value || 'all';
+        const prefix = document.getElementById('setting-prefix')?.value?.trim() || '';
 
         let res = '';
         if (mode === 'line-by-line') {
@@ -280,7 +285,7 @@ api authorization header`;
         }
 
         editor.value = res;
-        editor.dispatchEvent(new Event('input'));
+        window.app.updateStatsRibbon(res);
         window.app.pushHistory(res, editor);
         window.app.showToast(`Converted to ${name}`, 'success');
       }
@@ -296,12 +301,14 @@ api authorization header`;
 
       document.getElementById('btn-sample')?.addEventListener('click', () => {
         editor.value = sampleText;
-        editor.dispatchEvent(new Event('input'));
+        lastSourceText = sampleText;
+        window.app.updateStatsRibbon(sampleText);
         window.app.pushHistory(sampleText, editor);
       });
       document.getElementById('btn-clear')?.addEventListener('click', () => {
         editor.value = '';
-        editor.dispatchEvent(new Event('input'));
+        lastSourceText = '';
+        window.app.updateStatsRibbon('');
         window.app.pushHistory('', editor);
       });
       document.getElementById('btn-copy')?.addEventListener('click', () => window.app.copyText(editor.value));
@@ -310,7 +317,8 @@ api authorization header`;
       document.getElementById('btn-redo')?.addEventListener('click', () => window.app.redo(editor));
 
       editor.value = sampleText;
-      editor.dispatchEvent(new Event('input'));
+      lastSourceText = sampleText;
+      window.app.updateStatsRibbon(sampleText);
       window.app.pushHistory(sampleText, editor);
     });
   </script>

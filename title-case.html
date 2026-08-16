@@ -243,51 +243,66 @@
 the catcher in the rye: an analysis of the themes and characters
 how to convert upper case to lower case online in seconds`;
 
+      let lastSourceText = sampleText;
+
       window.app.setupFileDrop(dropArea, editor);
-      editor.addEventListener('input', () => window.app.updateStatsRibbon(editor.value));
+      editor.addEventListener('input', () => {
+        lastSourceText = editor.value;
+        window.app.updateStatsRibbon(editor.value);
+      });
 
       function convertTitle() {
-        const text = editor.value;
+        const text = lastSourceText || editor.value;
         if (!text) return window.app.showToast('Please enter text first', 'warning');
         
-        const preset = document.getElementById('setting-style-preset').value;
+        const preset = document.getElementById('setting-style-preset')?.value;
+        let res = '';
         if (preset === 'all-capitalized') {
-          editor.value = ConvertsEngine.toCapitalizedCase(text);
+          res = ConvertsEngine.toCapitalizedCase(text);
         } else {
-          const customWords = document.getElementById('setting-custom-ignore').value.split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
-          editor.value = ConvertsEngine.toTitleCase(text, customWords);
+          const customWords = document.getElementById('setting-custom-ignore')?.value?.split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
+          res = ConvertsEngine.toTitleCase(text, customWords);
         }
-        editor.dispatchEvent(new Event('input'));
-        window.app.pushHistory(editor.value, editor);
+        editor.value = res;
+        window.app.updateStatsRibbon(res);
+        window.app.pushHistory(res, editor);
         window.app.showToast('Converted to Title Case', 'success');
       }
 
       document.getElementById('btn-convert-title')?.addEventListener('click', convertTitle);
       document.getElementById('btn-convert-capitalized')?.addEventListener('click', () => {
-        editor.value = ConvertsEngine.toCapitalizedCase(editor.value);
-        editor.dispatchEvent(new Event('input'));
-        window.app.pushHistory(editor.value, editor);
+        const base = lastSourceText || editor.value;
+        const res = ConvertsEngine.toCapitalizedCase(base);
+        editor.value = res;
+        window.app.updateStatsRibbon(res);
+        window.app.pushHistory(res, editor);
         window.app.showToast('Capitalized every word', 'success');
       });
       document.getElementById('btn-convert-lower')?.addEventListener('click', () => {
-        editor.value = ConvertsEngine.toLowerCase(editor.value);
-        editor.dispatchEvent(new Event('input'));
-        window.app.pushHistory(editor.value, editor);
+        const base = lastSourceText || editor.value;
+        const res = ConvertsEngine.toLowerCase(base);
+        editor.value = res;
+        window.app.updateStatsRibbon(res);
+        window.app.pushHistory(res, editor);
       });
       document.getElementById('btn-convert-upper')?.addEventListener('click', () => {
-        editor.value = ConvertsEngine.toUpperCase(editor.value);
-        editor.dispatchEvent(new Event('input'));
-        window.app.pushHistory(editor.value, editor);
+        const base = lastSourceText || editor.value;
+        const res = ConvertsEngine.toUpperCase(base);
+        editor.value = res;
+        window.app.updateStatsRibbon(res);
+        window.app.pushHistory(res, editor);
       });
 
       document.getElementById('btn-sample')?.addEventListener('click', () => {
         editor.value = sampleText;
-        editor.dispatchEvent(new Event('input'));
+        lastSourceText = sampleText;
+        window.app.updateStatsRibbon(sampleText);
         window.app.pushHistory(sampleText, editor);
       });
       document.getElementById('btn-clear')?.addEventListener('click', () => {
         editor.value = '';
-        editor.dispatchEvent(new Event('input'));
+        lastSourceText = '';
+        window.app.updateStatsRibbon('');
         window.app.pushHistory('', editor);
       });
       const readBtn = document.getElementById('btn-read-aloud');
@@ -298,7 +313,8 @@ how to convert upper case to lower case online in seconds`;
       document.getElementById('btn-redo')?.addEventListener('click', () => window.app.redo(editor));
 
       editor.value = sampleText;
-      editor.dispatchEvent(new Event('input'));
+      lastSourceText = sampleText;
+      window.app.updateStatsRibbon(sampleText);
       window.app.pushHistory(sampleText, editor);
     });
   </script>

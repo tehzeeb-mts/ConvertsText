@@ -242,21 +242,28 @@
       const editor = document.getElementById('main-editor');
       const sampleText = `ConvertsText is the best place to create cool aesthetic text and fonts!`;
 
+      let lastSourceText = sampleText;
+
       window.app.setupFileDrop(document.getElementById('drop-area'), editor);
-      editor.addEventListener('input', () => window.app.updateStatsRibbon(editor.value));
+      editor.addEventListener('input', () => {
+        lastSourceText = editor.value;
+        window.app.updateStatsRibbon(editor.value);
+      });
 
       function applyFancy(fn, name) {
-        if (!editor.value) return window.app.showToast('Please enter text first', 'warning');
-        editor.value = fn(editor.value);
-        editor.dispatchEvent(new Event('input'));
-        window.app.pushHistory(editor.value, editor);
+        const text = lastSourceText || editor.value;
+        if (!text) return window.app.showToast('Please enter text first', 'warning');
+        const res = fn(text);
+        editor.value = res;
+        window.app.updateStatsRibbon(res);
+        window.app.pushHistory(res, editor);
         window.app.showToast(`Converted to ${name}`, 'success');
       }
 
       document.getElementById('btn-small-caps')?.addEventListener('click', () => applyFancy(ConvertsEngine.toSmallCaps, 'Small Caps'));
       document.getElementById('btn-wide')?.addEventListener('click', () => applyFancy(ConvertsEngine.toWideText, 'Wide Text'));
       document.getElementById('btn-zalgo')?.addEventListener('click', () => {
-        const level = document.getElementById('setting-zalgo-level').value;
+        const level = document.getElementById('setting-zalgo-level')?.value || 'medium';
         applyFancy(t => ConvertsEngine.toZalgoText(t, level), 'Zalgo Glitch');
       });
       document.getElementById('btn-cursive')?.addEventListener('click', () => applyFancy(ConvertsEngine.toCursiveText, 'Cursive'));
@@ -271,12 +278,14 @@
 
       document.getElementById('btn-sample')?.addEventListener('click', () => {
         editor.value = sampleText;
-        editor.dispatchEvent(new Event('input'));
+        lastSourceText = sampleText;
+        window.app.updateStatsRibbon(sampleText);
         window.app.pushHistory(sampleText, editor);
       });
       document.getElementById('btn-clear')?.addEventListener('click', () => {
         editor.value = '';
-        editor.dispatchEvent(new Event('input'));
+        lastSourceText = '';
+        window.app.updateStatsRibbon('');
         window.app.pushHistory('', editor);
       });
       document.getElementById('btn-copy')?.addEventListener('click', () => window.app.copyText(editor.value));
@@ -285,7 +294,8 @@
       document.getElementById('btn-redo')?.addEventListener('click', () => window.app.redo(editor));
 
       editor.value = sampleText;
-      editor.dispatchEvent(new Event('input'));
+      lastSourceText = sampleText;
+      window.app.updateStatsRibbon(sampleText);
       window.app.pushHistory(sampleText, editor);
     });
   </script>

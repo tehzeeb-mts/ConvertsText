@@ -269,49 +269,60 @@
 CAN YOU BELIEVE HOW EASY IT IS TO FIX WITH CONVERTSTEXT?
 i tested it with lower case 'i' and it properly converted to 'I' automatically.`;
 
+      let lastSourceText = sampleText;
+
       window.app.setupFileDrop(dropArea, editor);
-      editor.addEventListener('input', () => window.app.updateStatsRibbon(editor.value));
+      editor.addEventListener('input', () => {
+        lastSourceText = editor.value;
+        window.app.updateStatsRibbon(editor.value);
+      });
 
       function convert() {
-        const text = editor.value;
+        const text = lastSourceText || editor.value;
         if (!text) {
           window.app.showToast('Please enter text first', 'warning');
           return;
         }
         let res = ConvertsEngine.toSentenceCase(text);
-        const pronounI = document.getElementById('setting-pronoun-i').value === 'true';
+        const pronounI = document.getElementById('setting-pronoun-i')?.value === 'true';
         if (!pronounI) {
           res = res.replace(/\bI\b/g, 'i');
         }
         editor.value = res;
-        editor.dispatchEvent(new Event('input'));
+        window.app.updateStatsRibbon(res);
         window.app.pushHistory(res, editor);
         window.app.showToast('Converted to Sentence Case', 'success');
       }
 
       document.getElementById('btn-convert-sentence')?.addEventListener('click', convert);
       document.getElementById('btn-convert-lower')?.addEventListener('click', () => {
-        editor.value = ConvertsEngine.toLowerCase(editor.value);
-        editor.dispatchEvent(new Event('input'));
-        window.app.pushHistory(editor.value, editor);
+        const base = lastSourceText || editor.value;
+        const res = ConvertsEngine.toLowerCase(base);
+        editor.value = res;
+        window.app.updateStatsRibbon(res);
+        window.app.pushHistory(res, editor);
         window.app.showToast('Converted to lower case', 'success');
       });
       document.getElementById('btn-convert-upper')?.addEventListener('click', () => {
-        editor.value = ConvertsEngine.toUpperCase(editor.value);
-        editor.dispatchEvent(new Event('input'));
-        window.app.pushHistory(editor.value, editor);
+        const base = lastSourceText || editor.value;
+        const res = ConvertsEngine.toUpperCase(base);
+        editor.value = res;
+        window.app.updateStatsRibbon(res);
+        window.app.pushHistory(res, editor);
         window.app.showToast('Converted to UPPER CASE', 'success');
       });
 
       document.getElementById('btn-sample')?.addEventListener('click', () => {
         editor.value = sampleText;
-        editor.dispatchEvent(new Event('input'));
+        lastSourceText = sampleText;
+        window.app.updateStatsRibbon(sampleText);
         window.app.pushHistory(sampleText, editor);
         window.app.showToast('Sample text loaded', 'info');
       });
       document.getElementById('btn-clear')?.addEventListener('click', () => {
         editor.value = '';
-        editor.dispatchEvent(new Event('input'));
+        lastSourceText = '';
+        window.app.updateStatsRibbon('');
         window.app.pushHistory('', editor);
         window.app.showToast('Cleared editor', 'info');
       });
@@ -323,7 +334,8 @@ i tested it with lower case 'i' and it properly converted to 'I' automatically.`
       document.getElementById('btn-redo')?.addEventListener('click', () => window.app.redo(editor));
 
       editor.value = sampleText;
-      editor.dispatchEvent(new Event('input'));
+      lastSourceText = sampleText;
+      window.app.updateStatsRibbon(sampleText);
       window.app.pushHistory(sampleText, editor);
     });
   </script>
