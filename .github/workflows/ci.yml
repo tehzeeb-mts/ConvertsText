@@ -1,0 +1,36 @@
+name: CI & Code Quality
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  validate:
+    name: Validate JavaScript & Integrity
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check JavaScript Syntax
+        run: |
+          for file in js/*.js; do
+            echo "Checking syntax of $file..."
+            node --check "$file"
+          done
+
+      - name: Check Entry Worker Syntax
+        run: |
+          node --check src/index.js
