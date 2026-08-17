@@ -13,7 +13,7 @@ Please be respectful, collaborative, and constructive when opening issues, submi
 ## 🛠️ How to Contribute
 
 ### 1. Reporting Bugs
-- Search existing [Issues](https://github.com/convertstext/convertstext/issues) to verify if the problem has already been reported.
+- Search existing [Issues](https://github.com/tehzeeb-mts/ConvertsText/issues) to verify if the problem has already been reported.
 - If not, open a new issue using our **Bug Report** template. Include details about your browser, operating system, expected behavior, and reproducible sample text.
 
 ### 2. Suggesting New Tools / Converters

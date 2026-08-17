@@ -19,6 +19,14 @@
     "readability-analyzer",
     "word-counter"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tehzeeb-mts/ConvertsText.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tehzeeb-mts/ConvertsText/issues"
+  },
+  "homepage": "https://convertstext.com",
   "author": "ConvertsText",
   "license": "MIT",
   "devDependencies": {

@@ -90,8 +90,8 @@ ConvertsText/
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/convertstext.git
-   cd convertstext
+   git clone https://github.com/tehzeeb-mts/ConvertsText.git
+   cd ConvertsText
    ```
 
 2. **Run a local server**:
