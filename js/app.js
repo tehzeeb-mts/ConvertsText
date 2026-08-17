@@ -100,13 +100,16 @@ class ConvertsApp {
   checkStagingDomainNoindex() {
     const host = window.location.hostname.toLowerCase();
     if (host.endsWith('pages.dev') || host.endsWith('workers.dev')) {
-      let metaRobots = document.querySelector('meta[name="robots"]');
-      if (!metaRobots) {
-        metaRobots = document.createElement('meta');
-        metaRobots.name = 'robots';
-        document.head.appendChild(metaRobots);
-      }
-      metaRobots.content = 'noindex, nofollow, noarchive';
+      const botNames = ['robots', 'googlebot', 'bingbot'];
+      botNames.forEach(bot => {
+        let tag = document.querySelector(`meta[name="${bot}"]`);
+        if (!tag) {
+          tag = document.createElement('meta');
+          tag.name = bot;
+          document.head.appendChild(tag);
+        }
+        tag.setAttribute('content', 'noindex, nofollow, noarchive, nosnippet');
+      });
     }
   }
 

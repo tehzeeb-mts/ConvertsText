@@ -35,7 +35,7 @@ export default {
 
     // Automatically enforce NOINDEX on staging domains (*.pages.dev and *.workers.dev)
     if (url.hostname.endsWith('.pages.dev') || url.hostname.endsWith('.workers.dev')) {
-      newHeaders.set('X-Robots-Tag', 'noindex, nofollow, noarchive');
+      newHeaders.set('X-Robots-Tag', 'noindex, nofollow, noarchive, nosnippet');
     }
 
     // Cache static assets (CSS, JS, SVG, XML) for 7 days, HTML for 1 hour
