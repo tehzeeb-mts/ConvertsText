@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 echo =======================================================
-echo   ConvertsText - Automated Git Setup ^& Push Helper
+echo   ConvertsText - GitHub Push Helper
 echo =======================================================
 echo.
 
@@ -12,13 +12,7 @@ set "PATH=C:\Program Files\Git\cmd;C:\Program Files\Git\bin;C:\Program Files (x8
 :: Check if git is installed
 where git >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
-    echo [!] Git is not installed on your system.
-    echo.
-    echo Please download and install Git from:
-    echo https://git-scm.com/download/win
-    echo.
-    echo Once installed, rerun this script to push automatically!
-    echo.
+    echo [!] Git is not found in PATH.
     pause
     exit /b 1
 )
@@ -27,52 +21,34 @@ echo [OK] Git is available:
 git --version
 echo.
 
-:: Initialize Git if not already initialized
-if not exist ".git" (
-    echo [*] Initializing Git repository...
-    git init -b main
-) else (
-    echo [*] Existing Git repository detected.
-)
-
-:: Add all files
-echo [*] Staging project files...
-git add .
-
-:: Commit
-set /p commit_msg="Enter commit message (Press Enter for default: 'Initial commit: ConvertsText'): "
-if "!commit_msg!"=="" set "commit_msg=Initial commit: ConvertsText"
-
-git commit -m "!commit_msg!"
-
-:: Check remote
+:: Check current branch and set remote
+git branch -M main
 git remote get-url origin >nul 2>&1
 if %ERRORLEVEL% NEQ 0 (
-    echo.
-    echo -------------------------------------------------------
-    echo Step: Connect your GitHub Repository
-    echo 1. Go to https://github.com/new and create a repository (e.g. 'convertstext')
-    echo 2. Copy the repository URL (e.g. https://github.com/YOUR_USERNAME/convertstext.git)
-    echo -------------------------------------------------------
-    echo.
-    set /p repo_url="Enter your GitHub Repository URL: "
-    if not "!repo_url!"=="" (
-        git remote add origin !repo_url!
-        git branch -M main
-        echo.
-        echo [*] Pushing to GitHub...
-        git push -u origin main
-    ) else (
-        echo [!] No remote URL entered. You can set it later using: git remote add origin ^<url^>
-    )
+    echo [*] Setting remote origin to https://github.com/tehzeeb-mts/ConvertsText.git
+    git remote add origin https://github.com/tehzeeb-mts/ConvertsText.git
+)
+
+:: Stage and commit any unstaged changes
+echo [*] Staging all files...
+git add .
+git status --porcelain | findstr /R "." >nul
+if %ERRORLEVEL% EQU 0 (
+    set /p commit_msg="Enter commit message (Press Enter for default: 'Update ConvertsText repository'): "
+    if "!commit_msg!"=="" set "commit_msg=Update ConvertsText repository"
+    git commit -m "!commit_msg!"
 ) else (
-    echo.
-    echo [*] Pushing latest changes to origin main...
-    git push -u origin main
+    echo [*] Working tree is clean. Ready to push.
 )
 
 echo.
+echo [*] Pushing changes to https://github.com/tehzeeb-mts/ConvertsText.git (main branch)...
+echo (A browser window may open if you need to authorize GitHub access)
+echo.
+git push -u origin main
+
+echo.
 echo =======================================================
-echo Git push completed!
+echo   GitHub Push Completed!
 echo =======================================================
 pause
