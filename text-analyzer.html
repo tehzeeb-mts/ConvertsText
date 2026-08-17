@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Deep Text Analyzer & Readability Calculator | ConvertsText</title>
-  <meta name="description" content="Calculate Flesch Reading Ease, Flesch-Kincaid Grade Level, Gunning Fog Index, Coleman-Liau, and ARI readability scores online with sentiment and syllable breakdown.">
-  <meta name="keywords" content="flesch reading ease calculator, gunning fog index, readability score analyzer, flesch kincaid grade level, text analyzer online, syllable counter">
+  <meta name="description"
+    content="Calculate Flesch Reading Ease, Flesch-Kincaid Grade Level, Gunning Fog Index, Coleman-Liau, and ARI readability scores online with sentiment and syllable breakdown.">
+  <meta name="keywords"
+    content="flesch reading ease calculator, gunning fog index, readability score analyzer, flesch kincaid grade level, text analyzer online, syllable counter">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://convertstext.com/text-analyzer.html">
   <link rel="stylesheet" href="css/style.css?v=2.4.0">
@@ -14,12 +17,12 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3WH082XX7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-F3WH082XX7');
   </script>
-  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -31,6 +34,7 @@
   }
   </script>
 </head>
+
 <body>
 
   <nav class="site-nav">
@@ -55,17 +59,21 @@
           <span>🔍 Search</span>
           <kbd class="search-kbd">Ctrl K</kbd>
         </button>
-        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span class="theme-icon">🌙</span></button>
-        <button type="button" class="nav-hamburger" aria-label="Open mobile menu"><span></span><span></span><span></span></button>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span
+            class="theme-icon">🌙</span></button>
+        <button type="button" class="nav-hamburger"
+          aria-label="Open mobile menu"><span></span><span></span><span></span></button>
       </div>
     </div>
   </nav>
 
   <header class="hero-section">
     <div class="container">
-      <div class="hero-pill" style="background:var(--primary-light); color:var(--primary);">🧠 5 Academic Readability Formulas</div>
+      <div class="hero-pill" style="background:var(--primary-light); color:var(--primary);">🧠 5 Academic Readability
+        Formulas</div>
       <h1 class="hero-title">Text Analyzer & Readability Calculator</h1>
-      <p class="hero-desc">Measure reading comprehension level with Flesch Reading Ease, Flesch-Kincaid Grade Level, Gunning Fog, Coleman-Liau, and ARI indices.</p>
+      <p class="hero-desc">Measure reading comprehension level with Flesch Reading Ease, Flesch-Kincaid Grade Level,
+        Gunning Fog, Coleman-Liau, and ARI indices.</p>
     </div>
   </header>
 
@@ -86,17 +94,21 @@
             <input type="file" id="file-upload-input" accept=".txt,.md,.js,.json,.html,.css,.csv" style="display:none">
           </label>
           <button type="button" class="tool-btn" id="btn-sample"><span>📝</span> <span>Sample Essay</span></button>
-          <button type="button" class="tool-btn" id="btn-read-aloud"><span>🔊</span> <span class="btn-label">Read Aloud</span></button>
+          <button type="button" class="tool-btn" id="btn-read-aloud"><span>🔊</span> <span class="btn-label">Read
+              Aloud</span></button>
         </div>
         <div class="toolbar-group">
           <button type="button" class="tool-btn" id="btn-undo" disabled><span>↩</span> <span>Undo</span></button>
           <button type="button" class="tool-btn" id="btn-redo" disabled><span>↪</span> <span>Redo</span></button>
-          <button type="button" class="tool-btn tool-btn-danger" id="btn-clear"><span>🗑️</span> <span>Clear</span></button>
+          <button type="button" class="tool-btn tool-btn-danger" id="btn-clear"><span>🗑️</span>
+            <span>Clear</span></button>
         </div>
       </div>
 
       <div class="editor-wrapper" id="drop-area">
-        <textarea id="main-editor" class="editor-textarea" style="min-height: 220px;" placeholder="Paste your article, essay, or copy to evaluate readability and complexity..." spellcheck="true"></textarea>
+        <textarea id="main-editor" class="editor-textarea" style="min-height: 220px;"
+          placeholder="Paste your article, essay, or copy to evaluate readability and complexity..."
+          spellcheck="true"></textarea>
       </div>
 
       <!-- Quick Metrics Ribbon -->
@@ -113,15 +125,18 @@
       <div class="affiliate-booster-ribbon">
         <div class="booster-content">
           <span class="booster-badge">✨ BOOST READABILITY</span>
-          <span class="booster-text">Need to simplify hard sentences and improve flow? Try <strong>QuillBot AI Paraphraser</strong>.</span>
+          <span class="booster-text">Need to simplify hard sentences and improve flow? Try <strong>QuillBot AI
+              Paraphraser</strong>.</span>
         </div>
-        <a href="https://quillbot.com/" target="_blank" rel="noopener sponsored" class="booster-btn">Paraphrase Free →</a>
+        <a href="https://quillbot.com/" target="_blank" rel="noopener sponsored" class="booster-btn">Paraphrase Free
+          →</a>
       </div>
 
       <div class="studio-bottom-bar">
         <span class="action-status-hint">Analyzed in real-time as you write.</span>
         <div class="toolbar-group">
-          <button type="button" class="tool-btn tool-btn-primary" id="btn-copy"><span>📋</span> <span>Copy Text</span></button>
+          <button type="button" class="tool-btn tool-btn-primary" id="btn-copy"><span>📋</span> <span>Copy
+              Text</span></button>
           <button type="button" class="tool-btn" id="btn-download"><span>💾</span> <span>Download .txt</span></button>
         </div>
       </div>
@@ -129,13 +144,15 @@
 
     <!-- 5 Readability Score Cards Grid -->
     <section>
-      <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1rem;">Readability Scores & Grade Levels</h2>
-      
+      <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1rem;">Readability Scores & Grade
+        Levels</h2>
+
       <div class="readability-cards-grid">
         <div class="readability-card" style="border-top: 4px solid var(--primary);">
           <div class="readability-card-title">Flesch Reading Ease</div>
           <div class="readability-score-large" id="card-flesch-score" style="color: var(--primary);">0</div>
-          <div id="card-flesch-badge" class="readability-pill badge-standard" style="margin-bottom: 0.5rem;">Standard</div>
+          <div id="card-flesch-badge" class="readability-pill badge-standard" style="margin-bottom: 0.5rem;">Standard
+          </div>
           <div class="readability-card-desc" id="card-flesch-desc">Equivalent to 8th & 9th Grade</div>
         </div>
 
@@ -168,34 +185,45 @@
     <!-- Sentence Complexity & Longest Words -->
     <div class="dual-editor-grid" style="margin-top: 1.5rem;">
       <div class="dual-editor-box" style="padding: 1.5rem;">
-        <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 1rem;">Sentence Variety Breakdown</h3>
+        <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 1rem;">Sentence Variety
+          Breakdown</h3>
         <div style="display: flex; flex-direction: column; gap: 0.75rem;">
           <div>
             <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:0.25rem;">
               <span>Short Sentences (&lt; 10 words)</span>
               <strong id="sent-short-count">0</strong>
             </div>
-            <div class="social-progress-bar"><div id="sent-short-bar" class="social-progress-fill" style="width: 0%; background: var(--accent-emerald);"></div></div>
+            <div class="social-progress-bar">
+              <div id="sent-short-bar" class="social-progress-fill"
+                style="width: 0%; background: var(--accent-emerald);"></div>
+            </div>
           </div>
           <div>
             <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:0.25rem;">
               <span>Medium Sentences (10 - 22 words)</span>
               <strong id="sent-medium-count">0</strong>
             </div>
-            <div class="social-progress-bar"><div id="sent-medium-bar" class="social-progress-fill" style="width: 0%; background: var(--primary);"></div></div>
+            <div class="social-progress-bar">
+              <div id="sent-medium-bar" class="social-progress-fill" style="width: 0%; background: var(--primary);">
+              </div>
+            </div>
           </div>
           <div>
             <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:0.25rem;">
               <span>Long Sentences (&gt; 22 words)</span>
               <strong id="sent-long-count">0</strong>
             </div>
-            <div class="social-progress-bar"><div id="sent-long-bar" class="social-progress-fill" style="width: 0%; background: var(--accent-amber);"></div></div>
+            <div class="social-progress-bar">
+              <div id="sent-long-bar" class="social-progress-fill" style="width: 0%; background: var(--accent-amber);">
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="dual-editor-box" style="padding: 1.5rem;">
-        <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 1rem;">Longest & Complex Words</h3>
+        <h3 style="font-family: var(--font-heading); font-size: 1.15rem; margin-bottom: 1rem;">Longest & Complex Words
+        </h3>
         <div id="longest-words-list" style="display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem;">
           <span style="color: var(--text-muted);">Enter text above to see longest words.</span>
         </div>
@@ -208,7 +236,8 @@
       <div class="footer-grid">
         <div>
           <div class="footer-brand-title">Converts<span class="brand-accent">Text</span></div>
-          <p class="footer-brand-desc">Fast, private, and accessible text conversion tools designed for writers, editors, and software developers.</p>
+          <p class="footer-brand-desc">Fast, private, and accessible text conversion tools designed for writers,
+            editors, and software developers.</p>
           <div class="privacy-badge">🔒 100% Client-Side Privacy</div>
         </div>
 
@@ -338,4 +367,5 @@ By keeping your writing concise, you ensure your message reaches a wider and mor
     });
   </script>
 </body>
+
 </html>

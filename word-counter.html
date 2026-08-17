@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Word Counter & Character Counter with Social Media Limits | ConvertsText</title>
-  <meta name="description" content="Count words, characters (with & without spaces), sentences, paragraphs, reading time, speaking time, and track Twitter, SMS, LinkedIn, and Instagram character limits online for free.">
-  <meta name="keywords" content="word counter online, character counter, twitter character count, sms character limit, meta description counter, keyword density analyzer">
+  <meta name="description"
+    content="Count words, characters (with & without spaces), sentences, paragraphs, reading time, speaking time, and track Twitter, SMS, LinkedIn, and Instagram character limits online for free.">
+  <meta name="keywords"
+    content="word counter online, character counter, twitter character count, sms character limit, meta description counter, keyword density analyzer">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://convertstext.com/word-counter.html">
   <link rel="stylesheet" href="css/style.css?v=2.4.0">
@@ -14,12 +17,12 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3WH082XX7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-F3WH082XX7');
   </script>
-  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -31,6 +34,7 @@
   }
   </script>
 </head>
+
 <body>
 
   <nav class="site-nav">
@@ -55,17 +59,21 @@
           <span>🔍 Search</span>
           <kbd class="search-kbd">Ctrl K</kbd>
         </button>
-        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span class="theme-icon">🌙</span></button>
-        <button type="button" class="nav-hamburger" aria-label="Open mobile menu"><span></span><span></span><span></span></button>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span
+            class="theme-icon">🌙</span></button>
+        <button type="button" class="nav-hamburger"
+          aria-label="Open mobile menu"><span></span><span></span><span></span></button>
       </div>
     </div>
   </nav>
 
   <header class="hero-section">
     <div class="container">
-      <div class="hero-pill" style="background:var(--accent-cyan-light); color:var(--accent-cyan);">📊 Live Word & Character Tracker</div>
+      <div class="hero-pill" style="background:var(--accent-cyan-light); color:var(--accent-cyan);">📊 Live Word &
+        Character Tracker</div>
       <h1 class="hero-title">Word Counter & Character Counter</h1>
-      <p class="hero-desc">Real-time word counts, character limits for social media (Twitter/X, SMS, Meta Descriptions, LinkedIn), reading time, and keyword density.</p>
+      <p class="hero-desc">Real-time word counts, character limits for social media (Twitter/X, SMS, Meta Descriptions,
+        LinkedIn), reading time, and keyword density.</p>
     </div>
   </header>
 
@@ -86,59 +94,88 @@
             <input type="file" id="file-upload-input" accept=".txt,.md,.js,.json,.html,.css,.csv" style="display:none">
           </label>
           <button type="button" class="tool-btn" id="btn-sample"><span>📝</span> <span>Sample Text</span></button>
-          <button type="button" class="tool-btn" id="btn-read-aloud"><span>🔊</span> <span class="btn-label">Read Aloud</span></button>
+          <button type="button" class="tool-btn" id="btn-read-aloud"><span>🔊</span> <span class="btn-label">Read
+              Aloud</span></button>
         </div>
         <div class="toolbar-group">
           <button type="button" class="tool-btn" id="btn-undo" disabled><span>↩</span> <span>Undo</span></button>
           <button type="button" class="tool-btn" id="btn-redo" disabled><span>↪</span> <span>Redo</span></button>
-          <button type="button" class="tool-btn tool-btn-danger" id="btn-clear"><span>🗑️</span> <span>Clear</span></button>
+          <button type="button" class="tool-btn tool-btn-danger" id="btn-clear"><span>🗑️</span>
+            <span>Clear</span></button>
         </div>
       </div>
 
       <div class="editor-wrapper" id="drop-area">
-        <textarea id="main-editor" class="editor-textarea" style="min-height: 220px;" placeholder="Type or paste your text to count words, characters, and check social limits..." spellcheck="true"></textarea>
+        <textarea id="main-editor" class="editor-textarea" style="min-height: 220px;"
+          placeholder="Type or paste your text to count words, characters, and check social limits..."
+          spellcheck="true"></textarea>
       </div>
 
       <!-- Enhanced Analytics Matrix -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 1rem; padding: 1.5rem; background: var(--bg-tertiary); border-top: 1px solid var(--border-subtle);">
-        <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
+      <div
+        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr)); gap: 1rem; padding: 1.5rem; background: var(--bg-tertiary); border-top: 1px solid var(--border-subtle);">
+        <div
+          style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
           <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">WORDS</div>
-          <div id="stat-words" style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--primary);">0</div>
+          <div id="stat-words"
+            style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--primary);">0
+          </div>
         </div>
 
-        <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
+        <div
+          style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
           <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">CHARACTERS</div>
-          <div id="stat-characters" style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--text-primary);">0</div>
+          <div id="stat-characters"
+            style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--text-primary);">
+            0</div>
         </div>
 
-        <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
+        <div
+          style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
           <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">WITHOUT SPACES</div>
-          <div id="stat-characters-no-spaces" style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--text-secondary);">0</div>
+          <div id="stat-characters-no-spaces"
+            style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--text-secondary);">
+            0</div>
         </div>
 
-        <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
+        <div
+          style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
           <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">SENTENCES</div>
-          <div id="stat-sentences" style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--accent-emerald);">0</div>
+          <div id="stat-sentences"
+            style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--accent-emerald);">
+            0</div>
         </div>
 
-        <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
+        <div
+          style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
           <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">PARAGRAPHS</div>
-          <div id="stat-paragraphs" style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--accent-violet);">0</div>
+          <div id="stat-paragraphs"
+            style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--accent-violet);">
+            0</div>
         </div>
 
-        <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
+        <div
+          style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
           <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">READING TIME</div>
-          <div id="stat-reading-time" style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--accent-cyan);">0s</div>
+          <div id="stat-reading-time"
+            style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--accent-cyan);">
+            0s</div>
         </div>
 
-        <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
+        <div
+          style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
           <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">SPEAKING TIME</div>
-          <div id="stat-speaking-time" style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--accent-amber);">0s</div>
+          <div id="stat-speaking-time"
+            style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--accent-amber);">
+            0s</div>
         </div>
 
-        <div style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
+        <div
+          style="background: var(--bg-card); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); text-align: center;">
           <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600;">AVG WORD LEN</div>
-          <div id="stat-avg-word" style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--text-secondary);">0</div>
+          <div id="stat-avg-word"
+            style="font-family: var(--font-heading); font-size: 1.85rem; font-weight: 800; color: var(--text-secondary);">
+            0</div>
         </div>
       </div>
 
@@ -146,15 +183,18 @@
       <div class="affiliate-booster-ribbon">
         <div class="booster-content">
           <span class="booster-badge">✍️ SMART EDITING</span>
-          <span class="booster-text">Writing for social media, marketing, or essays? Check tone & grammar with <strong>Grammarly</strong>.</span>
+          <span class="booster-text">Writing for social media, marketing, or essays? Check tone & grammar with
+            <strong>Grammarly</strong>.</span>
         </div>
-        <a href="https://www.grammarly.com/" target="_blank" rel="noopener sponsored" class="booster-btn">Try Grammarly Free →</a>
+        <a href="https://www.grammarly.com/" target="_blank" rel="noopener sponsored" class="booster-btn">Try Grammarly
+          Free →</a>
       </div>
 
       <div class="studio-bottom-bar">
         <span class="action-status-hint">Calculated in real-time as you write.</span>
         <div class="toolbar-group">
-          <button type="button" class="tool-btn tool-btn-primary" id="btn-copy"><span>📋</span> <span>Copy Text</span></button>
+          <button type="button" class="tool-btn tool-btn-primary" id="btn-copy"><span>📋</span> <span>Copy
+              Text</span></button>
           <button type="button" class="tool-btn" id="btn-download"><span>💾</span> <span>Download .txt</span></button>
         </div>
       </div>
@@ -162,8 +202,10 @@
 
     <!-- Social Media Character Limits Tracker -->
     <section style="margin-bottom: 2.5rem;">
-      <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.75rem;">Social Media & SEO Character Limits</h2>
-      <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.25rem;">Monitor your character length to ensure posts fit perfectly on major platforms without unwanted truncation.</p>
+      <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.75rem;">Social Media & SEO
+        Character Limits</h2>
+      <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.25rem;">Monitor your character length
+        to ensure posts fit perfectly on major platforms without unwanted truncation.</p>
 
       <div class="social-limits-grid">
         <div class="social-limit-box">
@@ -230,7 +272,8 @@
 
     <!-- Keyword Frequency Section -->
     <section style="margin-bottom: 3rem;">
-      <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1rem;">Top Keyword Density & Frequency</h2>
+      <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 1rem;">Top Keyword Density &
+        Frequency</h2>
       <div class="frequency-table-wrapper">
         <table class="frequency-table">
           <thead>
@@ -242,7 +285,8 @@
           </thead>
           <tbody id="keyword-frequency-body">
             <tr>
-              <td colspan="3" style="text-align: center; color: var(--text-muted);">Enter text above to analyze word frequency.</td>
+              <td colspan="3" style="text-align: center; color: var(--text-muted);">Enter text above to analyze word
+                frequency.</td>
             </tr>
           </tbody>
         </table>
@@ -256,7 +300,8 @@
       <div class="footer-grid">
         <div>
           <div class="footer-brand-title">Converts<span class="brand-accent">Text</span></div>
-          <p class="footer-brand-desc">Fast, private, and accessible text conversion tools designed for writers, editors, and software developers.</p>
+          <p class="footer-brand-desc">Fast, private, and accessible text conversion tools designed for writers,
+            editors, and software developers.</p>
           <div class="privacy-badge">🔒 100% Client-Side Privacy</div>
         </div>
 
@@ -398,4 +443,5 @@ Track word count, reading time, and social media character limits for Twitter, S
     });
   </script>
 </body>
+
 </html>

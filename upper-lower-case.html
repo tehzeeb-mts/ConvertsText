@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UPPER CASE & lower case Converter Online | ConvertsText</title>
-  <meta name="description" content="Quickly convert any text between UPPERCASE, lowercase, alternating case, and inverse case online for free. Fast, client-side, and secure.">
-  <meta name="keywords" content="upper case converter, lower case converter, uppercase to lowercase, alternating case converter, inverse case, all caps to lowercase">
+  <meta name="description"
+    content="Quickly convert any text between UPPERCASE, lowercase, alternating case, and inverse case online for free. Fast, client-side, and secure.">
+  <meta name="keywords"
+    content="upper case converter, lower case converter, uppercase to lowercase, alternating case converter, inverse case, all caps to lowercase">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://convertstext.com/upper-lower-case.html">
@@ -15,12 +18,12 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3WH082XX7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-F3WH082XX7');
   </script>
-  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -32,6 +35,7 @@
   }
   </script>
 </head>
+
 <body>
 
   <nav class="site-nav">
@@ -45,9 +49,12 @@
         <li class="nav-item"><a href="index.html" class="nav-link">Studio</a></li>
         <li class="nav-item"><a href="upper-lower-case.html" class="nav-link active">Standard Cases ▾</a>
           <ul class="nav-dropdown">
-            <li><a href="sentence-case.html" class="dropdown-link"><span class="dropdown-badge">Aa</span> Sentence Case</a></li>
-            <li><a href="title-case.html" class="dropdown-link"><span class="dropdown-badge">Abc</span> Title & Capitalized</a></li>
-            <li><a href="upper-lower-case.html" class="dropdown-link"><span class="dropdown-badge">AA</span> Upper & Lower Case</a></li>
+            <li><a href="sentence-case.html" class="dropdown-link"><span class="dropdown-badge">Aa</span> Sentence
+                Case</a></li>
+            <li><a href="title-case.html" class="dropdown-link"><span class="dropdown-badge">Abc</span> Title &
+                Capitalized</a></li>
+            <li><a href="upper-lower-case.html" class="dropdown-link"><span class="dropdown-badge">AA</span> Upper &
+                Lower Case</a></li>
           </ul>
         </li>
         <li class="nav-item"><a href="developer-cases.html" class="nav-link">Developer</a></li>
@@ -61,8 +68,10 @@
           <span>🔍 Search</span>
           <kbd class="search-kbd">Ctrl K</kbd>
         </button>
-        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span class="theme-icon">🌙</span></button>
-        <button type="button" class="nav-hamburger" aria-label="Open mobile menu"><span></span><span></span><span></span></button>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span
+            class="theme-icon">🌙</span></button>
+        <button type="button" class="nav-hamburger"
+          aria-label="Open mobile menu"><span></span><span></span><span></span></button>
       </div>
     </div>
   </nav>
@@ -71,7 +80,8 @@
     <div class="container">
       <div class="hero-pill">🔤 Letter Case Transformation</div>
       <h1 class="hero-title">UPPER CASE & lower case Converter</h1>
-      <p class="hero-desc">Instantly convert between uppercase, lowercase, alternating case (aLtErNaTiNg), and inverted case character-by-character.</p>
+      <p class="hero-desc">Instantly convert between uppercase, lowercase, alternating case (aLtErNaTiNg), and inverted
+        case character-by-character.</p>
     </div>
   </header>
 
@@ -84,17 +94,20 @@
             <input type="file" id="file-upload-input" accept=".txt,.md,.js,.json,.html,.css,.csv" style="display:none">
           </label>
           <button type="button" class="tool-btn" id="btn-sample"><span>📝</span> <span>Sample Text</span></button>
-          <button type="button" class="tool-btn" id="btn-read-aloud"><span>🔊</span> <span class="btn-label">Read Aloud</span></button>
+          <button type="button" class="tool-btn" id="btn-read-aloud"><span>🔊</span> <span class="btn-label">Read
+              Aloud</span></button>
         </div>
         <div class="toolbar-group">
           <button type="button" class="tool-btn" id="btn-undo" disabled><span>↩</span> <span>Undo</span></button>
           <button type="button" class="tool-btn" id="btn-redo" disabled><span>↪</span> <span>Redo</span></button>
-          <button type="button" class="tool-btn tool-btn-danger" id="btn-clear"><span>🗑️</span> <span>Clear</span></button>
+          <button type="button" class="tool-btn tool-btn-danger" id="btn-clear"><span>🗑️</span>
+            <span>Clear</span></button>
         </div>
       </div>
 
       <div class="editor-wrapper" id="drop-area">
-        <textarea id="main-editor" class="editor-textarea" placeholder="Type or paste your text to change case..." spellcheck="false"></textarea>
+        <textarea id="main-editor" class="editor-textarea" placeholder="Type or paste your text to change case..."
+          spellcheck="false"></textarea>
       </div>
 
       <div class="stats-ribbon">
@@ -106,7 +119,8 @@
 
       <div class="conversion-actions-area">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem;">
-          <button type="button" class="convert-btn" id="btn-upper" style="background: var(--primary-light); border-color: var(--primary);">
+          <button type="button" class="convert-btn" id="btn-upper"
+            style="background: var(--primary-light); border-color: var(--primary);">
             <div class="btn-title-row">
               <span class="convert-btn-name">UPPER CASE</span>
               <span class="dropdown-badge">ALL CAPS</span>
@@ -114,7 +128,8 @@
             <span class="convert-btn-sample">CONVERT ALL TO CAPITALS</span>
           </button>
 
-          <button type="button" class="convert-btn" id="btn-lower" style="background: var(--accent-emerald-light); border-color: var(--accent-emerald);">
+          <button type="button" class="convert-btn" id="btn-lower"
+            style="background: var(--accent-emerald-light); border-color: var(--accent-emerald);">
             <div class="btn-title-row">
               <span class="convert-btn-name">lower case</span>
               <span class="dropdown-badge" style="color:var(--accent-emerald);">all small</span>
@@ -143,7 +158,8 @@
       <div class="studio-bottom-bar">
         <span class="action-status-hint">Instant letter casing. Pure client-side execution.</span>
         <div class="toolbar-group">
-          <button type="button" class="tool-btn tool-btn-primary" id="btn-copy"><span>📋</span> <span>Copy Result</span></button>
+          <button type="button" class="tool-btn tool-btn-primary" id="btn-copy"><span>📋</span> <span>Copy
+              Result</span></button>
           <button type="button" class="tool-btn" id="btn-download"><span>💾</span> <span>Download .txt</span></button>
         </div>
       </div>
@@ -151,14 +167,19 @@
 
     <section class="content-guide-section">
       <h2>About Uppercase, Lowercase, and Stylized Cases</h2>
-      <p>Letter case conversions are among the most frequent text formatting tasks performed daily by students, writers, developers, and data analysts.</p>
+      <p>Letter case conversions are among the most frequent text formatting tasks performed daily by students, writers,
+        developers, and data analysts.</p>
 
       <h3>When to use these modes:</h3>
       <ul>
-        <li><strong>UPPER CASE:</strong> Great for emphasis, headlines, database constants, legal disclaimers, or airport code displays.</li>
-        <li><strong>lower case:</strong> Essential for email addresses, usernames, SEO slugs, hashtags, and normalizing database entries before deduplication.</li>
-        <li><strong>aLtErNaTiNg cAsE:</strong> Widely popularized on social media and gaming forums for playful expressions and ironic mockery.</li>
-        <li><strong>InVeRsE CaSe:</strong> Inverts whatever casing is currently active in the text—great for fixing text typed with Caps Lock enabled accidentally!</li>
+        <li><strong>UPPER CASE:</strong> Great for emphasis, headlines, database constants, legal disclaimers, or
+          airport code displays.</li>
+        <li><strong>lower case:</strong> Essential for email addresses, usernames, SEO slugs, hashtags, and normalizing
+          database entries before deduplication.</li>
+        <li><strong>aLtErNaTiNg cAsE:</strong> Widely popularized on social media and gaming forums for playful
+          expressions and ironic mockery.</li>
+        <li><strong>InVeRsE CaSe:</strong> Inverts whatever casing is currently active in the text—great for fixing text
+          typed with Caps Lock enabled accidentally!</li>
       </ul>
     </section>
   </main>
@@ -229,4 +250,5 @@
     });
   </script>
 </body>
+
 </html>

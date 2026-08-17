@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Secure Password & UUID Generator Online | ConvertsText</title>
-  <meta name="description" content="Generate cryptographically secure random passwords and bulk UUID v4 unique identifiers online for free. 100% private, client-side, using Web Crypto API.">
-  <meta name="keywords" content="password generator online, secure password generator, uuid generator v4, bulk uuid generator, random string generator, cryptographic random password">
+  <meta name="description"
+    content="Generate cryptographically secure random passwords and bulk UUID v4 unique identifiers online for free. 100% private, client-side, using Web Crypto API.">
+  <meta name="keywords"
+    content="password generator online, secure password generator, uuid generator v4, bulk uuid generator, random string generator, cryptographic random password">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://convertstext.com/random-generator.html">
@@ -15,12 +18,12 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3WH082XX7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-F3WH082XX7');
   </script>
-  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -32,6 +35,7 @@
   }
   </script>
 </head>
+
 <body>
 
   <nav class="site-nav">
@@ -55,17 +59,21 @@
           <span>🔍 Search</span>
           <kbd class="search-kbd">Ctrl K</kbd>
         </button>
-        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span class="theme-icon">🌙</span></button>
-        <button type="button" class="nav-hamburger" aria-label="Open mobile menu"><span></span><span></span><span></span></button>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span
+            class="theme-icon">🌙</span></button>
+        <button type="button" class="nav-hamburger"
+          aria-label="Open mobile menu"><span></span><span></span><span></span></button>
       </div>
     </div>
   </nav>
 
   <header class="hero-section">
     <div class="container">
-      <div class="hero-pill" style="background:var(--accent-emerald-light); color:var(--accent-emerald);">🔒 Web Crypto API Cryptographic Security</div>
+      <div class="hero-pill" style="background:var(--accent-emerald-light); color:var(--accent-emerald);">🔒 Web Crypto
+        API Cryptographic Security</div>
       <h1 class="hero-title">Secure Password & UUID Generator</h1>
-      <p class="hero-desc">Generate strong random passwords with entropy strength estimation and batch UUID v4 identifiers client-side.</p>
+      <p class="hero-desc">Generate strong random passwords with entropy strength estimation and batch UUID v4
+        identifiers client-side.</p>
     </div>
   </header>
 
@@ -90,7 +98,8 @@
           <!-- Strength Meter -->
           <div style="margin-bottom: 1.5rem;">
             <div style="display:flex; justify-content:space-between; font-size:0.85rem; font-weight:600;">
-              <span>Password Strength: <strong id="strength-label" style="color:var(--accent-emerald);">Strong</strong></span>
+              <span>Password Strength: <strong id="strength-label"
+                  style="color:var(--accent-emerald);">Strong</strong></span>
               <span id="entropy-bits" style="color:var(--text-muted);">~95 bits entropy</span>
             </div>
             <div class="strength-bar-wrapper">
@@ -104,7 +113,8 @@
           <!-- Options -->
           <div style="display: flex; flex-direction: column; gap: 1rem;">
             <div>
-              <div style="display:flex; justify-content:space-between; font-size:0.875rem; font-weight:600; margin-bottom:0.25rem;">
+              <div
+                style="display:flex; justify-content:space-between; font-size:0.875rem; font-weight:600; margin-bottom:0.25rem;">
                 <span>Password Length:</span>
                 <strong id="length-val">16</strong>
               </div>
@@ -112,11 +122,16 @@
             </div>
 
             <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.75rem; font-size:0.875rem;">
-              <label style="display:flex; align-items:center; gap:0.4rem;"><input type="checkbox" id="chk-upper" checked> Uppercase (A-Z)</label>
-              <label style="display:flex; align-items:center; gap:0.4rem;"><input type="checkbox" id="chk-lower" checked> Lowercase (a-z)</label>
-              <label style="display:flex; align-items:center; gap:0.4rem;"><input type="checkbox" id="chk-digits" checked> Numbers (0-9)</label>
-              <label style="display:flex; align-items:center; gap:0.4rem;"><input type="checkbox" id="chk-symbols" checked> Symbols (!@#$)</label>
-              <label style="display:flex; align-items:center; gap:0.4rem; grid-column:span 2;"><input type="checkbox" id="chk-exclude-ambiguous"> Exclude Ambiguous (1, l, I, 0, O)</label>
+              <label style="display:flex; align-items:center; gap:0.4rem;"><input type="checkbox" id="chk-upper"
+                  checked> Uppercase (A-Z)</label>
+              <label style="display:flex; align-items:center; gap:0.4rem;"><input type="checkbox" id="chk-lower"
+                  checked> Lowercase (a-z)</label>
+              <label style="display:flex; align-items:center; gap:0.4rem;"><input type="checkbox" id="chk-digits"
+                  checked> Numbers (0-9)</label>
+              <label style="display:flex; align-items:center; gap:0.4rem;"><input type="checkbox" id="chk-symbols"
+                  checked> Symbols (!@#$)</label>
+              <label style="display:flex; align-items:center; gap:0.4rem; grid-column:span 2;"><input type="checkbox"
+                  id="chk-exclude-ambiguous"> Exclude Ambiguous (1, l, I, 0, O)</label>
             </div>
           </div>
         </div>
@@ -143,7 +158,9 @@
             </select>
           </div>
 
-          <textarea id="uuid-output" class="editor-textarea" style="font-family: var(--font-mono); font-size: 0.875rem; min-height: 220px; border:1px solid var(--border-subtle); border-radius:var(--radius-sm);" readonly></textarea>
+          <textarea id="uuid-output" class="editor-textarea"
+            style="font-family: var(--font-mono); font-size: 0.875rem; min-height: 220px; border:1px solid var(--border-subtle); border-radius:var(--radius-sm);"
+            readonly></textarea>
 
           <div style="margin-top: 1rem; display:flex; justify-content:flex-end;">
             <button type="button" class="tool-btn tool-btn-primary" id="btn-copy-uuids">
@@ -183,7 +200,7 @@
       function generatePass() {
         const len = parseInt(passLength.value, 10);
         lengthVal.textContent = len;
-        
+
         const pwd = ConvertsEngine.generateSecurePassword(
           len,
           chkUpper.checked,
@@ -230,4 +247,5 @@
     });
   </script>
 </body>
+
 </html>

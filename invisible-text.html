@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Invisible Text & Zero-Width Steganography Tool | ConvertsText</title>
-  <meta name="description" content="Hide secret invisible messages inside plain text using Unicode Zero-Width Spaces (steganography) and generate invisible characters for Discord, Instagram, and usernames.">
-  <meta name="keywords" content="invisible text generator, zero width space generator, text steganography online, hide secret message in text, blank space copy paste">
+  <meta name="description"
+    content="Hide secret invisible messages inside plain text using Unicode Zero-Width Spaces (steganography) and generate invisible characters for Discord, Instagram, and usernames.">
+  <meta name="keywords"
+    content="invisible text generator, zero width space generator, text steganography online, hide secret message in text, blank space copy paste">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://convertstext.com/invisible-text.html">
@@ -15,12 +18,12 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3WH082XX7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-F3WH082XX7');
   </script>
-  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -32,6 +35,7 @@
   }
   </script>
 </head>
+
 <body>
 
   <nav class="site-nav">
@@ -55,30 +59,37 @@
           <span>🔍 Search</span>
           <kbd class="search-kbd">Ctrl K</kbd>
         </button>
-        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span class="theme-icon">🌙</span></button>
-        <button type="button" class="nav-hamburger" aria-label="Open mobile menu"><span></span><span></span><span></span></button>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span
+            class="theme-icon">🌙</span></button>
+        <button type="button" class="nav-hamburger"
+          aria-label="Open mobile menu"><span></span><span></span><span></span></button>
       </div>
     </div>
   </nav>
 
   <header class="hero-section">
     <div class="container">
-      <div class="hero-pill" style="background:var(--bg-tertiary); color:var(--text-primary);">🕵️ Zero-Width Unicode Steganography</div>
+      <div class="hero-pill" style="background:var(--bg-tertiary); color:var(--text-primary);">🕵️ Zero-Width Unicode
+        Steganography</div>
       <h1 class="hero-title">Invisible Text & Secret Message Steganography</h1>
-      <p class="hero-desc">Conceal secret messages completely invisible to the naked eye inside normal sentences using zero-width characters.</p>
+      <p class="hero-desc">Conceal secret messages completely invisible to the naked eye inside normal sentences using
+        zero-width characters.</p>
     </div>
   </header>
 
   <main class="container">
     <!-- Mode Tabs -->
     <div style="display:flex; justify-content:center; gap:0.75rem; margin-bottom: 2rem;">
-      <button type="button" class="category-pill-btn active" id="tab-encode-mode" style="padding:0.6rem 1.5rem; font-size:0.95rem;">
+      <button type="button" class="category-pill-btn active" id="tab-encode-mode"
+        style="padding:0.6rem 1.5rem; font-size:0.95rem;">
         <span>🔒 Hide Secret Message (Encode)</span>
       </button>
-      <button type="button" class="category-pill-btn" id="tab-decode-mode" style="padding:0.6rem 1.5rem; font-size:0.95rem;">
+      <button type="button" class="category-pill-btn" id="tab-decode-mode"
+        style="padding:0.6rem 1.5rem; font-size:0.95rem;">
         <span>🔓 Reveal Hidden Secret (Decode)</span>
       </button>
-      <button type="button" class="category-pill-btn" id="tab-blank-mode" style="padding:0.6rem 1.5rem; font-size:0.95rem;">
+      <button type="button" class="category-pill-btn" id="tab-blank-mode"
+        style="padding:0.6rem 1.5rem; font-size:0.95rem;">
         <span>👻 Copy Blank Invisible Space</span>
       </button>
     </div>
@@ -88,11 +99,13 @@
       <div class="tool-controls-panel" style="background:var(--bg-card);">
         <div class="control-item">
           <label class="control-label">1. Public Visible Cover Text (What everyone sees)</label>
-          <input type="text" id="cover-text-input" class="control-input" placeholder="e.g. Having a great day at work!" value="Just sharing a quick update with the team.">
+          <input type="text" id="cover-text-input" class="control-input" placeholder="e.g. Having a great day at work!"
+            value="Just sharing a quick update with the team.">
         </div>
         <div class="control-item">
           <label class="control-label">2. Secret Hidden Message (Invisible payload)</label>
-          <input type="text" id="secret-text-input" class="control-input" placeholder="e.g. Meet at 4 PM in room 302" value="The secret password is: Nebula#2026">
+          <input type="text" id="secret-text-input" class="control-input" placeholder="e.g. Meet at 4 PM in room 302"
+            value="The secret password is: Nebula#2026">
         </div>
         <div class="control-item" style="justify-content:flex-end;">
           <button type="button" class="tool-btn tool-btn-primary" id="btn-encode-stego">
@@ -102,11 +115,13 @@
       </div>
 
       <div class="editor-wrapper">
-        <textarea id="encode-output" class="editor-textarea" style="min-height: 180px;" placeholder="Encoded output with invisible secret will appear here..." readonly></textarea>
+        <textarea id="encode-output" class="editor-textarea" style="min-height: 180px;"
+          placeholder="Encoded output with invisible secret will appear here..." readonly></textarea>
       </div>
 
       <div class="studio-bottom-bar">
-        <span class="action-status-hint">The output looks completely normal to humans, but contains hidden binary encoded in zero-width characters.</span>
+        <span class="action-status-hint">The output looks completely normal to humans, but contains hidden binary
+          encoded in zero-width characters.</span>
         <button type="button" class="tool-btn tool-btn-primary" id="btn-copy-encoded">
           <span>📋 Copy Encoded Text</span>
         </button>
@@ -116,7 +131,8 @@
     <!-- 2. DECODE SECTION -->
     <section id="section-decode" class="converter-studio" style="display:none;">
       <div class="editor-wrapper">
-        <textarea id="decode-input" class="editor-textarea" style="min-height: 180px;" placeholder="Paste any text here to scan and uncover hidden invisible messages..."></textarea>
+        <textarea id="decode-input" class="editor-textarea" style="min-height: 180px;"
+          placeholder="Paste any text here to scan and uncover hidden invisible messages..."></textarea>
       </div>
 
       <div class="conversion-actions-area" style="background:var(--bg-tertiary);">
@@ -126,8 +142,10 @@
       </div>
 
       <div style="padding:1.5rem; background:var(--bg-card); border-top:1px solid var(--border-subtle);">
-        <div style="font-weight:700; font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">REVEALED SECRET PAYLOAD:</div>
-        <div id="decode-result-box" style="padding:1.25rem; background:var(--bg-tertiary); border-radius:var(--radius-md); font-weight:700; color:var(--primary); font-size:1.1rem; border:1px dashed var(--primary);">
+        <div style="font-weight:700; font-size:0.85rem; color:var(--text-muted); margin-bottom:0.5rem;">REVEALED SECRET
+          PAYLOAD:</div>
+        <div id="decode-result-box"
+          style="padding:1.25rem; background:var(--bg-tertiary); border-radius:var(--radius-md); font-weight:700; color:var(--primary); font-size:1.1rem; border:1px dashed var(--primary);">
           No text scanned yet. Paste text and click "Scan & Reveal".
         </div>
       </div>
@@ -136,9 +154,13 @@
     <!-- 3. BLANK INVISIBLE CHARACTERS SECTION -->
     <section id="section-blank" class="converter-studio" style="display:none;">
       <div style="padding: 2.5rem; text-align: center;">
-        <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.75rem;">Copy Blank Invisible Character</h2>
-        <p style="font-size: 0.95rem; color: var(--text-secondary); max-width: 500px; margin: 0 auto 1.5rem;">Use zero-width space characters for blank Discord usernames, invisible WhatsApp messages, or aesthetic spacing.</p>
-        <button type="button" class="tool-btn tool-btn-primary" id="btn-copy-zwsp" style="padding: 0.85rem 2rem; font-size: 1.1rem;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: 0.75rem;">Copy Blank Invisible
+          Character</h2>
+        <p style="font-size: 0.95rem; color: var(--text-secondary); max-width: 500px; margin: 0 auto 1.5rem;">Use
+          zero-width space characters for blank Discord usernames, invisible WhatsApp messages, or aesthetic spacing.
+        </p>
+        <button type="button" class="tool-btn tool-btn-primary" id="btn-copy-zwsp"
+          style="padding: 0.85rem 2rem; font-size: 1.1rem;">
           <span>📋 Copy Zero-Width Space (\u200B)</span>
         </button>
       </div>
@@ -198,7 +220,7 @@
         const cover = document.getElementById('cover-text-input').value;
         const secret = document.getElementById('secret-text-input').value;
         if (!secret) return window.app.showToast('Please enter a secret message', 'warning');
-        
+
         const encoded = ConvertsEngine.encodeInvisibleMessage(cover, secret);
         document.getElementById('encode-output').value = encoded;
         window.app.showToast('Secret message hidden inside text!', 'success');
@@ -228,4 +250,5 @@
     });
   </script>
 </body>
+
 </html>

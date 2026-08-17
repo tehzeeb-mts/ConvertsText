@@ -13,7 +13,7 @@ const ALL_TOOLS_REGISTRY = [
   { id: 'alternating-case', name: 'aLtErNaTiNg cAsE', category: 'Standard Cases', icon: 'aL', page: 'upper-lower-case.html', desc: 'Toggle between lowercase and uppercase letters' },
   { id: 'inverse-case', name: 'InVeRsE CaSe', category: 'Standard Cases', icon: 'iNv', page: 'upper-lower-case.html', desc: 'Invert the case of each character in text' },
   { id: 'mocking-case', name: 'mOcKiNg cAsE', category: 'Standard Cases', icon: '🤪', page: 'stylized-fancy-text.html', desc: 'Spongebob mocking meme random casing' },
-  
+
   // Developer Cases
   { id: 'camel-case', name: 'camelCase', category: 'Developer Cases', icon: 'dC', page: 'developer-cases.html', desc: 'Variable naming format starting with lowercase' },
   { id: 'pascal-case', name: 'PascalCase', category: 'Developer Cases', icon: 'Pc', page: 'developer-cases.html', desc: 'Class and component naming with initial capital' },
@@ -91,7 +91,6 @@ class ConvertsApp {
     this.initSpeechRecognition();
     this.initCookieConsent();
     this.initFaqAccordions();
-    this.initExitIntentModal();
     this.checkStagingDomainNoindex();
   }
 
@@ -115,9 +114,9 @@ class ConvertsApp {
   // THEME MANAGEMENT (Dark / Light)
   // -------------------------------------------------------------
   initTheme() {
-    const savedTheme = localStorage.getItem('convertcase_theme') || 
+    const savedTheme = localStorage.getItem('convertcase_theme') ||
       (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    
+
     document.documentElement.setAttribute('data-theme', savedTheme);
     this.updateThemeIcons(savedTheme);
 
@@ -129,7 +128,7 @@ class ConvertsApp {
   toggleTheme() {
     const current = document.documentElement.getAttribute('data-theme') || 'light';
     const next = current === 'dark' ? 'light' : 'dark';
-    
+
     document.documentElement.classList.add('theme-transition');
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('convertcase_theme', next);
@@ -139,12 +138,13 @@ class ConvertsApp {
       document.documentElement.classList.remove('theme-transition');
     }, 300);
 
-    this.showToast(`Switched to ${next} mode`, 'info');
+    const modeName = next === 'dark' ? 'NIGHT OPS BUNKER 🌙' : 'DAYLIGHT FIELD ARCHIVE ☀️';
+    this.showToast(`Classification Mode: ${modeName}`, 'info');
   }
 
   updateThemeIcons(theme) {
     document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
-      btn.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
+      btn.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'Daylight Archive' : 'Night Ops Bunker'} mode`);
       const icon = btn.querySelector('.theme-icon');
       if (icon) {
         icon.textContent = theme === 'dark' ? '☀️' : '🌙';
@@ -201,70 +201,6 @@ class ConvertsApp {
   }
 
   // -------------------------------------------------------------
-  // SMART EXIT-INTENT BOOSTER MODAL
-  // -------------------------------------------------------------
-  initExitIntentModal() {
-    if (sessionStorage.getItem('convertstext_exit_seen')) return;
-
-    let modal = document.getElementById('exit-booster-modal');
-    if (!modal) {
-      modal = document.createElement('div');
-      modal.id = 'exit-booster-modal';
-      modal.className = 'exit-modal-backdrop';
-      modal.innerHTML = `
-        <div class="exit-modal-box">
-          <button type="button" class="exit-modal-close" id="btn-close-exit">&times;</button>
-          <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">🚀</div>
-          <h2 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem;">Before You Go: Polish Your Writing</h2>
-          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 1.25rem;">
-            Make sure your converted text is 100% error-free. Try these free writing assistants:
-          </p>
-
-          <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.5rem; text-align: left;">
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; background: var(--bg-tertiary); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-              <div>
-                <strong style="font-size: 0.9rem; display: block;">✍️ Grammarly AI</strong>
-                <span style="font-size: 0.75rem; color: var(--text-muted);">Real-time grammar, punctuation & tone fixes</span>
-              </div>
-              <a href="https://www.grammarly.com/" target="_blank" rel="noopener sponsored" class="tool-btn tool-btn-primary" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;">Try Free →</a>
-            </div>
-
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 1rem; background: var(--bg-tertiary); border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-              <div>
-                <strong style="font-size: 0.9rem; display: block;">🔄 QuillBot AI</strong>
-                <span style="font-size: 0.75rem; color: var(--text-muted);">Intelligent paraphrasing & sentence rewriter</span>
-              </div>
-              <a href="https://quillbot.com/" target="_blank" rel="noopener sponsored" class="tool-btn" style="padding: 0.35rem 0.75rem; font-size: 0.8rem;">Try Free →</a>
-            </div>
-          </div>
-
-          <div style="display: flex; justify-content: center; gap: 1rem;">
-            <button type="button" class="tool-btn" id="btn-dismiss-exit" style="font-size: 0.85rem;">No thanks, keep browsing</button>
-            <a href="recommended-tools.html" class="tool-btn tool-btn-primary" style="font-size: 0.85rem;">View All 6 Tools →</a>
-          </div>
-        </div>
-      `;
-      document.body.appendChild(modal);
-
-      const closeModal = () => {
-        modal.classList.remove('open');
-        sessionStorage.setItem('convertstext_exit_seen', 'true');
-      };
-
-      document.getElementById('btn-close-exit')?.addEventListener('click', closeModal);
-      document.getElementById('btn-dismiss-exit')?.addEventListener('click', closeModal);
-      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-
-      // Desktop exit intent on mouse leave top window
-      document.addEventListener('mouseleave', (e) => {
-        if (e.clientY <= 5 && !sessionStorage.getItem('convertstext_exit_seen')) {
-          modal.classList.add('open');
-        }
-      });
-    }
-  }
-
-  // -------------------------------------------------------------
   // TOAST NOTIFICATIONS
   // -------------------------------------------------------------
   showToast(message, type = 'success', duration = 2500) {
@@ -278,7 +214,7 @@ class ConvertsApp {
 
     const toast = document.createElement('div');
     toast.className = `toast toast-${type} animate-toast-in`;
-    
+
     let icon = '✓';
     if (type === 'error') icon = '✕';
     if (type === 'info') icon = 'ℹ';
@@ -354,7 +290,7 @@ class ConvertsApp {
   // -------------------------------------------------------------
   pushHistory(text, targetTextarea) {
     if (this.historyStack[this.historyIndex] === text) return;
-    
+
     this.historyStack = this.historyStack.slice(0, this.historyIndex + 1);
     this.historyStack.push(text);
     if (this.historyStack.length > this.maxHistory) {
@@ -641,9 +577,9 @@ class ConvertsApp {
 
     const renderResults = (query = '') => {
       const q = query.toLowerCase().trim();
-      const filtered = ALL_TOOLS_REGISTRY.filter(t => 
-        t.name.toLowerCase().includes(q) || 
-        t.category.toLowerCase().includes(q) || 
+      const filtered = ALL_TOOLS_REGISTRY.filter(t =>
+        t.name.toLowerCase().includes(q) ||
+        t.category.toLowerCase().includes(q) ||
         t.desc.toLowerCase().includes(q)
       );
 

@@ -1,0 +1,506 @@
+/* ==========================================================================
+   CONVERTSTEXT - 1960s CLASSIFIED DOSSIER & COLD WAR INTELLIGENCE THEME
+   Comprehensive Sitewide UI Overhaul with Stark Light & Dark Mode Contrast:
+   - Light Mode: Daylight Field Manila Dossier & Vintage Typewriter Archive
+   - Dark Mode:  Midnight Black-Site Bunker & Night Operations Terminal
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Special+Elite&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* ==========================================================================
+   ROOT VARIABLES - CLASSIFIED DOSSIER DESIGN TOKENS
+   ========================================================================== */
+:root {
+  /* --- LIGHT MODE: DAYLIGHT FIELD MANILA DOSSIER --- */
+  --dos-desk-bg: #d8cbb2;
+  --dos-desk-shadow: rgba(45, 35, 20, 0.25);
+  
+  --dos-folder-bg: #f5eedb;
+  --dos-folder-tab: #e3d2b0;
+  --dos-folder-border: #9e855c;
+  --dos-paper-bg: #fdfaf2;
+  --dos-paper-sheet: #ffffff;
+  --dos-paper-border: #b8a37e;
+  
+  --dos-ink-primary: #121512;
+  --dos-ink-secondary: #333a33;
+  --dos-ink-muted: #616960;
+  --dos-ink-inverse: #ffffff;
+
+  --dos-stamp-red: #c01e1e;
+  --dos-stamp-border: #991b1b;
+  --dos-stamp-shadow: rgba(185, 28, 28, 0.25);
+
+  --dos-key-bg: #f8f3e8;
+  --dos-key-border: #826e4e;
+  --dos-key-shadow: #52442d;
+  --dos-key-text: #1a1e1a;
+  --dos-key-hover: #ede2cd;
+
+  --dos-primary-btn-bg: #991b1b;
+  --dos-primary-btn-border: #7f1d1d;
+  --dos-primary-btn-shadow: #450a0a;
+  --dos-primary-btn-text: #ffffff;
+
+  --dos-redact-bg: #111111;
+  --dos-redact-text: #ffffff;
+
+  --dos-nav-bg: #e8dbbe;
+  --dos-nav-border: #9e855c;
+
+  --font-typewriter: 'Special Elite', 'Courier Prime', monospace;
+  --font-typewriter-body: 'Courier Prime', 'Special Elite', monospace;
+  --font-typewriter-mono: 'Space Mono', 'Courier Prime', monospace;
+}
+
+/* --- DARK MODE: MIDNIGHT BLACK-SITE BUNKER (NIGHT OPERATIONS) --- */
+[data-theme="dark"],
+body[data-theme="dark"],
+html[data-theme="dark"] {
+  --dos-desk-bg: #07090c;
+  --dos-desk-shadow: rgba(0, 0, 0, 0.9);
+
+  --dos-folder-bg: #131720;
+  --dos-folder-tab: #1a202c;
+  --dos-folder-border: #3b4559;
+  --dos-paper-bg: #181d27;
+  --dos-paper-sheet: #0e1219;
+  --dos-paper-border: #2d3748;
+
+  --dos-ink-primary: #f8fafc;
+  --dos-ink-secondary: #cbd5e1;
+  --dos-ink-muted: #94a3b8;
+  --dos-ink-inverse: #0f172a;
+
+  --dos-stamp-red: #ff3838;
+  --dos-stamp-border: #ff4d4d;
+  --dos-stamp-shadow: rgba(255, 56, 56, 0.5);
+
+  --dos-key-bg: #1e2430;
+  --dos-key-border: #475569;
+  --dos-key-shadow: #0f131a;
+  --dos-key-text: #ffffff;
+  --dos-key-hover: #2d3748;
+
+  --dos-primary-btn-bg: #dc2626;
+  --dos-primary-btn-border: #ef4444;
+  --dos-primary-btn-shadow: #7f1d1d;
+  --dos-primary-btn-text: #ffffff;
+
+  --dos-redact-bg: #ef4444;
+  --dos-redact-text: #ffffff;
+
+  --dos-nav-bg: #0f131a;
+  --dos-nav-border: #2d3748;
+}
+
+/* ==========================================================================
+   GLOBAL BODY & BACKGROUND
+   ========================================================================== */
+body {
+  background-color: var(--dos-desk-bg) !important;
+  background-image: 
+    radial-gradient(circle at 50% 15%, rgba(255,255,255,0.06) 0%, transparent 70%),
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 24px 24px, 24px 24px !important;
+  color: var(--dos-ink-primary) !important;
+  font-family: var(--font-typewriter-body) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.65 !important;
+  transition: background-color 0.25s ease, color 0.25s ease !important;
+}
+
+/* Headings Across Site */
+h1, h2, h3, h4, h5, h6, .hero-title, .section-title {
+  font-family: var(--font-typewriter) !important;
+  color: var(--dos-ink-primary) !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* ==========================================================================
+   NAVIGATION BAR (CLASSIFIED ARCHIVE HEADER)
+   ========================================================================== */
+.site-nav {
+  background: var(--dos-nav-bg) !important;
+  border-bottom: 3px solid var(--dos-nav-border) !important;
+  box-shadow: 0 4px 20px var(--dos-desk-shadow) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.nav-brand {
+  font-family: var(--font-typewriter) !important;
+  font-size: 1.35rem !important;
+  font-weight: 700 !important;
+  color: var(--dos-ink-primary) !important;
+  letter-spacing: 1px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.6rem !important;
+}
+
+.brand-icon-box {
+  background: var(--dos-stamp-red) !important;
+  color: #ffffff !important;
+  border: 2px solid var(--dos-stamp-border) !important;
+  border-radius: 3px !important;
+  box-shadow: 2px 2px 0 var(--dos-desk-shadow) !important;
+  font-family: var(--font-typewriter) !important;
+  font-weight: 900 !important;
+  transform: rotate(-3deg) !important;
+}
+
+.nav-link {
+  font-family: var(--font-typewriter) !important;
+  color: var(--dos-ink-secondary) !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  border-radius: 2px !important;
+  transition: all 0.15s ease !important;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: var(--dos-folder-tab) !important;
+  color: var(--dos-ink-primary) !important;
+  border: 1px solid var(--dos-folder-border) !important;
+}
+
+.nav-dropdown {
+  background: var(--dos-folder-bg) !important;
+  border: 2px solid var(--dos-folder-border) !important;
+  box-shadow: 0 8px 30px var(--dos-desk-shadow) !important;
+  border-radius: 2px !important;
+}
+
+.dropdown-link {
+  font-family: var(--font-typewriter-body) !important;
+  color: var(--dos-ink-primary) !important;
+}
+
+.dropdown-link:hover {
+  background: var(--dos-folder-tab) !important;
+}
+
+.search-trigger-btn {
+  background: var(--dos-paper-bg) !important;
+  border: 1.5px solid var(--dos-folder-border) !important;
+  color: var(--dos-ink-secondary) !important;
+  font-family: var(--font-typewriter) !important;
+  border-radius: 2px !important;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  background: var(--dos-key-bg) !important;
+  border: 2px solid var(--dos-key-border) !important;
+  border-radius: 4px !important;
+  box-shadow: 0 3px 0 var(--dos-key-shadow) !important;
+  color: var(--dos-key-text) !important;
+  padding: 0.45rem 0.75rem !important;
+  transition: all 0.15s ease !important;
+}
+
+.theme-toggle-btn:hover {
+  transform: translateY(2px) !important;
+  box-shadow: 0 1px 0 var(--dos-key-shadow) !important;
+}
+
+/* ==========================================================================
+   HERO SECTION & CLASSIFIED BANNER
+   ========================================================================== */
+.hero-section {
+  padding: 3rem 1rem 2rem !important;
+  text-align: center !important;
+  position: relative !important;
+}
+
+.hero-pill {
+  background: var(--dos-stamp-red) !important;
+  color: #ffffff !important;
+  border: 2px dashed #ffffff !important;
+  font-family: var(--font-typewriter) !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  border-radius: 2px !important;
+  box-shadow: 0 0 12px var(--dos-stamp-shadow) !important;
+  transform: rotate(-1.5deg) !important;
+  display: inline-block !important;
+  padding: 0.35rem 1rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.hero-title {
+  font-size: 2.85rem !important;
+  letter-spacing: 1px !important;
+  margin-bottom: 0.75rem !important;
+}
+
+[data-theme="dark"] .hero-title {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.15) !important;
+}
+
+.hero-desc {
+  font-family: var(--font-typewriter-body) !important;
+  font-size: 1.2rem !important;
+  color: var(--dos-ink-secondary) !important;
+  max-width: 780px !important;
+  margin: 0.5rem auto 0 !important;
+}
+
+/* ==========================================================================
+   MANILA DOSSIER WORKSPACE, EDITORS & PANES
+   ========================================================================== */
+.editor-workspace,
+.text-editor-container,
+.dual-editor-box,
+.tool-card,
+.feature-card,
+.prose-card,
+.stat-card,
+.metric-card,
+.diff-output-container,
+.faq-accordion-item,
+.tools-grid-item {
+  background: var(--dos-folder-bg) !important;
+  border: 2px solid var(--dos-folder-border) !important;
+  border-radius: 2px 16px 2px 2px !important;
+  box-shadow: 
+    0 8px 30px var(--dos-desk-shadow),
+    inset 0 0 30px rgba(0, 0, 0, 0.05) !important;
+  position: relative !important;
+  color: var(--dos-ink-primary) !important;
+  transition: all 0.2s ease !important;
+}
+
+/* Rubber Stamp Overlay on File Folders */
+.editor-workspace::after,
+.tool-card:first-child::after,
+.dual-editor-box:first-child::after {
+  content: "TOP SECRET // CLASSIFIED";
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  font-family: var(--font-typewriter);
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: var(--dos-stamp-red);
+  border: 2px dashed var(--dos-stamp-red);
+  padding: 2px 8px;
+  transform: rotate(6deg);
+  pointer-events: none;
+  letter-spacing: 2px;
+  opacity: 0.8;
+  z-index: 10;
+}
+
+[data-theme="dark"] .editor-workspace::after,
+[data-theme="dark"] .tool-card:first-child::after,
+[data-theme="dark"] .dual-editor-box:first-child::after {
+  text-shadow: 0 0 10px var(--dos-stamp-red);
+  box-shadow: 0 0 10px var(--dos-stamp-shadow);
+  opacity: 0.95;
+}
+
+/* Dual Editor Headers */
+.dual-editor-header {
+  border-bottom: 2px solid var(--dos-folder-border) !important;
+  background: var(--dos-folder-tab) !important;
+  font-family: var(--font-typewriter) !important;
+  font-weight: 700 !important;
+  color: var(--dos-ink-primary) !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* Typing Sheet Textarea */
+.editor-textarea,
+textarea,
+input[type="text"],
+input[type="search"],
+select {
+  background: var(--dos-paper-sheet) !important;
+  color: var(--dos-ink-primary) !important;
+  font-family: var(--font-typewriter-body) !important;
+  font-size: 1.15rem !important;
+  line-height: 1.65 !important;
+  border: 1.5px solid var(--dos-paper-border) !important;
+  border-radius: 2px !important;
+  box-shadow: inset 0 2px 6px rgba(0,0,0,0.08) !important;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.editor-textarea:focus,
+textarea:focus,
+input[type="text"]:focus,
+input[type="search"]:focus {
+  outline: none !important;
+  border-color: var(--dos-stamp-red) !important;
+  box-shadow: 0 0 0 2px var(--dos-stamp-shadow) !important;
+}
+
+/* ==========================================================================
+   MECHANICAL TYPEWRITER KEY BUTTONS
+   ========================================================================== */
+.tool-btn,
+button.btn,
+.action-btn,
+.btn-secondary {
+  background: var(--dos-key-bg) !important;
+  color: var(--dos-key-text) !important;
+  font-family: var(--font-typewriter) !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  border: 2px solid var(--dos-key-border) !important;
+  border-radius: 3px !important;
+  box-shadow: 0 3px 0 var(--dos-key-shadow), 0 4px 8px rgba(0,0,0,0.12) !important;
+  transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease !important;
+  cursor: pointer !important;
+}
+
+.tool-btn:hover,
+button.btn:hover,
+.action-btn:hover {
+  background: var(--dos-key-hover) !important;
+  transform: translateY(2px) !important;
+  box-shadow: 0 1px 0 var(--dos-key-shadow) !important;
+}
+
+.tool-btn:active,
+button.btn:active {
+  transform: translateY(3px) !important;
+  box-shadow: none !important;
+}
+
+/* Primary Action Buttons (Red Classified Action Stamp) */
+.tool-btn-primary,
+.btn-primary {
+  background: var(--dos-primary-btn-bg) !important;
+  color: var(--dos-primary-btn-text) !important;
+  border-color: var(--dos-primary-btn-border) !important;
+  box-shadow: 0 3px 0 var(--dos-primary-btn-shadow), 0 4px 10px var(--dos-stamp-shadow) !important;
+}
+
+.tool-btn-primary:hover,
+.btn-primary:hover {
+  background: #b91c1c !important;
+  transform: translateY(2px) !important;
+  box-shadow: 0 1px 0 var(--dos-primary-btn-shadow) !important;
+}
+
+[data-theme="dark"] .tool-btn-primary {
+  box-shadow: 0 3px 0 #7f1d1d, 0 0 15px rgba(220, 38, 38, 0.5) !important;
+}
+
+/* Danger / Clear Buttons */
+.tool-btn-danger,
+.btn-danger {
+  background: #7f1d1d !important;
+  color: #ffffff !important;
+  border-color: #991b1b !important;
+}
+
+/* ==========================================================================
+   STAT CARDS, METRICS & BADGES
+   ========================================================================== */
+.stat-card,
+.metric-card {
+  background: var(--dos-paper-bg) !important;
+  border: 1.5px dashed var(--dos-folder-border) !important;
+  border-radius: 4px !important;
+  box-shadow: 3px 3px 0 var(--dos-folder-tab) !important;
+}
+
+.stat-value {
+  font-family: var(--font-typewriter) !important;
+  font-size: 2.2rem !important;
+  font-weight: 700 !important;
+  color: var(--dos-stamp-red) !important;
+  letter-spacing: 1px !important;
+}
+
+[data-theme="dark"] .stat-value {
+  text-shadow: 0 0 10px var(--dos-stamp-shadow) !important;
+}
+
+.stat-label {
+  font-family: var(--font-typewriter-body) !important;
+  color: var(--dos-ink-secondary) !important;
+  text-transform: uppercase !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 1px !important;
+}
+
+/* Classified Redaction Highlight Markers */
+.badge,
+.tag-pill,
+.category-badge {
+  background: var(--dos-folder-tab) !important;
+  color: var(--dos-ink-primary) !important;
+  font-family: var(--font-typewriter) !important;
+  border: 1px solid var(--dos-folder-border) !important;
+  border-radius: 2px !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   FOOTER & BOTTOM ATTACHMENTS
+   ========================================================================== */
+.site-footer {
+  background: var(--dos-nav-bg) !important;
+  border-top: 3px solid var(--dos-nav-border) !important;
+  color: var(--dos-ink-secondary) !important;
+  font-family: var(--font-typewriter-body) !important;
+  padding: 3rem 1rem 2rem !important;
+  margin-top: 4rem !important;
+}
+
+.footer-brand,
+.footer-heading {
+  font-family: var(--font-typewriter) !important;
+  color: var(--dos-ink-primary) !important;
+  letter-spacing: 0.5px !important;
+}
+
+.footer-link {
+  color: var(--dos-ink-secondary) !important;
+  font-family: var(--font-typewriter-body) !important;
+}
+
+.footer-link:hover {
+  color: var(--dos-stamp-red) !important;
+  text-decoration: underline !important;
+}
+
+/* ==========================================================================
+   SEARCH MODAL & TOASTS (INTERCEPTED TRANSMISSIONS)
+   ========================================================================== */
+.toast,
+.toast-container > div {
+  background: var(--dos-folder-bg) !important;
+  color: var(--dos-ink-primary) !important;
+  font-family: var(--font-typewriter) !important;
+  border: 2px solid var(--dos-folder-border) !important;
+  box-shadow: 0 8px 25px var(--dos-desk-shadow) !important;
+  border-radius: 3px !important;
+}
+
+.modal-content,
+.search-modal {
+  background: var(--dos-folder-bg) !important;
+  border: 3px solid var(--dos-folder-border) !important;
+  color: var(--dos-ink-primary) !important;
+  box-shadow: 0 20px 60px var(--dos-desk-shadow) !important;
+}
+
+/* Code & Pre Formatting */
+pre, code, kbd {
+  font-family: var(--font-typewriter-mono) !important;
+  background: var(--dos-paper-sheet) !important;
+  color: var(--dos-ink-primary) !important;
+  border: 1px solid var(--dos-paper-border) !important;
+  border-radius: 2px !important;
+}

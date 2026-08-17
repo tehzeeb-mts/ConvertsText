@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Text Cleaner, Line Sorter & Duplicate Remover | ConvertsText</title>
-  <meta name="description" content="Clean and format messy text online: remove duplicate lines, alphabetize/sort lines A-Z, collapse extra whitespace, remove line breaks, strip HTML tags, and find & replace with Regex.">
-  <meta name="keywords" content="remove duplicate lines, alphabetize list online, text cleaner, remove extra spaces, remove line breaks, find and replace regex, line sorter">
+  <meta name="description"
+    content="Clean and format messy text online: remove duplicate lines, alphabetize/sort lines A-Z, collapse extra whitespace, remove line breaks, strip HTML tags, and find & replace with Regex.">
+  <meta name="keywords"
+    content="remove duplicate lines, alphabetize list online, text cleaner, remove extra spaces, remove line breaks, find and replace regex, line sorter">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://convertstext.com/text-cleaner-sorter.html">
@@ -15,12 +18,12 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3WH082XX7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-F3WH082XX7');
   </script>
-  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -32,6 +35,7 @@
   }
   </script>
 </head>
+
 <body>
 
   <nav class="site-nav">
@@ -49,10 +53,14 @@
         <li class="nav-item"><a href="ciphers-encoders.html" class="nav-link">Ciphers</a></li>
         <li class="nav-item"><a href="text-cleaner-sorter.html" class="nav-link active">Utilities ▾</a>
           <ul class="nav-dropdown">
-            <li><a href="text-cleaner-sorter.html" class="dropdown-link"><span class="dropdown-badge">🧹</span> Cleaner & Sorter</a></li>
-            <li><a href="diff-checker.html" class="dropdown-link"><span class="dropdown-badge">⚖️</span> Diff Checker</a></li>
-            <li><a href="word-counter.html" class="dropdown-link"><span class="dropdown-badge">📊</span> Word Counter</a></li>
-            <li><a href="lorem-ipsum.html" class="dropdown-link"><span class="dropdown-badge">📄</span> Lorem Ipsum</a></li>
+            <li><a href="text-cleaner-sorter.html" class="dropdown-link"><span class="dropdown-badge">🧹</span> Cleaner
+                & Sorter</a></li>
+            <li><a href="diff-checker.html" class="dropdown-link"><span class="dropdown-badge">⚖️</span> Diff
+                Checker</a></li>
+            <li><a href="word-counter.html" class="dropdown-link"><span class="dropdown-badge">📊</span> Word
+                Counter</a></li>
+            <li><a href="lorem-ipsum.html" class="dropdown-link"><span class="dropdown-badge">📄</span> Lorem Ipsum</a>
+            </li>
           </ul>
         </li>
       </ul>
@@ -62,17 +70,21 @@
           <span>🔍 Search</span>
           <kbd class="search-kbd">Ctrl K</kbd>
         </button>
-        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span class="theme-icon">🌙</span></button>
-        <button type="button" class="nav-hamburger" aria-label="Open mobile menu"><span></span><span></span><span></span></button>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span
+            class="theme-icon">🌙</span></button>
+        <button type="button" class="nav-hamburger"
+          aria-label="Open mobile menu"><span></span><span></span><span></span></button>
       </div>
     </div>
   </nav>
 
   <header class="hero-section">
     <div class="container">
-      <div class="hero-pill" style="background:var(--badge-cleaner); color:var(--badge-cleaner-text);">🧹 Clean, Deduplicate & Organize</div>
+      <div class="hero-pill" style="background:var(--badge-cleaner); color:var(--badge-cleaner-text);">🧹 Clean,
+        Deduplicate & Organize</div>
       <h1 class="hero-title">Text Cleaner & Line Sorter</h1>
-      <p class="hero-desc">Remove duplicates, alphabetize lines, trim unwanted whitespace, strip HTML tags, and perform powerful Find & Replace substitutions.</p>
+      <p class="hero-desc">Remove duplicates, alphabetize lines, trim unwanted whitespace, strip HTML tags, and perform
+        powerful Find & Replace substitutions.</p>
     </div>
   </header>
 
@@ -89,12 +101,14 @@
         <div class="toolbar-group">
           <button type="button" class="tool-btn" id="btn-undo" disabled><span>↩</span> <span>Undo</span></button>
           <button type="button" class="tool-btn" id="btn-redo" disabled><span>↪</span> <span>Redo</span></button>
-          <button type="button" class="tool-btn tool-btn-danger" id="btn-clear"><span>🗑️</span> <span>Clear</span></button>
+          <button type="button" class="tool-btn tool-btn-danger" id="btn-clear"><span>🗑️</span>
+            <span>Clear</span></button>
         </div>
       </div>
 
       <!-- Find & Replace Sub-Panel -->
-      <div class="tool-controls-panel" style="background: var(--bg-card); border-bottom: 1px dashed var(--border-medium);">
+      <div class="tool-controls-panel"
+        style="background: var(--bg-card); border-bottom: 1px dashed var(--border-medium);">
         <div class="control-item">
           <label class="control-label">Find Text / Pattern</label>
           <input type="text" id="find-input" class="control-input" placeholder="Text to find...">
@@ -105,8 +119,10 @@
         </div>
         <div class="control-item" style="justify-content: flex-end;">
           <div style="display:flex; gap:0.5rem; align-items:center; flex-wrap:wrap;">
-            <label style="font-size:0.8rem; display:flex; align-items:center; gap:0.25rem;"><input type="checkbox" id="find-case-sensitive"> Match Case</label>
-            <label style="font-size:0.8rem; display:flex; align-items:center; gap:0.25rem;"><input type="checkbox" id="find-use-regex"> Regex</label>
+            <label style="font-size:0.8rem; display:flex; align-items:center; gap:0.25rem;"><input type="checkbox"
+                id="find-case-sensitive"> Match Case</label>
+            <label style="font-size:0.8rem; display:flex; align-items:center; gap:0.25rem;"><input type="checkbox"
+                id="find-use-regex"> Regex</label>
             <button type="button" class="tool-btn tool-btn-primary" id="btn-find-replace" style="margin-left:auto;">
               <span>Replace All</span>
             </button>
@@ -115,7 +131,8 @@
       </div>
 
       <div class="editor-wrapper" id="drop-area">
-        <textarea id="main-editor" class="editor-textarea" style="min-height: 220px;" placeholder="Paste messy lists, code, or unstructured text to clean..." spellcheck="false"></textarea>
+        <textarea id="main-editor" class="editor-textarea" style="min-height: 220px;"
+          placeholder="Paste messy lists, code, or unstructured text to clean..." spellcheck="false"></textarea>
       </div>
 
       <div class="stats-ribbon">
@@ -212,7 +229,8 @@
       <div class="studio-bottom-bar">
         <span class="action-status-hint">Organize data instantly. No lines lost.</span>
         <div class="toolbar-group">
-          <button type="button" class="tool-btn tool-btn-primary" id="btn-copy"><span>📋</span> <span>Copy Result</span></button>
+          <button type="button" class="tool-btn tool-btn-primary" id="btn-copy"><span>📋</span> <span>Copy
+              Result</span></button>
           <button type="button" class="tool-btn" id="btn-download"><span>💾</span> <span>Download .txt</span></button>
         </div>
       </div>
@@ -301,4 +319,5 @@ Apple`;
     });
   </script>
 </body>
+
 </html>

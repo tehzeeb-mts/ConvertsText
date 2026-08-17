@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Text Diff Checker Online: Compare Text & Find Differences | ConvertsText</title>
-  <meta name="description" content="Compare two text documents side-by-side or unified inline to spot differences, additions, and deletions instantly. 100% free and private text comparison.">
-  <meta name="keywords" content="diff checker online, compare two texts, text difference finder, side by side diff, git diff visualizer">
+  <meta name="description"
+    content="Compare two text documents side-by-side or unified inline to spot differences, additions, and deletions instantly. 100% free and private text comparison.">
+  <meta name="keywords"
+    content="diff checker online, compare two texts, text difference finder, side by side diff, git diff visualizer">
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="canonical" href="https://convertstext.com/diff-checker.html">
@@ -15,12 +18,12 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F3WH082XX7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-F3WH082XX7');
   </script>
-  
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -32,6 +35,7 @@
   }
   </script>
 </head>
+
 <body>
 
   <nav class="site-nav">
@@ -55,17 +59,21 @@
           <span>🔍 Search</span>
           <kbd class="search-kbd">Ctrl K</kbd>
         </button>
-        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span class="theme-icon">🌙</span></button>
-        <button type="button" class="nav-hamburger" aria-label="Open mobile menu"><span></span><span></span><span></span></button>
+        <button type="button" class="theme-toggle-btn" aria-label="Toggle theme"><span
+            class="theme-icon">🌙</span></button>
+        <button type="button" class="nav-hamburger"
+          aria-label="Open mobile menu"><span></span><span></span><span></span></button>
       </div>
     </div>
   </nav>
 
   <header class="hero-section">
     <div class="container">
-      <div class="hero-pill" style="background:var(--accent-emerald-light); color:var(--accent-emerald);">⚖️ Visual Text Comparison</div>
+      <div class="hero-pill" style="background:var(--accent-emerald-light); color:var(--accent-emerald);">⚖️ Visual Text
+        Comparison</div>
       <h1 class="hero-title">Online Text Diff Checker</h1>
-      <p class="hero-desc">Compare original and modified texts to instantly highlight inserted lines, deleted content, and altered phrases.</p>
+      <p class="hero-desc">Compare original and modified texts to instantly highlight inserted lines, deleted content,
+        and altered phrases.</p>
     </div>
   </header>
 
@@ -77,7 +85,9 @@
           <span>📄 Original Text (Before)</span>
           <button type="button" class="tool-btn" id="btn-sample-diff">Load Sample</button>
         </div>
-        <textarea id="diff-left-text" class="editor-textarea" style="min-height: 200px; font-family: var(--font-mono); font-size: 0.9rem;" placeholder="Paste original text here..."></textarea>
+        <textarea id="diff-left-text" class="editor-textarea"
+          style="min-height: 200px; font-family: var(--font-mono); font-size: 0.9rem;"
+          placeholder="Paste original text here..."></textarea>
       </div>
 
       <div class="dual-editor-box">
@@ -85,14 +95,18 @@
           <span>📝 Modified Text (After)</span>
           <button type="button" class="tool-btn tool-btn-danger" id="btn-clear-diff">Clear Both</button>
         </div>
-        <textarea id="diff-right-text" class="editor-textarea" style="min-height: 200px; font-family: var(--font-mono); font-size: 0.9rem;" placeholder="Paste modified text here..."></textarea>
+        <textarea id="diff-right-text" class="editor-textarea"
+          style="min-height: 200px; font-family: var(--font-mono); font-size: 0.9rem;"
+          placeholder="Paste modified text here..."></textarea>
       </div>
     </div>
 
     <!-- Controls Ribbon -->
-    <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1rem 1.5rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+    <div
+      style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1rem 1.5rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
       <div style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
-        <button type="button" class="tool-btn tool-btn-primary" id="btn-run-diff" style="padding: 0.65rem 1.5rem; font-size: 0.95rem;">
+        <button type="button" class="tool-btn tool-btn-primary" id="btn-run-diff"
+          style="padding: 0.65rem 1.5rem; font-size: 0.95rem;">
           <span>🔍</span> <span>Compare Differences</span>
         </button>
 
@@ -105,8 +119,10 @@
 
       <!-- Diff Stats Indicator -->
       <div style="display: flex; align-items: center; gap: 1rem; font-size: 0.875rem;">
-        <span style="color: var(--accent-emerald); font-weight: 700;">+<span id="diff-stat-additions">0</span> additions</span>
-        <span style="color: var(--accent-rose); font-weight: 700;">-<span id="diff-stat-deletions">0</span> deletions</span>
+        <span style="color: var(--accent-emerald); font-weight: 700;">+<span id="diff-stat-additions">0</span>
+          additions</span>
+        <span style="color: var(--accent-rose); font-weight: 700;">-<span id="diff-stat-deletions">0</span>
+          deletions</span>
         <span style="color: var(--text-muted);"><span id="diff-stat-unchanged">0</span> unchanged lines</span>
       </div>
     </div>
@@ -224,4 +240,5 @@
     });
   </script>
 </body>
+
 </html>
