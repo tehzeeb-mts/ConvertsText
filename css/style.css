@@ -216,6 +216,14 @@ select {
   font-size: 16px; /* 16px prevents automatic iOS Safari zooming */
 }
 
+/* Vector SVG Icons */
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  stroke: currentColor;
+}
+
 /* Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;

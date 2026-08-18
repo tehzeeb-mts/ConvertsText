@@ -12,7 +12,7 @@ const ALL_TOOLS_REGISTRY = [
   { id: 'title-case', name: 'Title Case', category: 'Standard Cases', icon: 'Title', page: 'title-case.html', desc: 'Smart headline casing preserving minor prepositions' },
   { id: 'alternating-case', name: 'aLtErNaTiNg cAsE', category: 'Standard Cases', icon: 'aL', page: 'upper-lower-case.html', desc: 'Toggle between lowercase and uppercase letters' },
   { id: 'inverse-case', name: 'InVeRsE CaSe', category: 'Standard Cases', icon: 'iNv', page: 'upper-lower-case.html', desc: 'Invert the case of each character in text' },
-  { id: 'mocking-case', name: 'mOcKiNg cAsE', category: 'Standard Cases', icon: '🤪', page: 'stylized-fancy-text.html', desc: 'Spongebob mocking meme random casing' },
+  { id: 'mocking-case', name: 'mOcKiNg cAsE', category: 'Standard Cases', icon: 'Mock', page: 'stylized-fancy-text.html', desc: 'Spongebob mocking meme random casing' },
 
   // Developer Cases
   { id: 'camel-case', name: 'camelCase', category: 'Developer Cases', icon: 'dC', page: 'developer-cases.html', desc: 'Variable naming format starting with lowercase' },
@@ -26,15 +26,15 @@ const ALL_TOOLS_REGISTRY = [
   { id: 'cobol-case', name: 'COBOL-CASE', category: 'Developer Cases', icon: 'COB', page: 'developer-cases.html', desc: 'Uppercase words joined with hyphens' },
 
   // Analysis & Readability Tools
-  { id: 'text-analyzer', name: 'Text & Readability Analyzer', category: 'Analysis Tools', icon: '🧠', page: 'text-analyzer.html', desc: 'Flesch score, Grade level, Gunning Fog, Lexical diversity' },
-  { id: 'word-counter', name: 'Word & Character Counter', category: 'Analysis Tools', icon: '📊', page: 'word-counter.html', desc: 'Live counter with Twitter, SMS and social media limits' },
-  { id: 'diff-checker', name: 'Text Diff Checker', category: 'Analysis Tools', icon: '⚖️', page: 'diff-checker.html', desc: 'Side-by-side & unified text comparison tool' },
+  { id: 'text-analyzer', name: 'Text & Readability Analyzer', category: 'Analysis Tools', icon: 'Read', page: 'text-analyzer.html', desc: 'Flesch score, Grade level, Gunning Fog, Lexical diversity' },
+  { id: 'word-counter', name: 'Word & Character Counter', category: 'Analysis Tools', icon: 'Word', page: 'word-counter.html', desc: 'Live counter with Twitter, SMS and social media limits' },
+  { id: 'diff-checker', name: 'Text Diff Checker', category: 'Analysis Tools', icon: 'Diff', page: 'diff-checker.html', desc: 'Side-by-side & unified text comparison tool' },
 
   // Generators & Specialized Editors
-  { id: 'lorem-ipsum', name: 'Lorem Ipsum Generator (6 Themes)', category: 'Generators', icon: '📄', page: 'lorem-ipsum.html', desc: 'Generate Classic, Tech, Corporate, Pirate, Hipster Ipsum' },
-  { id: 'markdown-html', name: 'Markdown to HTML Live Studio', category: 'Generators', icon: '📑', page: 'markdown-html.html', desc: 'Interactive dual-pane Markdown editor with live HTML preview' },
-  { id: 'invisible-text', name: 'Zero-Width Steganography', category: 'Generators', icon: '🕵️', page: 'invisible-text.html', desc: 'Hide secret messages inside text using zero-width spaces' },
-  { id: 'random-generator', name: 'Password & UUID Generator', category: 'Generators', icon: '🎲', page: 'random-generator.html', desc: 'Secure passwords and batch UUID v4 generator' },
+  { id: 'lorem-ipsum', name: 'Lorem Ipsum Generator (6 Themes)', category: 'Generators', icon: 'Doc', page: 'lorem-ipsum.html', desc: 'Generate Classic, Tech, Corporate, Pirate, Hipster Ipsum' },
+  { id: 'markdown-html', name: 'Markdown to HTML Live Studio', category: 'Generators', icon: 'MD', page: 'markdown-html.html', desc: 'Interactive dual-pane Markdown editor with live HTML preview' },
+  { id: 'invisible-text', name: 'Zero-Width Steganography', category: 'Generators', icon: 'Sec', page: 'invisible-text.html', desc: 'Hide secret messages inside text using zero-width spaces' },
+  { id: 'random-generator', name: 'Password & UUID Generator', category: 'Generators', icon: 'Pass', page: 'random-generator.html', desc: 'Secure passwords and batch UUID v4 generator' },
 
   // Stylized Fonts
   { id: 'small-caps', name: 'Small Caps', category: 'Stylized Fonts', icon: 'ꜱᴍᴄ', page: 'stylized-fancy-text.html', desc: 'Unicode small capital glyphs ᴀ ʙ ᴄ' },
@@ -47,7 +47,7 @@ const ALL_TOOLS_REGISTRY = [
   { id: 'bubble-text', name: 'Bubble / Circled', category: 'Stylized Fonts', icon: 'ⓑ', page: 'stylized-fancy-text.html', desc: 'Enclosed circled alphanumeric characters' },
   { id: 'cursive-text', name: 'Cursive / Script', category: 'Stylized Fonts', icon: '𝒞𝓊', page: 'stylized-fancy-text.html', desc: 'Elegant handwriting script Unicode letters' },
   { id: 'gothic-text', name: 'Gothic / Fraktur', category: 'Stylized Fonts', icon: '𝔊𝔬', page: 'stylized-fancy-text.html', desc: 'Medieval Fraktur calligraphic letters' },
-  { id: 'zalgo-text', name: 'Zalgo Glitch Text', category: 'Stylized Fonts', icon: 'Z̵a̵l̵', page: 'stylized-fancy-text.html', desc: 'Corrupted demonic glitch text with chaos slider' },
+  { id: 'zalgo-text', name: 'Zalgo Glitch Text', category: 'Stylized Fonts', icon: 'Z̵a̵l̵', page: 'stylized-fancy-text.html', desc: 'Corrupted glitch text with chaos slider' },
 
   // Ciphers & Encoders
   { id: 'binary-code', name: 'Binary Code (0101)', category: 'Encoders & Ciphers', icon: '01', page: 'ciphers-encoders.html', desc: 'Convert text to binary 8-bit bytes and back' },
@@ -59,19 +59,19 @@ const ALL_TOOLS_REGISTRY = [
   { id: 'rot13', name: 'ROT13 Caesar Cipher', category: 'Encoders & Ciphers', icon: '13', page: 'ciphers-encoders.html', desc: 'Rotate letter positions by 13 places' },
 
   // Cleaners & Sorters
-  { id: 'text-cleaner', name: 'Text Cleaner & Whitespace', category: 'Text Utilities', icon: '🧹', page: 'text-cleaner-sorter.html', desc: 'Trim spaces, convert line breaks, strip HTML' },
-  { id: 'duplicate-lines', name: 'Duplicate Line Remover', category: 'Text Utilities', icon: '✂️', page: 'text-cleaner-sorter.html', desc: 'Remove repetitive lines from text or code' },
-  { id: 'line-sorter', name: 'Alphabetizer & Line Sorter', category: 'Text Utilities', icon: '↕️', page: 'text-cleaner-sorter.html', desc: 'Sort lines A-Z, Z-A, by length, or randomize' },
-  { id: 'find-replace', name: 'Find & Replace', category: 'Text Utilities', icon: '🔍', page: 'text-cleaner-sorter.html', desc: 'Fast text replacement with Regex support' },
+  { id: 'text-cleaner', name: 'Text Cleaner & Whitespace', category: 'Text Utilities', icon: 'Trim', page: 'text-cleaner-sorter.html', desc: 'Trim spaces, convert line breaks, strip HTML' },
+  { id: 'duplicate-lines', name: 'Duplicate Line Remover', category: 'Text Utilities', icon: 'Uniq', page: 'text-cleaner-sorter.html', desc: 'Remove repetitive lines from text or code' },
+  { id: 'line-sorter', name: 'Alphabetizer & Line Sorter', category: 'Text Utilities', icon: 'Sort', page: 'text-cleaner-sorter.html', desc: 'Sort lines A-Z, Z-A, by length, or randomize' },
+  { id: 'find-replace', name: 'Find & Replace', category: 'Text Utilities', icon: 'Find', page: 'text-cleaner-sorter.html', desc: 'Fast text replacement with Regex support' },
 
   // Resources, Writing Affiliates & Company
-  { id: 'faq-help', name: 'FAQ & Knowledge Base', category: 'Resources', icon: '❓', page: 'faq.html', desc: 'Frequently asked questions, developer naming guides, and privacy reference' },
-  { id: 'recommended-tools', name: 'Best AI Writing Tools & Assistants', category: 'Resources', icon: '🚀', page: 'recommended-tools.html', desc: 'Grammarly, QuillBot, Jasper AI free trials and discounts' },
-  { id: 'blog', name: 'Blog & Writing Guides', category: 'Resources', icon: '📚', page: 'blog.html', desc: 'Tutorials on readability formulas and developer casing' },
-  { id: 'about-us', name: 'About ConvertsText', category: 'Company', icon: '💡', page: 'about.html', desc: 'Our mission, technology, and privacy standards' },
-  { id: 'contact-us', name: 'Contact Support', category: 'Company', icon: '✉️', page: 'contact.html', desc: 'Send feedback, bug reports, or feature requests' },
-  { id: 'privacy-policy', name: 'Privacy Policy', category: 'Company', icon: '🔒', page: 'privacy-policy.html', desc: '100% Client-Side Privacy & GDPR disclosures' },
-  { id: 'terms-of-service', name: 'Terms of Service', category: 'Company', icon: '📜', page: 'terms.html', desc: 'Terms of usage and legal disclaimers' }
+  { id: 'faq-help', name: 'FAQ & Knowledge Base', category: 'Resources', icon: 'FAQ', page: 'faq.html', desc: 'Frequently asked questions, developer naming guides, and privacy reference' },
+  { id: 'recommended-tools', name: 'Best AI Writing Tools & Assistants', category: 'Resources', icon: 'Top', page: 'recommended-tools.html', desc: 'Grammarly, QuillBot, Jasper AI free trials and discounts' },
+  { id: 'blog', name: 'Blog & Writing Guides', category: 'Resources', icon: 'Blog', page: 'blog.html', desc: 'Tutorials on readability formulas and developer casing' },
+  { id: 'about-us', name: 'About ConvertsText', category: 'Company', icon: 'Team', page: 'about.html', desc: 'Our story, technology, and privacy standards' },
+  { id: 'contact-us', name: 'Contact Support', category: 'Company', icon: 'Mail', page: 'contact.html', desc: 'Send feedback, bug reports, or feature requests' },
+  { id: 'privacy-policy', name: 'Privacy Policy', category: 'Company', icon: 'Priv', page: 'privacy-policy.html', desc: '100% Client-Side Privacy & GDPR disclosures' },
+  { id: 'terms-of-service', name: 'Terms of Service', category: 'Company', icon: 'Term', page: 'terms.html', desc: 'Terms of usage and legal disclaimers' }
 ];
 
 // App Global State & Controller
@@ -142,16 +142,18 @@ class ConvertsApp {
       document.documentElement.classList.remove('theme-transition');
     }, 300);
 
-    const modeName = next === 'dark' ? 'NIGHT OPS BUNKER 🌙' : 'DAYLIGHT FIELD ARCHIVE ☀️';
-    this.showToast(`Classification Mode: ${modeName}`, 'info');
+    this.showToast(`Switched to ${next} mode`, 'info');
   }
 
   updateThemeIcons(theme) {
+    const sunSvg = `<svg class="icon icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`;
+    const moonSvg = `<svg class="icon icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`;
+
     document.querySelectorAll('.theme-toggle-btn').forEach(btn => {
-      btn.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'Daylight Archive' : 'Night Ops Bunker'} mode`);
+      btn.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'Light' : 'Dark'} mode`);
       const icon = btn.querySelector('.theme-icon');
       if (icon) {
-        icon.textContent = theme === 'dark' ? '☀️' : '🌙';
+        icon.innerHTML = theme === 'dark' ? sunSvg : moonSvg;
       }
     });
   }
