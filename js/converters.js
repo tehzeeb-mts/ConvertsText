@@ -741,6 +741,7 @@ const ConvertsEngine = (() => {
     // RANDOM STRING, UUID & SECURE PASSWORD GENERATOR
     // -------------------------------------------------------------
     generateSecurePassword(length = 16, includeUpper = true, includeLower = true, includeDigits = true, includeSymbols = true, excludeAmbiguous = false) {
+      const pwdLength = typeof length === 'number' && length > 0 ? Math.min(256, Math.max(4, length)) : 16;
       let uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
       let lowercase = 'abcdefghijklmnopqrstuvwxyz';
       let digits = '0123456789';
@@ -761,19 +762,27 @@ const ConvertsEngine = (() => {
 
       if (!charset) charset = lowercase + digits;
 
-      const randomBytes = new Uint32Array(length);
-      window.crypto.getRandomValues(randomBytes);
+      const randomBytes = new Uint32Array(pwdLength);
+      const cryptoObj = (typeof window !== 'undefined' && window.crypto) || (typeof crypto !== 'undefined' ? crypto : null);
+      if (cryptoObj && cryptoObj.getRandomValues) {
+        cryptoObj.getRandomValues(randomBytes);
+      } else {
+        for (let i = 0; i < pwdLength; i++) {
+          randomBytes[i] = Math.floor(Math.random() * 4294967296);
+        }
+      }
 
       let result = '';
-      for (let i = 0; i < length; i++) {
+      for (let i = 0; i < pwdLength; i++) {
         result += charset[randomBytes[i] % charset.length];
       }
       return result;
     },
 
     generateUUIDv4() {
-      if (typeof crypto !== 'undefined' && crypto.randomUUID) {
-        return crypto.randomUUID();
+      const cryptoObj = (typeof window !== 'undefined' && window.crypto) || (typeof crypto !== 'undefined' ? crypto : null);
+      if (cryptoObj && cryptoObj.randomUUID) {
+        return cryptoObj.randomUUID();
       }
       return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c => {
         const r = Math.random() * 16 | 0;
@@ -783,10 +792,11 @@ const ConvertsEngine = (() => {
     },
 
     generateUUIDs(count = 5) {
-      const safeCount = Math.max(1, Math.min(100, count));
+      const parsedCount = parseInt(count, 10);
+      const safeCount = !isNaN(parsedCount) ? Math.max(1, Math.min(100, parsedCount)) : 5;
       const res = [];
       for (let i = 0; i < safeCount; i++) {
-        res.push(this.generateUUIDv4());
+        res.push(ConvertsEngine.generateUUIDv4 ? ConvertsEngine.generateUUIDv4() : this.generateUUIDv4());
       }
       return res.join('\n');
     },

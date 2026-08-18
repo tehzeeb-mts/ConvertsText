@@ -91,6 +91,7 @@ class ConvertsApp {
     this.initSpeechRecognition();
     this.initCookieConsent();
     this.initFaqAccordions();
+    this.initGlobalTracking();
     this.checkStagingDomainNoindex();
   }
 
@@ -237,6 +238,88 @@ class ConvertsApp {
   }
 
   // -------------------------------------------------------------
+  // ANALYTICS & EVENT TRACKING (GA4 gtag & GTM dataLayer)
+  // -------------------------------------------------------------
+  trackEvent(eventName, params = {}) {
+    try {
+      const payload = {
+        page_path: window.location.pathname,
+        page_title: document.title,
+        ...params
+      };
+
+      // 1. Dispatch directly to Google Analytics 4 (Measurement ID: G-F3WH082XX7)
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', eventName, payload);
+      }
+
+      // 2. Push to Google Tag Manager dataLayer for custom GTM triggers
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: eventName,
+        ...payload
+      });
+    } catch (err) {
+      console.debug('Event tracking error:', err);
+    }
+  }
+
+  initGlobalTracking() {
+    document.addEventListener('click', (e) => {
+      // 1. Conversion Buttons
+      const convertBtn = e.target.closest('.convert-btn, [id^="btn-convert-"], [data-action], [data-convert-action]');
+      if (convertBtn && !convertBtn.id.includes('copy') && !convertBtn.id.includes('download') && !convertBtn.id.includes('clear')) {
+        const action = convertBtn.getAttribute('data-action') ||
+          convertBtn.getAttribute('data-convert-action') ||
+          convertBtn.id.replace('btn-convert-', '');
+        const btnText = (convertBtn.querySelector('.convert-btn-name')?.textContent ||
+          convertBtn.textContent ||
+          action || '').trim().replace(/\s+/g, ' ');
+        const category = convertBtn.getAttribute('data-cat') || 'standard';
+
+        this.trackEvent('text_conversion_click', {
+          conversion_type: action,
+          button_text: btnText,
+          category: category
+        });
+        return;
+      }
+
+      // 2. Copy Buttons
+      const copyBtn = e.target.closest('#btn-copy, #btn-copy-main, .btn-mini-copy, [id*="btn-copy"], [data-action="copy"]');
+      if (copyBtn) {
+        const btnText = (copyBtn.textContent || 'Copy').trim().replace(/\s+/g, ' ');
+        const target = copyBtn.getAttribute('data-target') || 'main-editor';
+
+        this.trackEvent('copy_click', {
+          button_text: btnText,
+          target_element: target
+        });
+        return;
+      }
+
+      // 3. Download / Export Buttons
+      const downloadBtn = e.target.closest('#btn-download, #btn-download-main, [id*="btn-download"], [data-action="download"]');
+      if (downloadBtn) {
+        const btnText = (downloadBtn.textContent || 'Download').trim().replace(/\s+/g, ' ');
+
+        this.trackEvent('download_click', {
+          button_text: btnText
+        });
+        return;
+      }
+
+      // 4. Grammar / Linter Trigger Button
+      const grammarBtn = e.target.closest('#btn-check-grammar, #btn-grammar-fix-all');
+      if (grammarBtn) {
+        this.trackEvent('grammar_check_click', {
+          button_id: grammarBtn.id
+        });
+      }
+    }, { capture: true });
+  }
+
+  // -------------------------------------------------------------
   // CLIPBOARD HELPER
   // -------------------------------------------------------------
   async copyText(text, successMessage = 'Copied to clipboard!') {
@@ -259,6 +342,9 @@ class ConvertsApp {
         textarea.remove();
       }
       this.showToast(successMessage, 'success');
+      this.trackEvent('copy_success', {
+        char_count: text.length
+      });
       return true;
     } catch (e) {
       this.showToast('Failed to copy text', 'error');
@@ -286,6 +372,10 @@ class ConvertsApp {
       URL.revokeObjectURL(url);
     }, 100);
     this.showToast(`Downloaded ${filename}`, 'info');
+    this.trackEvent('download_file_success', {
+      file_name: filename,
+      char_count: text.length
+    });
   }
 
   // -------------------------------------------------------------
