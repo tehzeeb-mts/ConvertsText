@@ -66,8 +66,7 @@ ConvertsText/
 │   └── diff-engine.js         # Myers / LCS diffing algorithm
 │
 ├── 📂 css/
-│   ├── style.css              # Main responsive styling & design token system
-│   └── dossier-theme.css      # Dark/Light theme token overrides
+│   └── style.css              # Main responsive styling & design token system
 │
 ├── 📂 .github/
 │   ├── workflows/             # GitHub Actions CI & Cloudflare Pages deployment
