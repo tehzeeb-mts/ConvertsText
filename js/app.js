@@ -652,7 +652,7 @@ class ConvertsApp {
           <div class="search-modal-header">
             <span class="search-modal-icon">🔍</span>
             <input type="text" id="global-search-input" class="search-modal-input" placeholder="Search 40+ tools & pages (e.g. Flesch, password, camelCase, privacy)..." autocomplete="off">
-            <kbd class="search-modal-kbd">ESC</kbd>
+            <button type="button" class="search-modal-close-btn" id="search-modal-close" aria-label="Close search">&times;</button>
           </div>
           <div class="search-modal-results" id="search-modal-results"></div>
           <div class="search-modal-footer">
@@ -667,6 +667,7 @@ class ConvertsApp {
 
     const input = document.getElementById('global-search-input');
     const resultsContainer = document.getElementById('search-modal-results');
+    const closeBtn = document.getElementById('search-modal-close');
 
     const renderResults = (query = '') => {
       const q = query.toLowerCase().trim();
@@ -714,16 +715,18 @@ class ConvertsApp {
       modal.classList.add('open');
       input.value = '';
       renderResults('');
-      setTimeout(() => input.focus(), 50);
+      setTimeout(() => input.focus(), 60);
     };
 
     const closeSearch = () => {
       modal.classList.remove('open');
     };
 
-    document.querySelectorAll('.open-search-btn').forEach(btn => {
+    document.querySelectorAll('.open-search-btn, .search-trigger-btn').forEach(btn => {
       btn.addEventListener('click', openSearch);
     });
+
+    closeBtn?.addEventListener('click', closeSearch);
 
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closeSearch();
@@ -769,31 +772,116 @@ class ConvertsApp {
     });
   }
 
+  // -------------------------------------------------------------
+  // MOBILE NAVIGATION & ACCORDION DRAWER CONTROLLER
+  // -------------------------------------------------------------
   initMobileNav() {
     const hamburger = document.querySelector('.nav-hamburger');
     const navMenu = document.querySelector('.nav-links');
-    if (hamburger && navMenu) {
-      hamburger.addEventListener('click', (e) => {
-        e.stopPropagation();
-        hamburger.classList.toggle('active');
-        navMenu.classList.toggle('open');
-        document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
+    if (!hamburger || !navMenu) return;
+
+    let backdrop = document.querySelector('.nav-backdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.className = 'nav-backdrop';
+      document.body.appendChild(backdrop);
+    }
+
+    const toggleNav = (isOpen) => {
+      const state = typeof isOpen === 'boolean' ? isOpen : !navMenu.classList.contains('open');
+      hamburger.classList.toggle('active', state);
+      navMenu.classList.toggle('open', state);
+      backdrop.classList.toggle('open', state);
+      document.body.style.overflow = state ? 'hidden' : '';
+    };
+
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleNav();
+    });
+
+    backdrop.addEventListener('click', () => {
+      toggleNav(false);
+    });
+
+    // Submenu accordion toggle for mobile
+    navMenu.querySelectorAll('.nav-item').forEach(item => {
+      const dropdown = item.querySelector('.nav-dropdown');
+      const link = item.querySelector('.nav-link');
+      if (dropdown && link) {
+        link.addEventListener('click', (e) => {
+          if (window.innerWidth <= 960) {
+            e.preventDefault();
+            e.stopPropagation();
+            item.classList.toggle('dropdown-open');
+          }
+        });
+      }
+    });
+
+    // Close on regular link click
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (!link.classList.contains('nav-link') || !link.closest('.nav-item')?.querySelector('.nav-dropdown') || window.innerWidth > 960) {
+          toggleNav(false);
+        }
+      });
+    });
+
+    // Add mobile floating quick action bar if main editor exists
+    this.initMobileQuickActionBar();
+  }
+
+  // -------------------------------------------------------------
+  // FLOATING MOBILE QUICK-ACTION BAR (1-Tap Copy & Navigation)
+  // -------------------------------------------------------------
+  initMobileQuickActionBar() {
+    const mainEditor = document.getElementById('main-editor');
+    if (!mainEditor) return;
+
+    let bar = document.getElementById('mobile-quick-bar');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.id = 'mobile-quick-bar';
+      bar.className = 'mobile-quick-action-bar';
+      bar.innerHTML = `
+        <button type="button" class="mobile-quick-btn" id="mobile-quick-copy" title="Copy result to clipboard">
+          <span>📋</span> <span>Copy Result</span>
+        </button>
+        <button type="button" class="tool-btn" id="mobile-quick-clear" style="padding:0.4rem 0.65rem; min-height:auto; font-size:0.75rem; border-radius:9999px; background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.25);" title="Clear text">
+          <span>🗑️</span>
+        </button>
+        <button type="button" class="tool-btn" id="mobile-quick-scroll-top" style="padding:0.4rem 0.65rem; min-height:auto; font-size:0.75rem; border-radius:9999px; background:rgba(255,255,255,0.15); color:#fff; border-color:rgba(255,255,255,0.25);" title="Scroll to top">
+          <span>⬆️</span>
+        </button>
+      `;
+      document.body.appendChild(bar);
+
+      document.getElementById('mobile-quick-copy')?.addEventListener('click', () => {
+        const text = mainEditor.value;
+        if (!text) {
+          this.showToast('Editor is empty.', 'warning');
+          return;
+        }
+        navigator.clipboard.writeText(text).then(() => {
+          this.showToast('Copied to clipboard! 📋', 'success');
+        }).catch(() => {
+          mainEditor.select();
+          document.execCommand('copy');
+          this.showToast('Copied to clipboard! 📋', 'success');
+        });
       });
 
-      document.addEventListener('click', (e) => {
-        if (!hamburger.contains(e.target) && !navMenu.contains(e.target) && navMenu.classList.contains('open')) {
-          hamburger.classList.remove('active');
-          navMenu.classList.remove('open');
-          document.body.style.overflow = '';
+      document.getElementById('mobile-quick-clear')?.addEventListener('click', () => {
+        if (mainEditor.value) {
+          mainEditor.value = '';
+          mainEditor.dispatchEvent(new Event('input', { bubbles: true }));
+          this.showToast('Buffer cleared.', 'info');
         }
       });
 
-      navMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          hamburger.classList.remove('active');
-          navMenu.classList.remove('open');
-          document.body.style.overflow = '';
-        });
+      document.getElementById('mobile-quick-scroll-top')?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
   }
